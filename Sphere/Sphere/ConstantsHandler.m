@@ -27,7 +27,7 @@
     self.COLOR_LINEN_PATTERN = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menu_bg.png"]];
     
     //Fonts.
-    self.FONT_NAVBAR_TITLE = [self originType:fontTypeRegular FontSize:18.0f];
+    self.FONT_NAVBAR_TITLE = [self originType:fontTypeExtraBold FontSize:20.0f];
     self.FONT_HEADER = [self originType:fontTypeExtraBold FontSize:14.0f];
     
     //Check for retina display.
