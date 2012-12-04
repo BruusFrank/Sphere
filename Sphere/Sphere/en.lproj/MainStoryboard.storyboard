@@ -335,9 +335,39 @@
                     <view key="view" contentMode="scaleToFill" id="x1s-U4-3Cz">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="10" background="textfield_bg_white.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TU9-qo-k9W">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="g3f-78-oec"/>
+                                    <constraint firstAttribute="width" constant="200" id="hJS-Oc-O01"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter mode name above" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCW-dV-Luw">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="c6j-ZT-h48"/>
+                                    <constraint firstAttribute="width" constant="137" id="frW-5A-6db"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TU9-qo-k9W" firstAttribute="top" secondItem="x1s-U4-3Cz" secondAttribute="top" constant="58" id="6fM-2v-NAb"/>
+                            <constraint firstItem="TU9-qo-k9W" firstAttribute="centerX" secondItem="x1s-U4-3Cz" secondAttribute="centerX" type="default" id="F9h-DC-MmL"/>
+                            <constraint firstItem="TU9-qo-k9W" firstAttribute="centerX" secondItem="QCW-dV-Luw" secondAttribute="centerX" type="default" id="LHY-eK-lwH"/>
+                            <constraint firstItem="QCW-dV-Luw" firstAttribute="top" secondItem="x1s-U4-3Cz" secondAttribute="top" constant="89" id="cSo-G8-yWo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xjh-dN-26w"/>
+                    <connections>
+                        <outlet property="modeNameTextField" destination="TU9-qo-k9W" id="P2S-nY-AsJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSF-Au-Oen" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -396,6 +426,7 @@
         <image name="facebook_login.png" width="229" height="41"/>
         <image name="menu_bg.png" width="260" height="457"/>
         <image name="sphere_logo.png" width="185" height="247"/>
+        <image name="textfield_bg_white.png" width="200" height="30"/>
     </resources>
     <classes>
         <class className="EditModeViewController" superclassName="UIViewController">
@@ -406,6 +437,9 @@
         </class>
         <class className="NewModeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewModeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="modeNameTextField" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="ProfileViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>

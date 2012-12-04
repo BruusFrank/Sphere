@@ -37,6 +37,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.modeNameTextField.delegate = self;
+    
     [self setupMainLayout];
 }
 
@@ -58,6 +60,9 @@
     [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
+    
+    self.modeNameTextField.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
+    self.modeNameTextField.font = [UIFont systemFontOfSize:22.0f];
 }
 
 - (void)setupBarButtonItems
@@ -72,6 +77,18 @@
 
 - (void)resetInterface
 {
+}
+
+#pragma mark UITextFieldDelegate methods
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
 }
 
 @end

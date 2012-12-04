@@ -110,6 +110,10 @@
 		26870467166E10D300B7525E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26870466166E10D300B7525E /* ProfileViewController.m */; };
 		2687046A166E117500B7525E /* NewModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26870469166E117500B7525E /* NewModeViewController.m */; };
 		2687046D166E11A100B7525E /* EditModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2687046C166E11A100B7525E /* EditModeViewController.m */; };
+		2687047B166E7A9A00B7525E /* textfield_bg_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 26870477166E7A9A00B7525E /* textfield_bg_blue.png */; };
+		2687047C166E7A9A00B7525E /* textfield_bg_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26870478166E7A9A00B7525E /* textfield_bg_blue@2x.png */; };
+		2687047D166E7A9A00B7525E /* textfield_bg_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 26870479166E7A9A00B7525E /* textfield_bg_white.png */; };
+		2687047E166E7A9A00B7525E /* textfield_bg_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2687047A166E7A9A00B7525E /* textfield_bg_white@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +259,10 @@
 		26870469166E117500B7525E /* NewModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewModeViewController.m; sourceTree = "<group>"; };
 		2687046B166E11A100B7525E /* EditModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditModeViewController.h; sourceTree = "<group>"; };
 		2687046C166E11A100B7525E /* EditModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditModeViewController.m; sourceTree = "<group>"; };
+		26870477166E7A9A00B7525E /* textfield_bg_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield_bg_blue.png; sourceTree = "<group>"; };
+		26870478166E7A9A00B7525E /* textfield_bg_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield_bg_blue@2x.png"; sourceTree = "<group>"; };
+		26870479166E7A9A00B7525E /* textfield_bg_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield_bg_white.png; sourceTree = "<group>"; };
+		2687047A166E7A9A00B7525E /* textfield_bg_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield_bg_white@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,6 +538,10 @@
 		268703A5166A71C200B7525E /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				26870477166E7A9A00B7525E /* textfield_bg_blue.png */,
+				26870478166E7A9A00B7525E /* textfield_bg_blue@2x.png */,
+				26870479166E7A9A00B7525E /* textfield_bg_white.png */,
+				2687047A166E7A9A00B7525E /* textfield_bg_white@2x.png */,
 				268703A1166A71BB00B7525E /* navigation_bar.png */,
 				268703A2166A71BB00B7525E /* navigation_bar@2x.png */,
 				26870399166A667B00B7525E /* login_bg.png */,
@@ -775,6 +787,10 @@
 				2687045D166DFD3100B7525E /* plus@2x.png in Resources */,
 				26870460166DFE6200B7525E /* cogwheel_settings.png in Resources */,
 				26870461166DFE6200B7525E /* cogwheel_settings@2x.png in Resources */,
+				2687047B166E7A9A00B7525E /* textfield_bg_blue.png in Resources */,
+				2687047C166E7A9A00B7525E /* textfield_bg_blue@2x.png in Resources */,
+				2687047D166E7A9A00B7525E /* textfield_bg_white.png in Resources */,
+				2687047E166E7A9A00B7525E /* textfield_bg_white@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
