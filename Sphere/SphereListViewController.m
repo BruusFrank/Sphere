@@ -30,6 +30,7 @@ NSDictionary *stine;
 NSDictionary *pernille;
 NSDictionary *ganesh;
 NSDictionary *ida;
+NSDictionary *ngabe;
 
 NSArray *users;
 
@@ -135,6 +136,11 @@ dispatch_queue_t fetchQ = NULL;
            [UIImage imageNamed:@"ida.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"happiness",
            nil];
+    ngabe = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ngabe Johnson", @"name",
+             [[NSArray alloc] initWithObjects:@"Watermelon", @"Chicken", @"Cool Aid", nil], @"tags",
+             [UIImage imageNamed:@"ngabe.jpg"], @"picture",
+             [NSNumber numberWithInt:1], @"happiness",
+             nil];
     
     users = [[NSArray alloc] initWithObjects:kasperBF, kasperBJ, pernille, soerenBF, stine, boP, courtney, ganesh, ida, nil];
     
