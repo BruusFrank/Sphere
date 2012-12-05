@@ -37,6 +37,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.modesCollection.dataSource = self;
+    
     [self setupMainLayout];
 }
 
@@ -72,6 +74,21 @@
 
 - (void)resetInterface
 {
+}
+
+#pragma mark UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 7;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"modeCell";
+    UICollectionViewCell *cell = (UICollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    return cell;
 }
 
 @end

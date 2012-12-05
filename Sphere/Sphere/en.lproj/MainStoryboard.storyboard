@@ -380,9 +380,54 @@
                     <view key="view" contentMode="scaleToFill" id="S8o-YX-LSk">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0hI-BN-ve8">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="Bv0-hz-AEg"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vfR-JH-GFq">
+                                    <size key="itemSize" width="57" height="57"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" reuseIdentifier="modeCell" id="YDv-m0-Kq4">
+                                        <rect key="frame" x="10" y="13" width="57" height="57"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.16619499362244894" green="0.16619499362244894" blue="0.16619499362244894" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="CONTENT HER" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ThL-VO-ana">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="wvo-Ok-7nN"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0hI-BN-ve8" firstAttribute="bottom" secondItem="S8o-YX-LSk" secondAttribute="bottom" type="default" id="V7N-r8-8Ne"/>
+                            <constraint firstItem="ThL-VO-ana" firstAttribute="centerX" secondItem="0hI-BN-ve8" secondAttribute="centerX" type="default" id="XhF-Mr-pFI"/>
+                            <constraint firstItem="0hI-BN-ve8" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="d3A-bv-Hi3"/>
+                            <constraint firstItem="ThL-VO-ana" firstAttribute="top" secondItem="S8o-YX-LSk" secondAttribute="top" constant="98" id="sjt-dg-ZQ8"/>
+                            <constraint firstItem="0hI-BN-ve8" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="zoo-dN-ECs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lWO-Aa-IeQ"/>
+                    <connections>
+                        <outlet property="modesCollection" destination="0hI-BN-ve8" id="eCo-5v-fVa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofa-58-nnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,6 +476,9 @@
     <classes>
         <class className="EditModeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EditModeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="modesCollection" candidateClass="UICollectionView"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -483,6 +531,21 @@
         </class>
         <class className="SphereViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButtonAction:"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

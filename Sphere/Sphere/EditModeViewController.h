@@ -11,6 +11,7 @@
 #import "ConstantsHandler.h"
 #import "UIView+CustomTitleView.h"
 
-@interface EditModeViewController : UIViewController
+@interface EditModeViewController : UIViewController<UICollectionViewDataSource>
+@property (weak, nonatomic) IBOutlet UICollectionView *modesCollection;
 
 @end
