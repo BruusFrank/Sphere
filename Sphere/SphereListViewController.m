@@ -83,7 +83,6 @@ dispatch_queue_t fetchQ = NULL;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     
     //************************PLACEHOLDER CONTENT********************************.
     
@@ -137,12 +136,12 @@ dispatch_queue_t fetchQ = NULL;
            [NSNumber numberWithInt:1], @"happiness",
            nil];
     ngabe = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ngabe Johnson", @"name",
-             [[NSArray alloc] initWithObjects:@"Watermelon", @"Chicken", @"Cool Aid", nil], @"tags",
+             [[NSArray alloc] initWithObjects:@"Therapy", @"Cooking", @"Disco dancing", nil], @"tags",
              [UIImage imageNamed:@"ngabe.jpg"], @"picture",
              [NSNumber numberWithInt:1], @"happiness",
              nil];
     
-    users = [[NSArray alloc] initWithObjects:kasperBF, kasperBJ, pernille, soerenBF, stine, boP, courtney, ganesh, ida, nil];
+    users = [[NSArray alloc] initWithObjects:kasperBF, kasperBJ, pernille, soerenBF, ngabe, stine, boP, courtney, ganesh, ida, nil];
     
     //***********************************MENU*************************************.
     
