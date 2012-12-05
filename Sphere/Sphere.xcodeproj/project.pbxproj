@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262C3F78166FA23C00A90A31 /* collection_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 262C3F76166FA23C00A90A31 /* collection_cell_bg.png */; };
+		262C3F79166FA23C00A90A31 /* collection_cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262C3F77166FA23C00A90A31 /* collection_cell_bg@2x.png */; };
+		262C3F7F166FA55800A90A31 /* EditModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C3F7E166FA55800A90A31 /* EditModeCell.m */; };
+		262C3F86166FE9FF00A90A31 /* collection_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 262C3F84166FE9FF00A90A31 /* collection_bg.png */; };
+		262C3F87166FE9FF00A90A31 /* collection_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262C3F85166FE9FF00A90A31 /* collection_bg@2x.png */; };
 		2634292F1669303500280B39 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2634292E1669303500280B39 /* UIKit.framework */; };
 		263429311669303500280B39 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263429301669303500280B39 /* Foundation.framework */; };
 		263429331669303500280B39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263429321669303500280B39 /* CoreGraphics.framework */; };
@@ -127,6 +132,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		262C3F76166FA23C00A90A31 /* collection_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection_cell_bg.png; sourceTree = "<group>"; };
+		262C3F77166FA23C00A90A31 /* collection_cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collection_cell_bg@2x.png"; sourceTree = "<group>"; };
+		262C3F7D166FA55800A90A31 /* EditModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModeCell.h; path = ../EditModeCell.h; sourceTree = "<group>"; };
+		262C3F7E166FA55800A90A31 /* EditModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModeCell.m; path = ../EditModeCell.m; sourceTree = "<group>"; };
+		262C3F84166FE9FF00A90A31 /* collection_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection_bg.png; sourceTree = "<group>"; };
+		262C3F85166FE9FF00A90A31 /* collection_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collection_bg@2x.png"; sourceTree = "<group>"; };
 		2634292A1669303500280B39 /* Sphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2634292E1669303500280B39 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		263429301669303500280B39 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -381,6 +392,8 @@
 		2634296C166936AD00280B39 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				262C3F84166FE9FF00A90A31 /* collection_bg.png */,
+				262C3F85166FE9FF00A90A31 /* collection_bg@2x.png */,
 				26870433166CEC5400B7525E /* smiley.png */,
 				26870434166CEC5400B7525E /* smiley@2x.png */,
 				2687042F166CE8F700B7525E /* cell_accessory_up.png */,
@@ -409,6 +422,8 @@
 		26342975166936EE00280B39 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				262C3F76166FA23C00A90A31 /* collection_cell_bg.png */,
+				262C3F77166FA23C00A90A31 /* collection_cell_bg@2x.png */,
 				2687045E166DFE6200B7525E /* cogwheel_settings.png */,
 				2687045F166DFE6200B7525E /* cogwheel_settings@2x.png */,
 				2687045A166DFD3100B7525E /* plus.png */,
@@ -645,6 +660,8 @@
 		26870409166BBC5200B7525E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				262C3F7D166FA55800A90A31 /* EditModeCell.h */,
+				262C3F7E166FA55800A90A31 /* EditModeCell.m */,
 				2687044F166DF6B300B7525E /* SettingsCell.h */,
 				26870450166DF6B400B7525E /* SettingsCell.m */,
 				26342990166952A700280B39 /* SphereUserCell.h */,
@@ -791,6 +808,10 @@
 				2687047C166E7A9A00B7525E /* textfield_bg_blue@2x.png in Resources */,
 				2687047D166E7A9A00B7525E /* textfield_bg_white.png in Resources */,
 				2687047E166E7A9A00B7525E /* textfield_bg_white@2x.png in Resources */,
+				262C3F78166FA23C00A90A31 /* collection_cell_bg.png in Resources */,
+				262C3F79166FA23C00A90A31 /* collection_cell_bg@2x.png in Resources */,
+				262C3F86166FE9FF00A90A31 /* collection_bg.png in Resources */,
+				262C3F87166FE9FF00A90A31 /* collection_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +872,7 @@
 				26870467166E10D300B7525E /* ProfileViewController.m in Sources */,
 				2687046A166E117500B7525E /* NewModeViewController.m in Sources */,
 				2687046D166E11A100B7525E /* EditModeViewController.m in Sources */,
+				262C3F7F166FA55800A90A31 /* EditModeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

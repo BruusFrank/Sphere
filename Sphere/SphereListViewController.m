@@ -287,6 +287,7 @@ dispatch_queue_t fetchQ = NULL;
     
     cell.nameLabel.text = [concreteUser objectForKey:@"name"];
     cell.nameLabel.font = [[ConstantsHandler sharedConstants] FONT_HEADER];
+    cell.nameLabel.textColor = [UIColor darkTextColor];
     
     //Concatenate tags into one string.
     NSString *tagsString = @"";
@@ -309,7 +310,6 @@ dispatch_queue_t fetchQ = NULL;
     cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     cell.clipsToBounds = YES;
     
-    //cell.expandView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shark_teeth.png"]];
     cell.accessory.image = [UIImage imageNamed:@"cell_accessory_down.png"];
     
     if ([[concreteUser objectForKey:@"happiness"] integerValue] == 1) {
@@ -333,7 +333,7 @@ dispatch_queue_t fetchQ = NULL;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.textLabel.textColor = [UIColor darkGrayColor];
+    cell.textLabel.textColor = [UIColor darkTextColor];
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14];
     cell.textLabel.text = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
     
@@ -451,6 +451,7 @@ dispatch_queue_t fetchQ = NULL;
         
         cell.accessory.image = [UIImage imageNamed:@"cell_accessory_up.png"];
         cell.expandView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shark_teeth.png"]];
+        cell.nameLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
         
         UIView *teethBottom = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 60.0f, 320.0f, 18.0f)];
         teethBottom.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shark_bottom.png"]];
@@ -468,6 +469,7 @@ dispatch_queue_t fetchQ = NULL;
         [UIView commitAnimations];
     }else{
         cell.accessory.image = [UIImage imageNamed:@"cell_accessory_down.png"];
+        cell.nameLabel.textColor = [UIColor darkTextColor];
         
         if ([[cell.expandView subviews] count] > 6) {
             UIView *teethBottom = [[cell.expandView subviews] lastObject];

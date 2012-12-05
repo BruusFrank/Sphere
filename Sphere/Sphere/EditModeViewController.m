@@ -7,12 +7,16 @@
 //
 
 #import "EditModeViewController.h"
+#import "EditModeCell.h"
+#import "ConstantsHandler.h"
 
 @interface EditModeViewController ()
 
 @end
 
 @implementation EditModeViewController
+
+NSIndexPath *selectedCell;
 
 #pragma mark IBActions
 
@@ -38,6 +42,7 @@
 	// Do any additional setup after loading the view.
     
     self.modesCollection.dataSource = self;
+    self.modesCollection.delegate = self;
     
     [self setupMainLayout];
 }
@@ -59,6 +64,8 @@
     UINavigationBar *navBar = self.navigationController.navigationBar;
     [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
+    self.modeCollectionContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_bg"]];
+    
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
 }
 
@@ -78,17 +85,46 @@
 
 #pragma mark UICollectionViewDataSource
 
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    int numberOfSections = 4;
+    self.modesPageControl.numberOfPages = numberOfSections;
+    return 4;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 7;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"modeCell";
-    UICollectionViewCell *cell = (UICollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    EditModeCell *cell = (EditModeCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    cell.modeTitle.textColor = [UIColor darkTextColor];
+    if ([indexPath isEqual:selectedCell]) {
+        cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+    }
+    cell.modeTitle.text = @"Mode";
     
     return cell;
+}
+
+#pragma mark UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    EditModeCell *cell = (EditModeCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+    
+    selectedCell = indexPath;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    EditModeCell *cell = (EditModeCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.modeTitle.textColor = [UIColor darkTextColor];
 }
 
 @end

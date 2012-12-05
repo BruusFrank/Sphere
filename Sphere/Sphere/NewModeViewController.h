@@ -11,7 +11,11 @@
 #import "ConstantsHandler.h"
 #import "UIView+CustomTitleView.h"
 
-@interface NewModeViewController : UIViewController<UITextFieldDelegate>
+@interface NewModeViewController : UIViewController<UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *modeNameTextField;
+@property (weak, nonatomic) IBOutlet UIButton *changeModeIconButton;
+@property (weak, nonatomic) IBOutlet UIView *modeImageCollectionContainer;
+@property (weak, nonatomic) IBOutlet UICollectionView *modeImageCollection;
+@property (weak, nonatomic) IBOutlet UIPageControl *modeImagePageController;
 
 @end

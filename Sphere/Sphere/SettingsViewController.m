@@ -124,6 +124,7 @@ NSArray *cellArray;
     NSDictionary *cellInfo = [[cellArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.buttonLabel.text = [cellInfo objectForKey:@"title"];
+    cell.buttonLabel.textColor = [UIColor darkTextColor];
     cell.buttonImage.image = [UIImage imageNamed:[cellInfo objectForKey:@"image"]];
     
     return cell;
