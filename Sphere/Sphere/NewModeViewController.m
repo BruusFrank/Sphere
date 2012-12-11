@@ -154,6 +154,16 @@ BOOL keyboardIsShown;
     [self toggleModeImageCollection];
 }
 
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = scrollView.frame.size.width;
+    int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.modeImagePageController.currentPage = page;
+}
+
+
 #pragma mark animation methods
 
 - (void)toggleModeImageCollection

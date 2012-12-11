@@ -388,6 +388,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="mAT-cy-vu5" kind="push" identifier="editNewModeSegue" id="lfa-ug-GFs"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAH-vt-cos" userLabel="Collection container">
                                 <subviews>
@@ -456,7 +459,6 @@
                         <outlet property="modeImageCollectionContainer" destination="tAH-vt-cos" id="IaK-vJ-Jat"/>
                         <outlet property="modeImagePageController" destination="dTK-N1-49S" id="VqI-17-MGC"/>
                         <outlet property="modeNameTextField" destination="TU9-qo-k9W" id="P2S-nY-AsJ"/>
-                        <segue destination="mAT-cy-vu5" kind="push" identifier="editNewModeSegue" id="DxK-RU-rq4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSF-Au-Oen" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -668,6 +670,9 @@
         </class>
         <class className="SphereViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButtonAction:"/>
+            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
@@ -685,6 +690,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DxK-RU-rq4"/>
+        <segue reference="lfa-ug-GFs"/>
     </inferredMetricsTieBreakers>
 </document>

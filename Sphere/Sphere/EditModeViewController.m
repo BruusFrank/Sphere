@@ -17,6 +17,7 @@
 @implementation EditModeViewController
 
 NSIndexPath *selectedCell;
+NSInteger pageIndex;
 
 #pragma mark IBActions
 
@@ -45,6 +46,13 @@ NSIndexPath *selectedCell;
     self.modesCollection.delegate = self;
     
     [self setupMainLayout];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:NO];
+    
+    [self resetInterface];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,6 +89,7 @@ NSIndexPath *selectedCell;
 
 - (void)resetInterface
 {
+    pageIndex = 0;
 }
 
 #pragma mark UICollectionViewDataSource
@@ -125,6 +134,15 @@ NSIndexPath *selectedCell;
 {
     EditModeCell *cell = (EditModeCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.modeTitle.textColor = [UIColor darkTextColor];
+}
+
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat pageWidth = scrollView.frame.size.width;
+    int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.modesPageControl.currentPage = page;
 }
 
 @end
