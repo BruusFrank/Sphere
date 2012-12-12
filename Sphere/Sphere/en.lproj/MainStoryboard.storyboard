@@ -380,12 +380,12 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcV-Jg-DxK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcV-Jg-DxK">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="34p-8u-A8A"/>
+                                    <constraint firstAttribute="height" constant="40" id="U3H-eR-qCR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <state key="normal" title="Add &amp; configure">
+                                <state key="normal" image="add_mode_button.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -443,7 +443,6 @@
                             <constraint firstItem="pFU-Zf-Khp" firstAttribute="top" secondItem="x1s-U4-3Cz" secondAttribute="top" constant="44" id="AvZ-wW-rbS"/>
                             <constraint firstItem="tAH-vt-cos" firstAttribute="trailing" secondItem="x1s-U4-3Cz" secondAttribute="trailing" type="default" id="GCf-P8-6ww"/>
                             <constraint firstItem="QCW-dV-Luw" firstAttribute="leading" secondItem="jKS-FT-ag4" secondAttribute="leading" type="default" id="MRb-sF-YOc"/>
-                            <constraint firstAttribute="bottom" secondItem="wcV-Jg-DxK" secondAttribute="bottom" constant="109" id="PQu-Y3-iYh"/>
                             <constraint firstItem="tAH-vt-cos" firstAttribute="leading" secondItem="x1s-U4-3Cz" secondAttribute="leading" type="default" id="Sgx-wi-PzB"/>
                             <constraint firstItem="jKS-FT-ag4" firstAttribute="top" secondItem="x1s-U4-3Cz" secondAttribute="top" constant="102" id="XLN-jg-CGH"/>
                             <constraint firstItem="QCW-dV-Luw" firstAttribute="top" secondItem="x1s-U4-3Cz" secondAttribute="top" constant="178" id="ZzV-ih-xFL"/>
@@ -452,8 +451,9 @@
                             <constraint firstItem="TU9-qo-k9W" firstAttribute="top" secondItem="x1s-U4-3Cz" secondAttribute="top" constant="150" id="gw4-Tr-WXF"/>
                             <constraint firstItem="jKS-FT-ag4" firstAttribute="centerX" secondItem="pFU-Zf-Khp" secondAttribute="centerX" type="default" id="j1w-Tk-Zan"/>
                             <constraint firstItem="wcV-Jg-DxK" firstAttribute="centerX" secondItem="QCW-dV-Luw" secondAttribute="centerX" type="default" id="mZw-rn-39j"/>
+                            <constraint firstAttribute="bottom" secondItem="wcV-Jg-DxK" secondAttribute="bottom" constant="111" id="n7f-mp-gqr"/>
+                            <constraint firstItem="wcV-Jg-DxK" firstAttribute="centerX" secondItem="tAH-vt-cos" secondAttribute="centerX" type="default" id="p0T-lg-8yf"/>
                             <constraint firstItem="QCW-dV-Luw" firstAttribute="centerX" secondItem="TU9-qo-k9W" secondAttribute="centerX" type="default" id="pbi-Kw-jdW"/>
-                            <constraint firstItem="QCW-dV-Luw" firstAttribute="centerX" secondItem="tAH-vt-cos" secondAttribute="centerX" type="default" id="vfM-Zx-7gN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xjh-dN-26w"/>
@@ -599,6 +599,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add_mode_button.png" width="227" height="39"/>
         <image name="facebook_login.png" width="229" height="41"/>
         <image name="menu_bg.png" width="260" height="457"/>
         <image name="sphere_logo.png" width="188" height="251"/>

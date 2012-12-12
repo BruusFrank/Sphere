@@ -128,6 +128,8 @@
 		26F2F57F1678A2A800830499 /* mode_study@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F5771678A2A800830499 /* mode_study@2x.png */; };
 		26F2F5801678A2A800830499 /* mode_work.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F5781678A2A800830499 /* mode_work.png */; };
 		26F2F5811678A2A800830499 /* mode_work@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F5791678A2A800830499 /* mode_work@2x.png */; };
+		26F2F5881678D52900830499 /* add_mode_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F5861678D52900830499 /* add_mode_button.png */; };
+		26F2F5891678D52900830499 /* add_mode_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F2F5871678D52900830499 /* add_mode_button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -292,6 +294,8 @@
 		26F2F5771678A2A800830499 /* mode_study@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode_study@2x.png"; sourceTree = "<group>"; };
 		26F2F5781678A2A800830499 /* mode_work.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mode_work.png; sourceTree = "<group>"; };
 		26F2F5791678A2A800830499 /* mode_work@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mode_work@2x.png"; sourceTree = "<group>"; };
+		26F2F5861678D52900830499 /* add_mode_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_mode_button.png; sourceTree = "<group>"; };
+		26F2F5871678D52900830499 /* add_mode_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_mode_button@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -441,6 +445,8 @@
 		26342975166936EE00280B39 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				26F2F5861678D52900830499 /* add_mode_button.png */,
+				26F2F5871678D52900830499 /* add_mode_button@2x.png */,
 				262C3F76166FA23C00A90A31 /* collection_cell_bg.png */,
 				262C3F77166FA23C00A90A31 /* collection_cell_bg@2x.png */,
 				2687045E166DFE6200B7525E /* cogwheel_settings.png */,
@@ -856,6 +862,8 @@
 				26F2F57F1678A2A800830499 /* mode_study@2x.png in Resources */,
 				26F2F5801678A2A800830499 /* mode_work.png in Resources */,
 				26F2F5811678A2A800830499 /* mode_work@2x.png in Resources */,
+				26F2F5881678D52900830499 /* add_mode_button.png in Resources */,
+				26F2F5891678D52900830499 /* add_mode_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
