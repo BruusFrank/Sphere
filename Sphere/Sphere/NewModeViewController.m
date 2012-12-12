@@ -38,7 +38,7 @@ BOOL keyboardIsShown;
 - (IBAction)addMode:(id)sender
 {
     if ([self.modeNameTextField.text isEqualToString:@""]) {
-        UIAlertView *noModeError = [[UIAlertView alloc] initWithTitle:@"New mode error" message:@"Please give your mode a name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *noModeError = [[UIAlertView alloc] initWithTitle:@"Wait!" message:@"Please give your mode a name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [noModeError show];
     }else{
         [self performSegueWithIdentifier:@"addAndConfigureSegue" sender:self];

@@ -520,11 +520,11 @@
                                                 </view>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="dXo-zB-ZB3" secondAttribute="bottom" constant="2" id="260-mn-rxB"/>
                                                     <constraint firstItem="dXo-zB-ZB3" firstAttribute="leading" secondItem="YDv-m0-Kq4" secondAttribute="leading" type="default" id="Ezn-Md-BZa"/>
                                                     <constraint firstItem="8Jf-aD-qtQ" firstAttribute="leading" secondItem="YDv-m0-Kq4" secondAttribute="leading" type="default" id="LW7-YY-HHv"/>
                                                     <constraint firstItem="dXo-zB-ZB3" firstAttribute="trailing" secondItem="YDv-m0-Kq4" secondAttribute="trailing" type="default" id="Xgo-fy-ZAR"/>
                                                     <constraint firstItem="8Jf-aD-qtQ" firstAttribute="trailing" secondItem="YDv-m0-Kq4" secondAttribute="trailing" type="default" id="hPo-ee-gea"/>
+                                                    <constraint firstAttribute="bottom" secondItem="dXo-zB-ZB3" secondAttribute="bottom" constant="1" id="kaR-18-ofr"/>
                                                     <constraint firstItem="8Jf-aD-qtQ" firstAttribute="top" secondItem="YDv-m0-Kq4" secondAttribute="top" constant="1" id="pHs-dP-aqw"/>
                                                 </constraints>
                                                 <connections>
