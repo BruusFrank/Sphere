@@ -34,9 +34,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="YXH-KQ-ztu" secondAttribute="bottom" constant="65" id="5aZ-Gp-OF4"/>
-                            <constraint firstItem="QyT-VO-MzU" firstAttribute="top" secondItem="3" secondAttribute="top" constant="59" id="G84-yD-ZKV"/>
-                            <constraint firstItem="YXH-KQ-ztu" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="aYj-vw-If4"/>
-                            <constraint firstItem="QyT-VO-MzU" firstAttribute="centerX" secondItem="YXH-KQ-ztu" secondAttribute="centerX" type="default" id="hV0-yg-2ys"/>
+                            <constraint firstItem="QyT-VO-MzU" firstAttribute="centerX" secondItem="YXH-KQ-ztu" secondAttribute="centerX" type="default" id="7jc-I7-7a4"/>
+                            <constraint firstItem="QyT-VO-MzU" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="hl7-YA-UTD"/>
+                            <constraint firstItem="QyT-VO-MzU" firstAttribute="top" secondItem="3" secondAttribute="top" constant="53" id="z3O-Tn-mxj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9yA-EN-mfI"/>
