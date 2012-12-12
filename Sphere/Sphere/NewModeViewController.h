@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIView *modeImageCollectionContainer;
 @property (weak, nonatomic) IBOutlet UICollectionView *modeImageCollection;
 @property (weak, nonatomic) IBOutlet UIPageControl *modeImagePageController;
+@property (strong, nonatomic) UIViewController *settingsController;
 
 @end

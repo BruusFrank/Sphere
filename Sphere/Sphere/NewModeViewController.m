@@ -7,6 +7,7 @@
 //
 
 #import "NewModeViewController.h"
+#import "EditModeViewController.h"
 
 @interface NewModeViewController ()
 
@@ -33,6 +34,17 @@ BOOL keyboardIsShown;
     }
     [self toggleModeImageCollection];
 }
+
+- (IBAction)addMode:(id)sender
+{
+    if ([self.modeNameTextField.text isEqualToString:@""]) {
+        UIAlertView *noModeError = [[UIAlertView alloc] initWithTitle:@"New mode error" message:@"Please give your mode a name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [noModeError show];
+    }else{
+        [self performSegueWithIdentifier:@"addAndConfigureSegue" sender:self];
+    }
+}
+
 
 #pragma mark view lifecycle
 
@@ -85,6 +97,8 @@ BOOL keyboardIsShown;
     
     self.modeNameTextField.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
     self.modeNameTextField.font = [UIFont systemFontOfSize:22.0f];
+    
+    self.changeModeIconButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
 }
 
 - (void)setupBarButtonItems
@@ -142,7 +156,27 @@ BOOL keyboardIsShown;
     static NSString *identifier = @"modeImageCell";
     UICollectionViewCell *cell = (UICollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
+    if (indexPath.section == 0) {
+        switch (indexPath.row) {
+            case 0:
+                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_study.png"]];
+                break;
+            case 1:
+                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_work.png"]];
+                break;
+            case 2:
+                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_party.png"]];
+                break;
+            case 3:
+                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_casual.png"]];
+                break;
+            default:
+                cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
+                break;
+        }
+    } else{
+        cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
+    }
     
     return cell;
 }
@@ -151,6 +185,7 @@ BOOL keyboardIsShown;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.changeModeIconButton.backgroundColor = [collectionView cellForItemAtIndexPath:indexPath].backgroundColor;
     [self toggleModeImageCollection];
 }
 
@@ -163,6 +198,16 @@ BOOL keyboardIsShown;
     self.modeImagePageController.currentPage = page;
 }
 
+#pragma mark prepareForSegue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    EditModeViewController *controller = (EditModeViewController *)segue.destinationViewController;
+    
+    [controller.modeImages addObject:self.changeModeIconButton.backgroundColor];
+    [controller.modeTitles addObject:self.modeNameTextField.text];
+    controller.settingsController = self.settingsController;
+}
 
 #pragma mark animation methods
 

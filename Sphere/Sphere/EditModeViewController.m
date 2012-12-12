@@ -23,8 +23,31 @@ NSInteger pageIndex;
 
 - (void)popController:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.settingsController) {
+        [self.navigationController popToViewController:self.settingsController animated:YES];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
+
+#pragma mark property getters
+
+- (NSMutableArray *)modeImages
+{
+    if (!_modeImages) {
+        _modeImages = [[NSMutableArray alloc] init];
+    }
+    return _modeImages;
+}
+
+- (NSMutableArray *)modeTitles
+{
+    if (!_modeTitles) {
+        _modeTitles = [[NSMutableArray alloc] init];
+    }
+    return _modeTitles;
+}
+
 
 #pragma mark view lifecycle
 
@@ -41,6 +64,20 @@ NSInteger pageIndex;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    //PLACEHOLDER
+    
+    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_study.png"]]];
+    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_work.png"]]];
+    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_party.png"]]];
+    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_casual.png"]]];
+    
+    [self.modeTitles addObject:@"Study"];
+    [self.modeTitles addObject:@"Work"];
+    [self.modeTitles addObject:@"Party"];
+    [self.modeTitles addObject:@"Casual"];
+    
+    //END OF PLACEHOLDER
     
     self.modesCollection.dataSource = self;
     self.modesCollection.delegate = self;
@@ -111,11 +148,20 @@ NSInteger pageIndex;
     static NSString *identifier = @"modeCell";
     EditModeCell *cell = (EditModeCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
+    int row = indexPath.row + (indexPath.section * [collectionView numberOfItemsInSection:indexPath.section]);
+    
+    if (row < [self.modeImages count]) {
+        cell.editModeImage.backgroundColor = [self.modeImages objectAtIndex:row];
+        cell.modeTitle.text = [self.modeTitles objectAtIndex:row];
+    } else{
+        cell.editModeImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
+        cell.modeTitle.text = @"Mode";
+    }
+    
     cell.modeTitle.textColor = [UIColor darkTextColor];
     if ([indexPath isEqual:selectedCell]) {
         cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
     }
-    cell.modeTitle.text = @"Mode";
     
     return cell;
 }

@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "SettingsCell.h"
+#import "NewModeViewController.h"
 
 @interface SettingsViewController ()
 
@@ -160,6 +161,16 @@ NSArray *cellArray;
                                                                  nil];
     
     [self performSegueWithIdentifier:[[segueIdentifiers objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] sender:self];
+}
+
+#pragma mark prepareForSegue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"newModeSegue"]) {
+        NewModeViewController *controller = (NewModeViewController *)segue.destinationViewController;
+        controller.settingsController = self;
+    }
 }
 
 @end
