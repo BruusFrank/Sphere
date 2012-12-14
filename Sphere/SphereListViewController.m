@@ -112,7 +112,7 @@ dispatch_queue_t fetchQ = NULL;
     
     courtney = [[NSDictionary alloc] initWithObjectsAndKeys:@"Courtney Davis", @"name",
                [[NSArray alloc] initWithObjects:@"Movies", @"Journalism", @"Exercise", nil], @"tags",
-               [UIImage imageNamed:@"courtney.jpg"], @"picture",
+               [UIImage imageNamed:@"cd.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"happiness",
                nil];
     stine = [[NSDictionary alloc] initWithObjectsAndKeys:@"Stine Frank Kristensen", @"name",
