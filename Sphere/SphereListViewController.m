@@ -8,6 +8,7 @@
 
 #import "SphereListViewController.h"
 #import "SphereUserCell.h"
+#import "MenuTableViewCellView.h"
 
 #import "UIImage+Resizing.h"
 #import "UIImage+ScaleAndCrop.h"
@@ -48,6 +49,8 @@ NSArray *menuSections;
 BOOL menuShown = NO;
 BOOL cellExpanded = NO;
 dispatch_queue_t fetchQ = NULL;
+
+NSIndexPath *selected;
 
 #pragma mark IBActions
 
@@ -146,7 +149,7 @@ dispatch_queue_t fetchQ = NULL;
     //***********************************MENU*************************************.
     
     sharing = [[NSDictionary alloc] initWithObjectsAndKeys:@"Sharing", @"name", [[NSArray alloc] initWithObjects:@"Broadcast", @"Come talk to me!", nil], @"listItems", nil];
-    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [[NSArray alloc] initWithObjects:@"Study", @"Spare time", @"Work", nil], @"listItems", nil];
+    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [[NSArray alloc] initWithObjects:@"Study", @"Spare time", @"Work", @"Party", nil], @"listItems", [[NSArray alloc] initWithObjects:@"mode_study.png", @"mode_casual.png", @"mode_work.png", @"mode_party.png", nil], @"imageNames", nil];
     filters = [[NSDictionary alloc] initWithObjectsAndKeys:@"Filters", @"name", [[NSArray alloc] initWithObjects:@"Age", @"Gender", nil], @"listItems", nil];
     
     menuSections = [[NSArray alloc] initWithObjects:sharing, mode, filters, nil];
@@ -337,10 +340,37 @@ dispatch_queue_t fetchQ = NULL;
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+        
+    NSString *cellTitle = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
+    UIImage *cellImage = nil;
     
-    cell.textLabel.textColor = [UIColor darkTextColor];
-    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:14];
-    cell.textLabel.text = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
+    if (indexPath.section == 1) {
+        cellImage = [UIImage imageNamed:[[[menuSections objectAtIndex:indexPath.section] objectForKey:@"imageNames"] objectAtIndex:indexPath.row]];
+    }
+    
+    NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", nil];
+    if (cellImage) {
+        data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", cellImage, @"image", nil];
+    }
+    
+    if ([cell.subviews count] < 2) {
+        switch (indexPath.section) {
+            case 0:
+                [cell addSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data]];
+                break;
+            case 1:
+                [cell addSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeMode cellData:data]];
+                break;
+            case 2:
+                [cell addSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeFilter cellData:data]];
+                break;
+        }
+    }
+    
+    //SET STUDY ACTIVE.
+    if (indexPath.row == 1 && indexPath.section == 1) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
     
     return cell;
 }
@@ -424,6 +454,17 @@ dispatch_queue_t fetchQ = NULL;
 {
     if (tableView.tag == 1) {
         [self tableView:tableView animateCellAtIndexPath:indexPath expand:![self.selectedRow isEqual:indexPath]];
+    }else if(tableView.tag == 2){
+        selected = indexPath;
+        if (indexPath.section == 1) {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+            for (int i = 0; i < [tableView numberOfRowsInSection:1]; i++) {
+                NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
+                if (indexPath.row != path.row) {
+                    [tableView cellForRowAtIndexPath:path].accessoryType = UITableViewCellAccessoryNone;
+                }
+            }
+        }
     }
 }
 
