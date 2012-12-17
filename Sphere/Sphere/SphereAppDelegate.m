@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Storm of Brains. All rights reserved.
 //
 
+#import <Parse/Parse.h>
+
 #import "SphereAppDelegate.h"
 
 @implementation SphereAppDelegate
@@ -14,6 +16,11 @@
 {
     // Override point for customization after application launch.
     [self customizeAppearance];
+    
+    //Parse
+    [Parse setApplicationId:@"gsrs0BrZGIoYKjZp8iX7Tc7vV8K2vmXYt8mwVyTI"
+                  clientKey:@"6F3TH85bQbx73OEHLtVhZ1Zr90L1rGmWQd9o8TEY"];
+    
     return YES;
 }
 							
