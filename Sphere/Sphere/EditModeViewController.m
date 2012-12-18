@@ -127,6 +127,7 @@ NSInteger pageIndex;
 - (void)resetInterface
 {
     pageIndex = 0;
+    selectedCell = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
 #pragma mark UICollectionViewDataSource
@@ -161,6 +162,7 @@ NSInteger pageIndex;
     cell.modeTitle.textColor = [UIColor darkTextColor];
     if ([indexPath isEqual:selectedCell]) {
         cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+        [self.modesCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
     
     return cell;

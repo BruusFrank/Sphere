@@ -50,8 +50,6 @@ BOOL menuShown = NO;
 BOOL cellExpanded = NO;
 dispatch_queue_t fetchQ = NULL;
 
-NSIndexPath *selected;
-
 #pragma mark IBActions
 
 - (void)showMenuAction:(id)sender
@@ -455,7 +453,6 @@ NSIndexPath *selected;
     if (tableView.tag == 1) {
         [self tableView:tableView animateCellAtIndexPath:indexPath expand:![self.selectedRow isEqual:indexPath]];
     }else if(tableView.tag == 2){
-        selected = indexPath;
         if (indexPath.section == 1) {
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
             for (int i = 0; i < [tableView numberOfRowsInSection:1]; i++) {
