@@ -28,12 +28,8 @@
     self.HUD.mode = MBProgressHUDModeIndeterminate;
     self.HUD.labelText = @"Loading...";
     
-    __weak SphereViewController *VC = self;
-    
-    [self.HUD showWhileExecuting:@selector(getFacebookInformation) onTarget:self withObject:nil animated:YES];
-    self.HUD.completionBlock = ^{
-        [VC performSegueWithIdentifier:@"loginSegue" sender:sender];
-    };
+    [self.HUD show:YES];
+    [self getFacebookInformation];
 }
 
 #pragma mark view lifecycle
@@ -59,6 +55,8 @@
 
 - (void)getFacebookInformation
 {
+    __weak SphereViewController *VC = self;
+    
     //facebook permissions
     NSArray *permissionArray = @[@"user_about_me", @"user_birthday", @"user_location"];
     
@@ -68,9 +66,11 @@
             if (!error) {
                 NSLog(@"Uh oh. The user cancelled the Facebook login.");
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:@"Uh oh. The user cancelled the Facebook login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [self.HUD show:NO];
                 [alert show];
             } else {
                 NSLog(@"Uh oh. An error occurred: %@", error);
+                [self.HUD show:NO];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
                 [alert show];
             }
@@ -79,13 +79,15 @@
             self.HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             self.HUD.mode = MBProgressHUDModeCustomView;
             self.HUD.labelText = @"Completed";
-            usleep(5000);
+            [self.HUD show:NO];
+            [VC performSegueWithIdentifier:@"loginSegue" sender:self];
         } else {
             NSLog(@"User with facebook logged in!");
             self.HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             self.HUD.mode = MBProgressHUDModeCustomView;
             self.HUD.labelText = @"Completed";
-            usleep(5000);
+            [self.HUD show:NO];
+            [VC performSegueWithIdentifier:@"loginSegue" sender:self];
         }
     }];
 }
