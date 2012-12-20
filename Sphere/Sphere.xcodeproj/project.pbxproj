@@ -11,6 +11,10 @@
 		260322891680859800EF868F /* SharedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 260322881680859800EF868F /* SharedDocument.m */; };
 		2603228E1680860800EF868F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2603228C1680860800EF868F /* Model.xcdatamodeld */; };
 		260322901680B4BB00EF868F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2603228F1680B4BB00EF868F /* CoreData.framework */; };
+		2603229F16836A2500EF868F /* Mode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2603229E16836A2500EF868F /* Mode.m */; };
+		260322A216836A2600EF868F /* Skill.m in Sources */ = {isa = PBXBuildFile; fileRef = 260322A116836A2600EF868F /* Skill.m */; };
+		260322A516836A2600EF868F /* Interest.m in Sources */ = {isa = PBXBuildFile; fileRef = 260322A416836A2600EF868F /* Interest.m */; };
+		260322A816836A2600EF868F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 260322A716836A2600EF868F /* User.m */; };
 		262C3F78166FA23C00A90A31 /* collection_cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 262C3F76166FA23C00A90A31 /* collection_cell_bg.png */; };
 		262C3F79166FA23C00A90A31 /* collection_cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262C3F77166FA23C00A90A31 /* collection_cell_bg@2x.png */; };
 		262C3F7F166FA55800A90A31 /* EditModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 262C3F7E166FA55800A90A31 /* EditModeCell.m */; };
@@ -166,6 +170,14 @@
 		260322881680859800EF868F /* SharedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedDocument.m; sourceTree = "<group>"; };
 		2603228D1680860800EF868F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		2603228F1680B4BB00EF868F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2603229D16836A2500EF868F /* Mode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mode.h; sourceTree = "<group>"; };
+		2603229E16836A2500EF868F /* Mode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mode.m; sourceTree = "<group>"; };
+		260322A016836A2600EF868F /* Skill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skill.h; sourceTree = "<group>"; };
+		260322A116836A2600EF868F /* Skill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Skill.m; sourceTree = "<group>"; };
+		260322A316836A2600EF868F /* Interest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interest.h; sourceTree = "<group>"; };
+		260322A416836A2600EF868F /* Interest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interest.m; sourceTree = "<group>"; };
+		260322A616836A2600EF868F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		260322A716836A2600EF868F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		262C3F76166FA23C00A90A31 /* collection_cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collection_cell_bg.png; sourceTree = "<group>"; };
 		262C3F77166FA23C00A90A31 /* collection_cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collection_cell_bg@2x.png"; sourceTree = "<group>"; };
 		262C3F7D166FA55800A90A31 /* EditModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModeCell.h; path = ../EditModeCell.h; sourceTree = "<group>"; };
@@ -399,6 +411,14 @@
 		2603228B168085D300EF868F /* NSManagedObject subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				260322A616836A2600EF868F /* User.h */,
+				260322A716836A2600EF868F /* User.m */,
+				260322A316836A2600EF868F /* Interest.h */,
+				260322A416836A2600EF868F /* Interest.m */,
+				260322A016836A2600EF868F /* Skill.h */,
+				260322A116836A2600EF868F /* Skill.m */,
+				2603229D16836A2500EF868F /* Mode.h */,
+				2603229E16836A2500EF868F /* Mode.m */,
 			);
 			name = "NSManagedObject subclasses";
 			sourceTree = "<group>";
@@ -1021,6 +1041,10 @@
 				26032277167FC1CF00EF868F /* MenuTableViewCellView.m in Sources */,
 				260322891680859800EF868F /* SharedDocument.m in Sources */,
 				2603228E1680860800EF868F /* Model.xcdatamodeld in Sources */,
+				2603229F16836A2500EF868F /* Mode.m in Sources */,
+				260322A216836A2600EF868F /* Skill.m in Sources */,
+				260322A516836A2600EF868F /* Interest.m in Sources */,
+				260322A816836A2600EF868F /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

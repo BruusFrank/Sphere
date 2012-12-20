@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Model" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3006" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3006" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Interest" representedClassName="Interest" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="isInterestOfUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasInterests" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Mode" representedClassName="Mode" syncable="YES">
+        <attribute name="broadcasting" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="contactable" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="showAge" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="showEducation" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="showInterests" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="showQuote" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="showSkills" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="showWork" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <relationship name="isModeOfUser" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasModes" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Skill" representedClassName="Skill" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="isSkillOfUser" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasSkills" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="broadcasting" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="contactable" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="education" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quote" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasInterests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interest" inverseName="isInterestOfUser" inverseEntity="Interest" syncable="YES"/>
+        <relationship name="hasModes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mode" inverseName="isModeOfUser" inverseEntity="Mode" syncable="YES"/>
+        <relationship name="hasSkills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skill" inverseName="isSkillOfUser" inverseEntity="Skill" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-389" positionY="-81" width="128" height="208"/>
+        <element name="Mode" positionX="-54" positionY="18" width="128" height="193"/>
+        <element name="Skill" positionX="-720" positionY="36" width="128" height="73"/>
+        <element name="Interest" positionX="-720" positionY="-64" width="128" height="73"/>
+    </elements>
 </model>

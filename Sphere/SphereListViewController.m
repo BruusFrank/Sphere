@@ -69,8 +69,18 @@ dispatch_queue_t fetchQ = NULL;
 
 - (void)sphereRequest:(UIButton *)sender
 {
-    [sender setTitle:@"Request sent" forState:UIControlStateNormal];
+    [sender setTitle:@"Sent..." forState:UIControlStateNormal];
     sender.enabled = NO;
+}
+
+- (void)acceptAction:(UIButton *)sender
+{
+    
+}
+
+- (void)denyAction:(UIButton *)sender
+{
+    
 }
 
 
@@ -97,55 +107,65 @@ dispatch_queue_t fetchQ = NULL;
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"Design", nil], @"tags",
                 [UIImage imageNamed:@"kbf.jpg"], @"picture",
                 [NSNumber numberWithInt:1], @"happiness",
+                [NSNumber numberWithInt:1], @"request",
                 nil];
     
     kasperBJ = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Buhl Jakobsen", @"name",
                 [[NSArray alloc] initWithObjects:@"Tricking", @"IT", @"Android", nil], @"tags",
                 [UIImage imageNamed:@"kbj.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"happiness",
+                [NSNumber numberWithInt:0], @"request",
                 nil];
     
     soerenBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Søren Bruus Frank", @"name",
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"iOS development", nil], @"tags",
                 [UIImage imageNamed:@"sbf.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"happiness",
+                [NSNumber numberWithInt:0], @"request",
                 nil];
     
     boP = [[NSDictionary alloc] initWithObjectsAndKeys:@"Bo Penstoft", @"name",
            [[NSArray alloc] initWithObjects:@"Gaming", @"IT", @"Exercise", nil], @"tags",
            [UIImage imageNamed:@"bo.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"happiness",
+           [NSNumber numberWithInt:0], @"request",
            nil];
     
     courtney = [[NSDictionary alloc] initWithObjectsAndKeys:@"Courtney Davis", @"name",
                [[NSArray alloc] initWithObjects:@"Movies", @"Journalism", @"Exercise", nil], @"tags",
                [UIImage imageNamed:@"cd.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"happiness",
+                [NSNumber numberWithInt:0], @"request",
                nil];
     stine = [[NSDictionary alloc] initWithObjectsAndKeys:@"Stine Frank Kristensen", @"name",
             [[NSArray alloc] initWithObjects:@"Economics", @"Horseriding", @"Cleaning", nil], @"tags",
             [UIImage imageNamed:@"stine.jpg"], @"picture",
             [NSNumber numberWithInt:0], @"happiness",
+             [NSNumber numberWithInt:0], @"request",
             nil];
     pernille = [[NSDictionary alloc] initWithObjectsAndKeys:@"Pernille Bohl Clausen", @"name",
                [[NSArray alloc] initWithObjects:@"Journalism", @"Party-planning", @"Traveling", nil], @"tags",
                [UIImage imageNamed:@"pernille.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"happiness",
+                [NSNumber numberWithInt:0], @"request",
                nil];
     ganesh = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ganesh (Knallert starter)", @"name",
              [[NSArray alloc] initWithObjects:@"Fitness", @"Music", @"Business", nil], @"tags",
              [UIImage imageNamed:@"ganesh.jpg"], @"picture",
              [NSNumber numberWithInt:0], @"happiness",
+              [NSNumber numberWithInt:0], @"request",
              nil];
     ida = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ida Hekman Nielsen", @"name",
            [[NSArray alloc] initWithObjects:@"Photography", @"Media", @"Money", nil], @"tags",
            [UIImage imageNamed:@"ida.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"happiness",
+           [NSNumber numberWithInt:0], @"request",
            nil];
     ngabe = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ngabe Johnson", @"name",
              [[NSArray alloc] initWithObjects:@"Therapy", @"Cooking", @"Disco dancing", nil], @"tags",
              [UIImage imageNamed:@"ngabe.jpg"], @"picture",
              [NSNumber numberWithInt:1], @"happiness",
+             [NSNumber numberWithInt:0], @"request",
              nil];
     
     users = [[NSArray alloc] initWithObjects:kasperBF, kasperBJ, pernille, soerenBF, ngabe, stine, boP, courtney, ganesh, ida, nil];
@@ -298,7 +318,6 @@ dispatch_queue_t fetchQ = NULL;
     NSDictionary *concreteUser = [users objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = [concreteUser objectForKey:@"name"];
-    //cell.nameLabel.font = [[ConstantsHandler sharedConstants] FONT_HEADER];
     cell.nameLabel.textColor = [UIColor darkTextColor];
     
     //Concatenate tags into one string.
@@ -330,7 +349,23 @@ dispatch_queue_t fetchQ = NULL;
         cell.smiley.image = nil;
     }
     
+    //Reset the cell.
+    while ([[cell.expandView subviews] count] > 5) {
+        [[[cell.expandView subviews] lastObject] removeFromSuperview];
+    }
+    
     [cell.expandView addSubview:[self expandedInformationViewForPerson:concreteUser]];
+    
+    //If the cell is selected.
+    if ([self.selectedRow isEqual:indexPath]) {
+        cell.accessory.image = [UIImage imageNamed:@"cell_accessory_up.png"];
+        cell.expandView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shark_teeth.png"]];
+        cell.nameLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+        
+        UIView *teethBottom = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 283.0f, 320.0f, 18.0f)];
+        teethBottom.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shark_bottom.png"]];
+        [cell.expandView addSubview:teethBottom];
+    }
     
     return cell;
 }
@@ -410,20 +445,29 @@ dispatch_queue_t fetchQ = NULL;
     quote.scrollEnabled = NO;
     
     UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 30.0f)];
-    if ([[person objectForKey:@"name"] isEqualToString:@"Kasper Bruus Frank"]) {
-        UIButton *requestbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [requestbutton addTarget:self
-                   action:@selector(sphereRequest:)
+    if ([[person objectForKey:@"request"] integerValue] == 1) {
+        UIButton *acceptButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [acceptButton addTarget:self
+                   action:@selector(acceptAction:)
          forControlEvents:UIControlEventTouchDown];
-        [requestbutton setTitle:@"request" forState:UIControlStateNormal];
-        requestbutton.frame = CGRectMake(92.0, 0.0, 92.0, 30.0);
-        [buttonsView addSubview:requestbutton];
-    }else{
+        [acceptButton setTitle:@"Y" forState:UIControlStateNormal];
+        acceptButton.frame = CGRectMake(74.0, 0.0, 62.0, 30.0);
+        
+        UIButton *denyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [denyButton addTarget:self
+                         action:@selector(denyAction:)
+               forControlEvents:UIControlEventTouchDown];
+        [denyButton setTitle:@"N" forState:UIControlStateNormal];
+        denyButton.frame = CGRectMake(154.0, 0.0, 62.0, 30.0);
+        
+        [buttonsView addSubview:acceptButton];
+        [buttonsView addSubview:denyButton];
+    }else if ([[person objectForKey:@"request"] integerValue] == 0){
         UIButton *requestbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [requestbutton addTarget:self
                           action:@selector(sphereRequest:)
                 forControlEvents:UIControlEventTouchDown];
-        [requestbutton setTitle:@"request" forState:UIControlStateNormal];
+        [requestbutton setTitle:@"Request" forState:UIControlStateNormal];
         requestbutton.frame = CGRectMake(92.0, 0.0, 92.0, 30.0);
         [buttonsView addSubview:requestbutton];
     }
