@@ -67,6 +67,12 @@ dispatch_queue_t fetchQ = NULL;
     [self performSegueWithIdentifier:@"settingsSegue" sender:self];
 }
 
+- (void)sphereRequest:(UIButton *)sender
+{
+    [sender setTitle:@"Request sent" forState:UIControlStateNormal];
+    sender.enabled = NO;
+}
+
 
 #pragma mark initiation methods
 
@@ -292,7 +298,7 @@ dispatch_queue_t fetchQ = NULL;
     NSDictionary *concreteUser = [users objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = [concreteUser objectForKey:@"name"];
-    cell.nameLabel.font = [[ConstantsHandler sharedConstants] FONT_HEADER];
+    //cell.nameLabel.font = [[ConstantsHandler sharedConstants] FONT_HEADER];
     cell.nameLabel.textColor = [UIColor darkTextColor];
     
     //Concatenate tags into one string.
@@ -403,13 +409,32 @@ dispatch_queue_t fetchQ = NULL;
     quote.editable = NO;
     quote.scrollEnabled = NO;
     
-    NSArray *informationArray = [[NSArray alloc] initWithObjects:age, school, work, quote, nil];
+    UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 30.0f)];
+    if ([[person objectForKey:@"name"] isEqualToString:@"Kasper Bruus Frank"]) {
+        UIButton *requestbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [requestbutton addTarget:self
+                   action:@selector(sphereRequest:)
+         forControlEvents:UIControlEventTouchDown];
+        [requestbutton setTitle:@"request" forState:UIControlStateNormal];
+        requestbutton.frame = CGRectMake(92.0, 0.0, 92.0, 30.0);
+        [buttonsView addSubview:requestbutton];
+    }else{
+        UIButton *requestbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [requestbutton addTarget:self
+                          action:@selector(sphereRequest:)
+                forControlEvents:UIControlEventTouchDown];
+        [requestbutton setTitle:@"request" forState:UIControlStateNormal];
+        requestbutton.frame = CGRectMake(92.0, 0.0, 92.0, 30.0);
+        [buttonsView addSubview:requestbutton];
+    }
+    
+    NSArray *informationArray = [[NSArray alloc] initWithObjects:age, school, work, quote, buttonsView, nil];
     
     UIView *prevView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
     
     for (UIView *view in informationArray) {
         view.frame = CGRectMake(view.frame.origin.x,
-                                view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 10.0f,
+                                view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 7.0f,
                                 view.frame.size.width,
                                 view.frame.size.height);
         [infoView addSubview:view];
