@@ -59,13 +59,35 @@
 
 - (void)getFacebookInformation
 {
-    //Placeholder.
-	sleep(1);
-    //Checkmark.
-	self.HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-	self.HUD.mode = MBProgressHUDModeCustomView;
-	self.HUD.labelText = @"Completed";
-	usleep(5000);
+    //facebook permissions
+    NSArray *permissionArray = @[@"user_about_me", @"user_birthday", @"user_location"];
+    
+    //facebook login
+    [PFFacebookUtils logInWithPermissions:permissionArray block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:@"Uh oh. The user cancelled the Facebook login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            }
+        } else if (user.isNew) {
+            NSLog(@"User with facebook signed up and logged in!");
+            self.HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            self.HUD.mode = MBProgressHUDModeCustomView;
+            self.HUD.labelText = @"Completed";
+            usleep(5000);
+        } else {
+            NSLog(@"User with facebook logged in!");
+            self.HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            self.HUD.mode = MBProgressHUDModeCustomView;
+            self.HUD.labelText = @"Completed";
+            usleep(5000);
+        }
+    }];
 }
 
 @end

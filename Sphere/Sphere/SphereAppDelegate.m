@@ -17,11 +17,24 @@
     // Override point for customization after application launch.
     [self customizeAppearance];
     
-    //Parse
+#pragma mark Parse
+    
+    //Parse credentials
     [Parse setApplicationId:@"gsrs0BrZGIoYKjZp8iX7Tc7vV8K2vmXYt8mwVyTI"
                   clientKey:@"6F3TH85bQbx73OEHLtVhZ1Zr90L1rGmWQd9o8TEY"];
     
+    //Facebook inizialisation
+    [PFFacebookUtils initializeWithApplicationId:@"138960536257020"];
+    
     return YES;
+}
+
+// ****************************************************************************
+// App switching methods to support Facebook Single Sign-On
+// ****************************************************************************
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [PFFacebookUtils handleOpenURL:url];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
