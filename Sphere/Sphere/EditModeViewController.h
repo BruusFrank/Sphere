@@ -11,10 +11,11 @@
 #import "ConstantsHandler.h"
 #import "UIView+CustomTitleView.h"
 
-@interface EditModeViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface EditModeViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *modesCollection;
 @property (weak, nonatomic) IBOutlet UIPageControl *modesPageControl;
 @property (weak, nonatomic) IBOutlet UIView *modeCollectionContainer;
+@property (weak, nonatomic) IBOutlet UITableView *editModeTableView;
 
 @property (strong, nonatomic) NSMutableArray *modeImages;
 @property (strong, nonatomic) NSMutableArray *modeTitles;

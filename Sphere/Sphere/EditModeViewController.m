@@ -30,6 +30,21 @@ NSInteger pageIndex;
     }
 }
 
+- (void)toggleCheckbox:(UIButton *)sender
+{
+    if (sender.tag == 0) {
+        //Not checked, check it.
+        sender.tag = 1;
+        [sender setBackgroundImage:[UIImage imageNamed:@"selected_checkbox.png"] forState:UIControlStateNormal];
+        NSLog(@"check");
+    }else{
+        //Checked, uncheck it.
+        sender.tag = 0;
+        [sender setBackgroundImage:[UIImage imageNamed:@"not_selected_checkbox.png"] forState:UIControlStateNormal];
+        NSLog(@"uncheck");
+    }
+}
+
 #pragma mark property getters
 
 - (NSMutableArray *)modeImages
@@ -82,6 +97,9 @@ NSInteger pageIndex;
     self.modesCollection.dataSource = self;
     self.modesCollection.delegate = self;
     
+    self.editModeTableView.dataSource = self;
+    self.editModeTableView.delegate = self;
+    
     [self setupMainLayout];
 }
 
@@ -128,6 +146,52 @@ NSInteger pageIndex;
 {
     pageIndex = 0;
     selectedCell = [NSIndexPath indexPathForRow:0 inSection:0];
+}
+
+#pragma mark UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"editModeCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    cell.textLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
+    //cell.textLabel.font = [UIFont fontWithName:@"helvetica" size:16.0f];
+    cell.textLabel.text = @"Education:";
+    
+    cell.detailTextLabel.text = @"Studying IT at Aarhus University";
+    cell.detailTextLabel.font = [UIFont fontWithName:@"helvetica" size:12.0f];
+    cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    
+    UIButton *checkbox = [[UIButton alloc] initWithFrame:CGRectMake(280,12,20,20)];
+    // 20x20 is the size of the checckbox that you want
+    // create 2 images sizes 20x20 , one empty square and
+    // another of the same square with the checkmark in it
+    // Create 2 UIImages with these new images, then:
+    
+    [checkbox setBackgroundImage:[UIImage imageNamed:@"not_selected_checkbox.png"]
+                        forState:UIControlStateNormal];
+    
+    [checkbox addTarget:self action:@selector(toggleCheckbox:) forControlEvents:UIControlEventTouchUpInside];
+    checkbox.tag = 0;
+    [cell addSubview:checkbox];
+    
+    return cell;
 }
 
 #pragma mark UICollectionViewDataSource
