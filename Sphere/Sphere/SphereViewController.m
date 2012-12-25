@@ -114,6 +114,11 @@
                 [constants.user addHasSkillsObject:[Skill skillWithName:@"iOS development" inContext:document.managedObjectContext]];
                 [constants.user addHasSkillsObject:[Skill skillWithName:@"Software Architecture" inContext:document.managedObjectContext]];
                 
+                [constants.user addHasModesObject:[Mode modeWithName:@"Study" withImage:[UIImage imageNamed:@"mode_study.png"] inContext:document.managedObjectContext]];
+                [constants.user addHasModesObject:[Mode modeWithName:@"Party" withImage:[UIImage imageNamed:@"mode_party.png"] inContext:document.managedObjectContext]];
+                [constants.user addHasModesObject:[Mode modeWithName:@"Casual" withImage:[UIImage imageNamed:@"mode_casual.png"] inContext:document.managedObjectContext]];
+                [constants.user addHasModesObject:[Mode modeWithName:@"Work" withImage:[UIImage imageNamed:@"mode_work.png"] inContext:document.managedObjectContext]];
+                
                 [self performSegueWithIdentifier:@"loginSegue" sender:self];
             }];
         }

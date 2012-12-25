@@ -10,4 +10,8 @@
 
 @interface Mode (Create)
 
++ (Mode *)modeWithName:(NSString *)modeName
+             withImage:(UIImage *)modeImage
+             inContext:(NSManagedObjectContext *)context;
+
 @end
