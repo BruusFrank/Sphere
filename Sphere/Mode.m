@@ -21,7 +21,7 @@
 @dynamic showQuote;
 @dynamic showSkills;
 @dynamic showWork;
-@dynamic image;
+@dynamic imageName;
 @dynamic isModeOfUser;
 
 @end

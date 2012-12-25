@@ -22,7 +22,7 @@
 @property (nonatomic, retain) NSNumber * showQuote;
 @property (nonatomic, retain) NSNumber * showSkills;
 @property (nonatomic, retain) NSNumber * showWork;
-@property (nonatomic, retain) NSData * image;
+@property (nonatomic, retain) NSString * imageName;
 @property (nonatomic, retain) User *isModeOfUser;
 
 @end

@@ -82,10 +82,10 @@ NSInteger pageIndex;
     
     //PLACEHOLDER
     
-    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_study.png"]]];
-    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_work.png"]]];
-    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_party.png"]]];
-    [self.modeImages addObject:[UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_casual.png"]]];
+    [self.modeImages addObject:[UIImage imageNamed:@"mode_study.png"]];
+    [self.modeImages addObject:[UIImage imageNamed:@"mode_work.png"]];
+    [self.modeImages addObject:[UIImage imageNamed:@"mode_party.png"]];
+    [self.modeImages addObject:[UIImage imageNamed:@"mode_casual.png"]];
     
     [self.modeTitles addObject:@"Study"];
     [self.modeTitles addObject:@"Work"];
@@ -216,10 +216,10 @@ NSInteger pageIndex;
     int row = indexPath.row + (indexPath.section * [collectionView numberOfItemsInSection:indexPath.section]);
     
     if (row < [self.modeImages count]) {
-        cell.editModeImage.backgroundColor = [self.modeImages objectAtIndex:row];
+        cell.editModeImage.image = [self.modeImages objectAtIndex:row];
         cell.modeTitle.text = [self.modeTitles objectAtIndex:row];
     } else{
-        cell.editModeImage.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
+        cell.editModeImage.image = [UIImage imageNamed:@"collection_cell_bg.png"];
         cell.modeTitle.text = @"Mode";
     }
     

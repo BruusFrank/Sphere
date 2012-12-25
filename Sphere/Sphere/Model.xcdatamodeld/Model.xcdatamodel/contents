@@ -7,6 +7,7 @@
     <entity name="Mode" representedClassName="Mode" syncable="YES">
         <attribute name="broadcasting" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="contactable" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="showAge" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="showEducation" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
@@ -34,9 +35,9 @@
         <relationship name="hasSkills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skill" inverseName="isSkillOfUser" inverseEntity="Skill" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-389" positionY="-81" width="128" height="208"/>
-        <element name="Mode" positionX="-54" positionY="18" width="128" height="193"/>
-        <element name="Skill" positionX="-720" positionY="36" width="128" height="73"/>
         <element name="Interest" positionX="-720" positionY="-64" width="128" height="73"/>
+        <element name="Mode" positionX="-54" positionY="18" width="128" height="208"/>
+        <element name="Skill" positionX="-720" positionY="36" width="128" height="73"/>
+        <element name="User" positionX="-389" positionY="-81" width="128" height="208"/>
     </elements>
 </model>

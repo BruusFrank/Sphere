@@ -228,10 +228,12 @@ dispatch_queue_t fetchQ = NULL;
 
 - (void)setupMenu
 {
+    ConstantsHandler *constants = [ConstantsHandler sharedConstants];
+    
     [self.menuNavigationBar setBackgroundImage:[UIImageView gradientTextureWithFrame:self.menuNavigationBar.bounds withImage:[UIImage imageNamed:@"navigation_bar.png"]].image forBarMetrics:UIBarMetricsDefault];
     self.menuNavigationItem.titleView = [UIView customTitle:@"Quick settings" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
     
-    self.menuUserPicture.image = [[UIImage imageNamed:@"user_placeholder.png"] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
+    self.menuUserPicture.image = [[UIImage imageWithData:constants.user.image] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
     
     self.menuUserPicture.layer.shadowColor = [UIColor blackColor].CGColor;
     self.menuUserPicture.layer.shadowOffset = CGSizeMake(0, 0);
@@ -239,11 +241,19 @@ dispatch_queue_t fetchQ = NULL;
     self.menuUserPicture.layer.shadowRadius = 7.0;
     self.menuUserPicture.clipsToBounds = NO;
     
-    ConstantsHandler *constants = [ConstantsHandler sharedConstants];
-    
     self.menuUsername.text = constants.user.name;
     self.menuUsername.textColor = constants.COLOR_WHITE;
-    self.menuTags.text = @"Tag, Tag, Tag";
+    
+    NSString *tags = @"";
+    NSArray *interests = [constants.user.hasInterests allObjects];    
+    
+    for (int i = 0; i < [interests count]; i++) {
+        if (i != 0) {
+            tags = [tags stringByAppendingString:@", "];
+        }
+        tags = [tags stringByAppendingString:[(Interest *)[interests objectAtIndex:i] name]];
+    }
+    self.menuTags.text = tags;
 }
 
 - (void)setupBarButtonItems

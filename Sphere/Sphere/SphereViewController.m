@@ -103,7 +103,17 @@
             NSDictionary *userData = (NSDictionary *)result; // The result is a dictionary
             
             [[SharedDocument sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
-                [[ConstantsHandler sharedConstants] setUser:[User userWithFacebookInfo:userData inContext:document.managedObjectContext]];
+                ConstantsHandler *constants = [ConstantsHandler sharedConstants];
+                constants.user = [User userWithFacebookInfo:userData inContext:document.managedObjectContext];
+                
+                //Set up interests, skills and modes for test version.
+                [constants.user addHasInterestsObject:[Interest interestWithName:@"Snowboarding" inContext:document.managedObjectContext]];
+                [constants.user addHasInterestsObject:[Interest interestWithName:@"Programming" inContext:document.managedObjectContext]];
+                [constants.user addHasInterestsObject:[Interest interestWithName:@"Partying" inContext:document.managedObjectContext]];
+                
+                [constants.user addHasSkillsObject:[Skill skillWithName:@"iOS development" inContext:document.managedObjectContext]];
+                [constants.user addHasSkillsObject:[Skill skillWithName:@"Software Architecture" inContext:document.managedObjectContext]];
+                
                 [self performSegueWithIdentifier:@"loginSegue" sender:self];
             }];
         }

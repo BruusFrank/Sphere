@@ -24,9 +24,7 @@ User *user;
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
-    
-    NSLog(@"matches count: %i", [matches count]);
-    
+        
     if (!matches || [matches count] > 1) {
         //Handle error.
     } else if (![matches count]) {
@@ -72,7 +70,6 @@ User *user;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // Set the image in the header imageView
     user.image = imageData;
-    NSLog(@"userImage");
 }
 
 @end

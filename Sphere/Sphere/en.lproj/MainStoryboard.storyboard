@@ -80,9 +80,9 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12s-7T-OX4" userLabel="Tags">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="171" translatesAutoresizingMaskIntoConstraints="NO" id="12s-7T-OX4" userLabel="Tags">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="gS3-IV-FbS"/>
+                                                        <constraint firstAttribute="height" constant="35" id="ZAi-ar-HcP"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,8 +96,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="VZW-bG-wde" firstAttribute="top" secondItem="FLu-kE-e3L" secondAttribute="top" constant="20" symbolic="YES" type="default" id="CEb-bF-iBJ"/>
-                                                <constraint firstItem="12s-7T-OX4" firstAttribute="top" secondItem="FLu-kE-e3L" secondAttribute="top" constant="53" id="YBV-XO-JaN"/>
                                                 <constraint firstAttribute="bottom" secondItem="VZW-bG-wde" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="cx4-9V-kLq"/>
+                                                <constraint firstItem="12s-7T-OX4" firstAttribute="top" secondItem="FLu-kE-e3L" secondAttribute="top" constant="46" id="gSj-1p-mwU"/>
                                                 <constraint firstItem="ZIw-U6-qPy" firstAttribute="leading" secondItem="FLu-kE-e3L" secondAttribute="leading" constant="93" id="j1d-SE-B9j"/>
                                                 <constraint firstItem="VZW-bG-wde" firstAttribute="leading" secondItem="FLu-kE-e3L" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ksk-YI-sjg"/>
                                                 <constraint firstItem="12s-7T-OX4" firstAttribute="trailing" secondItem="ZIw-U6-qPy" secondAttribute="trailing" type="default" id="nHC-U4-KIY"/>
@@ -179,9 +179,9 @@
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="mRF-x5-jV8" userLabel="Tags">
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" preferredMaxLayoutWidth="171" translatesAutoresizingMaskIntoConstraints="NO" id="mRF-x5-jV8" userLabel="Tags">
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="21" type="user" id="aRH-Lm-R4Q"/>
+                                                                <constraint firstAttribute="height" constant="35" id="fD6-Kr-6PI"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="0.56566491789999995" alpha="1" colorSpace="calibratedWhite"/>
@@ -191,6 +191,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="ABZ-na-LE8" firstAttribute="leading" secondItem="ORe-YP-bAv" secondAttribute="leading" type="default" id="188-aq-W60"/>
+                                                        <constraint firstItem="mRF-x5-jV8" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" constant="24" id="1IU-Xm-jGp"/>
                                                         <constraint firstItem="ABZ-na-LE8" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" type="default" id="3H6-fC-FJL"/>
                                                         <constraint firstItem="ZLE-K4-Tjb" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" constant="14" id="500-zR-eKc"/>
                                                         <constraint firstItem="YEN-4a-KiW" firstAttribute="centerY" secondItem="TgT-4a-n6f" secondAttribute="centerY" type="default" id="K5u-c6-eKu"/>
@@ -200,7 +201,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="YEN-4a-KiW" secondAttribute="trailing" constant="40" id="fhU-VA-BuJ"/>
                                                         <constraint firstItem="ZLE-K4-Tjb" firstAttribute="trailing" secondItem="mRF-x5-jV8" secondAttribute="trailing" type="default" id="oqH-u0-tU9"/>
                                                         <constraint firstAttribute="trailing" secondItem="TgT-4a-n6f" secondAttribute="trailing" constant="15" id="qlf-kV-0ML"/>
-                                                        <constraint firstItem="mRF-x5-jV8" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" constant="31" id="tr3-En-o8Z"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -674,8 +674,6 @@
         <class className="NewModeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewModeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addMode:"/>
-                <relationship kind="action" name="changeModeIcon:"/>
                 <relationship kind="outlet" name="changeModeIconButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeImageCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="modeImageCollectionContainer" candidateClass="UIView"/>
@@ -725,9 +723,6 @@
         </class>
         <class className="SphereViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginButtonAction:"/>
-            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
