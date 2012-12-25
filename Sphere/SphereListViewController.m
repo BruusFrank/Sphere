@@ -14,6 +14,7 @@
 #import "UIImage+ScaleAndCrop.h"
 
 #import "ConstantsHandler.h"
+#import "SharedDocument.h"
 
 @interface SphereListViewController ()
 
@@ -238,9 +239,10 @@ dispatch_queue_t fetchQ = NULL;
     self.menuUserPicture.layer.shadowRadius = 7.0;
     self.menuUserPicture.clipsToBounds = NO;
     
-    self.menuUsername.text = @"Current user";
-    self.menuUsername.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
-    self.menuUsername.font = [[ConstantsHandler sharedConstants] FONT_HEADER];
+    ConstantsHandler *constants = [ConstantsHandler sharedConstants];
+    
+    self.menuUsername.text = constants.user.name;
+    self.menuUsername.textColor = constants.COLOR_WHITE;
     self.menuTags.text = @"Tag, Tag, Tag";
 }
 

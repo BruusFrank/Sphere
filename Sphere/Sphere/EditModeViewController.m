@@ -178,7 +178,7 @@ NSInteger pageIndex;
     cell.detailTextLabel.font = [UIFont fontWithName:@"helvetica" size:12.0f];
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     
-    UIButton *checkbox = [[UIButton alloc] initWithFrame:CGRectMake(280,12,20,20)];
+    UIButton *checkbox = [[UIButton alloc] initWithFrame:CGRectMake(10,12,20,20)];
     // 20x20 is the size of the checckbox that you want
     // create 2 images sizes 20x20 , one empty square and
     // another of the same square with the checkmark in it

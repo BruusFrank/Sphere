@@ -76,7 +76,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="171" id="v7b-Se-4eX"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -576,10 +576,10 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sharing options" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcj-D0-Z7z">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sharing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcj-D0-Z7z">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="cxv-eP-a85"/>
+                                    <constraint firstAttribute="width" constant="62" id="CmD-m2-755"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.1058823529" green="0.69411764710000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -591,9 +591,9 @@
                             <constraint firstItem="I3o-eO-54h" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="3J5-oO-q5u"/>
                             <constraint firstItem="I3o-eO-54h" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="4Ov-9f-v0U"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="bottom" secondItem="S8o-YX-LSk" secondAttribute="bottom" type="user" id="7NY-v0-b0S"/>
+                            <constraint firstItem="fcj-D0-Z7z" firstAttribute="centerX" secondItem="I3o-eO-54h" secondAttribute="centerX" type="default" id="UcF-Np-0yI"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="top" secondItem="I3o-eO-54h" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YxB-6r-GGJ"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="kK4-4L-dE1"/>
-                            <constraint firstItem="fcj-D0-Z7z" firstAttribute="centerX" secondItem="I3o-eO-54h" secondAttribute="centerX" type="default" id="lP6-mR-sGG"/>
                             <constraint firstItem="I3o-eO-54h" firstAttribute="top" secondItem="fcj-D0-Z7z" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="snu-fz-XA2"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="vPY-ny-K9i"/>
                         </constraints>
@@ -674,6 +674,8 @@
         <class className="NewModeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewModeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addMode:"/>
+                <relationship kind="action" name="changeModeIcon:"/>
                 <relationship kind="outlet" name="changeModeIconButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeImageCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="modeImageCollectionContainer" candidateClass="UIView"/>
@@ -723,6 +725,9 @@
         </class>
         <class className="SphereViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButtonAction:"/>
+            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>

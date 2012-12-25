@@ -29,7 +29,7 @@
     self.HUD.labelText = @"Loading...";
     
     [self.HUD show:YES];
-    [self getFacebookInformation];
+    [self facebookLogin];
 }
 
 #pragma mark view lifecycle
@@ -53,12 +53,12 @@
 
 #pragma mark networking methods
 
-- (void)getFacebookInformation
+- (void)facebookLogin
 {
     __weak SphereViewController *VC = self;
     
     //facebook permissions
-    NSArray *permissionArray = @[@"user_about_me", @"user_birthday", @"user_location"];
+    NSArray *permissionArray = @[@"user_about_me", @"user_birthday", @"user_location", @"user_work_history", @"user_education_history"];
     
     //facebook login
     [PFFacebookUtils logInWithPermissions:permissionArray block:^(PFUser *user, NSError *error) {
@@ -80,14 +80,32 @@
             self.HUD.mode = MBProgressHUDModeCustomView;
             self.HUD.labelText = @"Completed";
             [self.HUD show:NO];
-            [VC performSegueWithIdentifier:@"loginSegue" sender:self];
+            [VC getFacebookInformation];
         } else {
             NSLog(@"User with facebook logged in!");
             self.HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             self.HUD.mode = MBProgressHUDModeCustomView;
             self.HUD.labelText = @"Completed";
             [self.HUD show:NO];
-            [VC performSegueWithIdentifier:@"loginSegue" sender:self];
+            [VC getFacebookInformation];
+        }
+    }];
+}
+
+- (void)getFacebookInformation
+{
+    NSString *requestPath = @"me/?fields=name,location,gender,birthday,work,education";
+    
+    // Send request to Facebook
+    PF_FBRequest *request = [PF_FBRequest requestForGraphPath:requestPath];
+    [request startWithCompletionHandler:^(PF_FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            NSDictionary *userData = (NSDictionary *)result; // The result is a dictionary
+            
+            [[SharedDocument sharedDocumentHandler] performWithDocument:^(UIManagedDocument *document) {
+                [[ConstantsHandler sharedConstants] setUser:[User userWithFacebookInfo:userData inContext:document.managedObjectContext]];
+                [self performSegueWithIdentifier:@"loginSegue" sender:self];
+            }];
         }
     }];
 }

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "User+Facebook.h"
+
 @interface ConstantsHandler : NSObject
 
 typedef enum fontType{
@@ -34,5 +36,8 @@ typedef enum fontType{
 //Retina
 @property (nonatomic, assign, getter=isRetina) BOOL retina;
 @property (nonatomic, assign) int RETINA_FACTOR;
+
+//User logged in
+@property (nonatomic, strong) User *user;
 
 @end

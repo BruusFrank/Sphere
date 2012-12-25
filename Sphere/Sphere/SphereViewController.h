@@ -11,6 +11,10 @@
 
 #import "MBProgressHUD.h"
 
+#import "User+Facebook.h"
+#import "ConstantsHandler.h"
+#import "SharedDocument.h"
+
 @interface SphereViewController : UIViewController <MBProgressHUDDelegate>
 
 @property (strong, nonatomic) MBProgressHUD *HUD;
