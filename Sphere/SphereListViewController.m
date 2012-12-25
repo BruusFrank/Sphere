@@ -18,9 +18,19 @@
 
 @interface SphereListViewController ()
 
+@property (nonatomic, strong) ConstantsHandler *constants;
+
 @end
 
 @implementation SphereListViewController
+
+- (ConstantsHandler *)constants
+{
+    if (!_constants) {
+        _constants = [ConstantsHandler sharedConstants];
+    }
+    return _constants;
+}
 
 //***Placeholder values***.
 NSDictionary *kasperBF;
@@ -174,7 +184,7 @@ dispatch_queue_t fetchQ = NULL;
     //***********************************MENU*************************************.
     
     sharing = [[NSDictionary alloc] initWithObjectsAndKeys:@"Sharing", @"name", [[NSArray alloc] initWithObjects:@"Broadcast", @"Come talk to me!", nil], @"listItems", nil];
-    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [[NSArray alloc] initWithObjects:@"Study", @"Spare time", @"Work", @"Party", nil], @"listItems", [[NSArray alloc] initWithObjects:@"mode_study.png", @"mode_casual.png", @"mode_work.png", @"mode_party.png", nil], @"imageNames", nil];
+    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [self.constants.user.hasModes allObjects], @"listItems", nil];
     filters = [[NSDictionary alloc] initWithObjectsAndKeys:@"Filters", @"name", [[NSArray alloc] initWithObjects:@"Age", @"Gender", nil], @"listItems", nil];
     
     menuSections = [[NSArray alloc] initWithObjects:sharing, mode, filters, nil];
@@ -228,12 +238,10 @@ dispatch_queue_t fetchQ = NULL;
 
 - (void)setupMenu
 {
-    ConstantsHandler *constants = [ConstantsHandler sharedConstants];
-    
     [self.menuNavigationBar setBackgroundImage:[UIImageView gradientTextureWithFrame:self.menuNavigationBar.bounds withImage:[UIImage imageNamed:@"navigation_bar.png"]].image forBarMetrics:UIBarMetricsDefault];
     self.menuNavigationItem.titleView = [UIView customTitle:@"Quick settings" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
     
-    self.menuUserPicture.image = [[UIImage imageWithData:constants.user.image] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
+    self.menuUserPicture.image = [[UIImage imageWithData:self.constants.user.image] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
     
     self.menuUserPicture.layer.shadowColor = [UIColor blackColor].CGColor;
     self.menuUserPicture.layer.shadowOffset = CGSizeMake(0, 0);
@@ -241,11 +249,11 @@ dispatch_queue_t fetchQ = NULL;
     self.menuUserPicture.layer.shadowRadius = 7.0;
     self.menuUserPicture.clipsToBounds = NO;
     
-    self.menuUsername.text = constants.user.name;
-    self.menuUsername.textColor = constants.COLOR_WHITE;
+    self.menuUsername.text = self.constants.user.name;
+    self.menuUsername.textColor = self.constants.COLOR_WHITE;
     
     NSString *tags = @"";
-    NSArray *interests = [constants.user.hasInterests allObjects];    
+    NSArray *interests = [self.constants.user.hasInterests allObjects];    
     
     for (int i = 0; i < [interests count]; i++) {
         if (i != 0) {
@@ -391,18 +399,22 @@ dispatch_queue_t fetchQ = NULL;
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    
         
-    NSString *cellTitle = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
+    NSString *cellTitle = nil;
     UIImage *cellImage = nil;
     
+    Mode *mode = nil;
+    
     if (indexPath.section == 1) {
-        cellImage = [UIImage imageNamed:[[[menuSections objectAtIndex:indexPath.section] objectForKey:@"imageNames"] objectAtIndex:indexPath.row]];
+        mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
+        cellTitle = mode.name;
+        cellImage = [UIImage imageWithData:mode.image];
+    } else {
+        cellTitle = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
     }
     
-    NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", nil];
-    if (cellImage) {
-        data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", cellImage, @"image", nil];
-    }
+    NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", cellImage, @"image", nil];
     
     if ([cell.subviews count] < 2) {
         switch (indexPath.section) {

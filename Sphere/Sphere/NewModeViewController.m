@@ -156,8 +156,6 @@ BOOL keyboardIsShown;
     static NSString *identifier = @"modeImageCell";
     UICollectionViewCell *cell = (UICollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mode_study.png"]];
-    
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
