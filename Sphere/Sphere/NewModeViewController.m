@@ -41,7 +41,15 @@ BOOL keyboardIsShown;
         UIAlertView *noModeError = [[UIAlertView alloc] initWithTitle:@"Wait!" message:@"Please give your mode a name" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [noModeError show];
     }else{
-        [self performSegueWithIdentifier:@"addAndConfigureSegue" sender:self];
+        ConstantsHandler *constants = [ConstantsHandler sharedConstants];
+        [[SharedDocument sharedDocumentHandler].document.managedObjectContext performBlock:^{
+            [constants.user addHasModesObject:[Mode modeWithName:self.modeNameTextField.text
+                                                       withImage:[self.changeModeIconButton backgroundImageForState:UIControlStateNormal]
+                                                       inContext:[SharedDocument sharedDocumentHandler].document.managedObjectContext]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self performSegueWithIdentifier:@"addAndConfigureSegue" sender:self];
+            });
+        }];
     }
 }
 

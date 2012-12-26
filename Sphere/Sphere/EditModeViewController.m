@@ -198,7 +198,8 @@ NSInteger pageIndex;
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    int numberOfSections = (int)ceilf([[[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects] count] / 4);
+    NSInteger numberOfModes = [[[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects] count];
+    int numberOfSections = (int)ceilf((float)numberOfModes / 4);
     self.modesPageControl.numberOfPages = numberOfSections;
     return numberOfSections;
 }

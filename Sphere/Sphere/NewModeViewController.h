@@ -10,6 +10,7 @@
 
 #import "ConstantsHandler.h"
 #import "UIView+CustomTitleView.h"
+#import "Mode+Create.h"
 
 @interface NewModeViewController : UIViewController<UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *modeNameTextField;
