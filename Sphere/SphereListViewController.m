@@ -389,7 +389,7 @@ dispatch_queue_t fetchQ = NULL;
         cell.expandView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shark_teeth.png"]];
         cell.nameLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
         
-        UIView *teethBottom = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 283.0f, 320.0f, 18.0f)];
+        UIView *teethBottom = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 343.0f, 320.0f, 18.0f)];
         teethBottom.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"shark_bottom.png"]];
         [cell.expandView addSubview:teethBottom];
     }
@@ -580,7 +580,7 @@ dispatch_queue_t fetchQ = NULL;
 {
     if (tableView.tag == 1) {
         if(self.selectedRow && [self.selectedRow isEqual:indexPath]) {
-            return 300;
+            return 360;
         }
         return 60;
     }
@@ -608,7 +608,7 @@ dispatch_queue_t fetchQ = NULL;
                               delay: 0.0
                             options: UIViewAnimationCurveLinear
                          animations:^{
-                             teethBottom.frame = CGRectMake(0.0f, 283.0f, 320.0f, 18.0f);
+                             teethBottom.frame = CGRectMake(0.0f, 343.0f, 320.0f, 18.0f);
                          }
                          completion:^(BOOL finished){
                              [self.sphereUserTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
