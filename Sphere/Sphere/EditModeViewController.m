@@ -198,9 +198,9 @@ NSInteger pageIndex;
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    int numberOfSections = 4;
+    int numberOfSections = (int)ceilf([[[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects] count] / 4);
     self.modesPageControl.numberOfPages = numberOfSections;
-    return 4;
+    return numberOfSections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -214,13 +214,15 @@ NSInteger pageIndex;
     EditModeCell *cell = (EditModeCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     int row = indexPath.row + (indexPath.section * [collectionView numberOfItemsInSection:indexPath.section]);
+    NSArray *modes = [[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects];
     
-    if (row < [self.modeImages count]) {
-        cell.editModeImage.image = [self.modeImages objectAtIndex:row];
-        cell.modeTitle.text = [self.modeTitles objectAtIndex:row];
-    } else{
-        cell.editModeImage.image = [UIImage imageNamed:@"collection_cell_bg.png"];
-        cell.modeTitle.text = @"Mode";
+    if (row < [modes count]) {
+        Mode *mode = [modes objectAtIndex:row];
+        cell.editModeImage.image = [UIImage imageWithData:mode.image];
+        cell.modeTitle.text = mode.name;
+    } else {
+        cell.editModeImage.image = nil;
+        cell.modeTitle.text = @"";
     }
     
     cell.modeTitle.textColor = [UIColor darkTextColor];

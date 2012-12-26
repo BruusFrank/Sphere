@@ -10,6 +10,8 @@
 
 #import "ConstantsHandler.h"
 #import "UIView+CustomTitleView.h"
+#import "SharedDocument.h"
+#import "Mode+Create.h"
 
 @interface EditModeViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *modesCollection;

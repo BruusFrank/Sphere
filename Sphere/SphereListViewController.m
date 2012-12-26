@@ -554,6 +554,8 @@ dispatch_queue_t fetchQ = NULL;
                     [tableView cellForRowAtIndexPath:path].accessoryType = UITableViewCellAccessoryNone;
                 }
             }
+            
+            //Do something clever with Interests/skills and, in the future, set what you share!
         }
     }
 }
