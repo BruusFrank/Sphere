@@ -492,7 +492,8 @@ dispatch_queue_t fetchQ = NULL;
                           action:@selector(sphereRequest:)
                 forControlEvents:UIControlEventTouchDown];
         [requestbutton setTitle:@"Request" forState:UIControlStateNormal];
-        requestbutton.frame = CGRectMake(92.0, 0.0, 92.0, 30.0);
+        requestbutton.frame = CGRectMake(40.0, 0.0, 227.0, 30.0);
+//        [requestbutton setImage:[UIImage imageNamed:@"meet"] forState:UIControlStateNormal];
         [buttonsView addSubview:requestbutton];
     }
     
