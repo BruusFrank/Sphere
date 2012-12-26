@@ -181,14 +181,6 @@ dispatch_queue_t fetchQ = NULL;
     
     users = [[NSArray alloc] initWithObjects:kasperBF, kasperBJ, pernille, soerenBF, ngabe, stine, boP, courtney, ganesh, ida, nil];
     
-    //***********************************MENU*************************************.
-    
-    sharing = [[NSDictionary alloc] initWithObjectsAndKeys:@"Sharing", @"name", [[NSArray alloc] initWithObjects:@"Broadcast", @"Come talk to me!", nil], @"listItems", nil];
-    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [self.constants.user.hasModes allObjects], @"listItems", nil];
-    filters = [[NSDictionary alloc] initWithObjectsAndKeys:@"Filters", @"name", [[NSArray alloc] initWithObjects:@"Age", @"Gender", nil], @"listItems", nil];
-    
-    menuSections = [[NSArray alloc] initWithObjects:sharing, mode, filters, nil];
-    
     //************************END OF PLACEHOLDER CONTENT**************************.
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetInterface) name:UIApplicationDidBecomeActiveNotification object:nil];
@@ -200,9 +192,24 @@ dispatch_queue_t fetchQ = NULL;
     self.menuTableView.delegate = self;
     
     fetchQ = dispatch_queue_create("fetchQ", NULL);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    
+    //***********************************MENU*************************************.
+    
+    sharing = [[NSDictionary alloc] initWithObjectsAndKeys:@"Sharing", @"name", [[NSArray alloc] initWithObjects:@"Broadcast", @"Come talk to me!", nil], @"listItems", nil];
+    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [self.constants.user.hasModes allObjects], @"listItems", nil];
+    filters = [[NSDictionary alloc] initWithObjectsAndKeys:@"Filters", @"name", [[NSArray alloc] initWithObjects:@"Age", @"Gender", nil], @"listItems", nil];
+    
+    menuSections = [[NSArray alloc] initWithObjects:sharing, mode, filters, nil];
     
     [self setupMainLayout];
     [self setupMenu];
+    
+    [self.menuTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -416,6 +423,7 @@ dispatch_queue_t fetchQ = NULL;
     
     NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", cellImage, @"image", nil];
     
+    //for not adding them more times
     if ([cell.subviews count] < 2) {
         switch (indexPath.section) {
             case 0:
@@ -487,13 +495,13 @@ dispatch_queue_t fetchQ = NULL;
         [buttonsView addSubview:acceptButton];
         [buttonsView addSubview:denyButton];
     }else if ([[person objectForKey:@"request"] integerValue] == 0){
-        UIButton *requestbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        UIButton *requestbutton = [UIButton buttonWithType:UIButtonTypeCustom];
         [requestbutton addTarget:self
                           action:@selector(sphereRequest:)
                 forControlEvents:UIControlEventTouchDown];
         [requestbutton setTitle:@"Request" forState:UIControlStateNormal];
-        requestbutton.frame = CGRectMake(40.0, 0.0, 227.0, 30.0);
-//        [requestbutton setImage:[UIImage imageNamed:@"meet"] forState:UIControlStateNormal];
+        requestbutton.frame = CGRectMake(40.0, 0.0, 227.0, 40.0);
+        [requestbutton setImage:[UIImage imageNamed:@"meet"] forState:UIControlStateNormal];
         [buttonsView addSubview:requestbutton];
     }
     
