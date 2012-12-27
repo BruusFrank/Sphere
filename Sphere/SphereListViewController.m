@@ -35,6 +35,13 @@
 - (void)setActiveMode:(Mode *)activeMode
 {
     _activeMode = activeMode;
+    
+    //Set the rest inactive.
+    for (int i = 0; i < [self.menuTableView numberOfRowsInSection:1]; i++) {
+        Mode *mode = [[[menuSections objectAtIndex:1] objectForKey:@"listItems"] objectAtIndex:i];
+        mode.isActive = [NSNumber numberWithBool:NO];
+    }
+    
     activeMode.isActive = [NSNumber numberWithBool:YES];
     self.constants.activeMode = activeMode;
     
@@ -121,6 +128,11 @@ dispatch_queue_t fetchQ = NULL;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(objectsDidChange:)
+                                                 name:NSManagedObjectContextObjectsDidChangeNotification
+                                               object:[SharedDocument sharedDocumentHandler].document.managedObjectContext];
     
     //************************PLACEHOLDER CONTENT********************************.
     
@@ -230,8 +242,6 @@ dispatch_queue_t fetchQ = NULL;
     
     [self setupMainLayout];
     [self setupMenu];
-    
-    [self.menuTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -441,6 +451,8 @@ dispatch_queue_t fetchQ = NULL;
         cellImage = [UIImage imageWithData:mode.image];
         if ([mode.isActive boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     } else {
         cellTitle = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
@@ -560,15 +572,6 @@ dispatch_queue_t fetchQ = NULL;
         if (indexPath.section == 1) {
             Mode *mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
             self.activeMode = mode;
-            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-            
-            //Set the rest inactive.
-            for (int i = 0; i < [tableView numberOfRowsInSection:1]; i++) {
-                NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
-                if (indexPath.row != path.row) {
-                    [tableView cellForRowAtIndexPath:path].accessoryType = UITableViewCellAccessoryNone;
-                }
-            }
         }
     }
 }
@@ -725,6 +728,13 @@ dispatch_queue_t fetchQ = NULL;
     }else{
         [self.sphereUserTableView setUserInteractionEnabled:YES];
     }
+}
+
+#pragma mark NSNotificationCenter
+
+- (void)objectsDidChange:(NSNotification *)notification
+{
+    [self.menuTableView reloadData];
 }
 
 @end

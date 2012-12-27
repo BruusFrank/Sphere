@@ -145,6 +145,7 @@
     
     for (Mode *mode in [constants.user.hasModes allObjects]) {
         if ([mode.isActive boolValue] == YES) {
+            NSLog(@"Mode: %@", mode);
             destination.activeMode = mode;
             break;
         }
