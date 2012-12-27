@@ -350,7 +350,6 @@ dispatch_queue_t fetchQ = NULL;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"reloaded table");
     if (tableView.tag == 2) {
         return [[[menuSections objectAtIndex:section] objectForKey:@"listItems"] count];
     }
@@ -464,7 +463,6 @@ dispatch_queue_t fetchQ = NULL;
     
     NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", cellImage, @"image", nil];
     
-    //NSLog(@"data: %i %i %@", indexPath.section, indexPath.row, data);
     for (int i = 2; i < [[cell subviews] count]; i++) {
         [[[cell subviews] objectAtIndex:i] removeFromSuperview];
     }
@@ -472,7 +470,6 @@ dispatch_queue_t fetchQ = NULL;
     
     switch (indexPath.section) {
         case 0:
-            NSLog(@"subviews: %@", [cell subviews]);
             [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data] atIndex:2];
             break;
         case 1:

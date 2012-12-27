@@ -18,6 +18,7 @@
 
 NSIndexPath *selectedCell;
 NSInteger pageIndex;
+NSArray *modes;
 
 #pragma mark IBActions
 
@@ -80,25 +81,14 @@ NSInteger pageIndex;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    //PLACEHOLDER
-    
-    [self.modeImages addObject:[UIImage imageNamed:@"mode_study.png"]];
-    [self.modeImages addObject:[UIImage imageNamed:@"mode_work.png"]];
-    [self.modeImages addObject:[UIImage imageNamed:@"mode_party.png"]];
-    [self.modeImages addObject:[UIImage imageNamed:@"mode_casual.png"]];
-    
-    [self.modeTitles addObject:@"Study"];
-    [self.modeTitles addObject:@"Work"];
-    [self.modeTitles addObject:@"Party"];
-    [self.modeTitles addObject:@"Casual"];
-    
-    //END OF PLACEHOLDER
-    
     self.modesCollection.dataSource = self;
     self.modesCollection.delegate = self;
     
     self.editModeTableView.dataSource = self;
     self.editModeTableView.delegate = self;
+    
+    NSArray *descriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    modes = [[[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects].mutableCopy sortedArrayUsingDescriptors:descriptors];
     
     [self setupMainLayout];
 }
@@ -215,7 +205,6 @@ NSInteger pageIndex;
     EditModeCell *cell = (EditModeCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     int row = indexPath.row + (indexPath.section * [collectionView numberOfItemsInSection:indexPath.section]);
-    NSArray *modes = [[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects];
     
     if (row < [modes count]) {
         Mode *mode = [modes objectAtIndex:row];
