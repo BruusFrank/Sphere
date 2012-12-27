@@ -141,12 +141,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    SphereListViewController *destination = segue.destinationViewController;
     ConstantsHandler *constants = [ConstantsHandler sharedConstants];
     
     for (Mode *mode in [constants.user.hasModes allObjects]) {
         if ([mode.isActive boolValue] == YES) {
-            destination.activeMode = mode;
+            constants.activeMode = mode;
             break;
         }
     }

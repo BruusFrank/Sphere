@@ -32,14 +32,6 @@
     return _constants;
 }
 
-- (void)setActiveMode:(Mode *)activeMode
-{
-    _activeMode = activeMode;
-    self.constants.activeMode = activeMode;
-    
-    [self.sphereUserTableView reloadData];
-}
-
 //***Placeholder values***.
 
 NSDictionary *kasperBF;
@@ -320,6 +312,9 @@ dispatch_queue_t fetchQ = NULL;
         [self toggleMenu];
     }
     [self.menuTableView reloadData];
+    
+    [self.sphereUserTableView setContentOffset:CGPointMake(0.0f, -65.0f) animated:NO];
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.sphereUserTableView];
 }
 
 #pragma mark UITableViewDataSource
@@ -376,7 +371,7 @@ dispatch_queue_t fetchQ = NULL;
     
     //Concatenate tags into one string.
     NSString *tagsString = @"";
-    NSArray *tags = [concreteUser objectForKey:self.activeMode.mainCellShows];
+    NSArray *tags = [concreteUser objectForKey:self.constants.activeMode.mainCellShows];
     
     for (int i = 0; i < tags.count; i++) {
         if (i < tags.count - 1) {
@@ -568,7 +563,8 @@ dispatch_queue_t fetchQ = NULL;
     }else if(tableView.tag == 2){
         if (indexPath.section == 1) {
             Mode *mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
-            self.activeMode = mode;
+            self.constants.activeMode = mode;
+            [self.sphereUserTableView reloadData];
         }
     }
 }

@@ -239,6 +239,9 @@ NSArray *modes;
     EditModeCell *cell = (EditModeCell *)[collectionView cellForItemAtIndexPath:indexPath];
     cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
     
+    ConstantsHandler *constants = [ConstantsHandler sharedConstants];
+    constants.activeMode = [modes objectAtIndex:(indexPath.row + indexPath.section * 4)];
+    
     selectedCell = indexPath;
 }
 
