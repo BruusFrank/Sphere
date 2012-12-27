@@ -121,6 +121,7 @@
                     Mode *work = [Mode modeWithName:@"Work" withImage:[UIImage imageNamed:@"mode_work.png"] inContext:document.managedObjectContext];
                     work.mainCellShows = @"skills";
                     Mode *party = [Mode modeWithName:@"Party" withImage:[UIImage imageNamed:@"mode_party.png"] inContext:document.managedObjectContext];
+                    party.contactable = [NSNumber numberWithBool:YES];
                     Mode *casual = [Mode modeWithName:@"Casual" withImage:[UIImage imageNamed:@"mode_casual.png"] inContext:document.managedObjectContext];
                     casual.isActive = [NSNumber numberWithBool:YES];
                     
@@ -145,7 +146,6 @@
     
     for (Mode *mode in [constants.user.hasModes allObjects]) {
         if ([mode.isActive boolValue] == YES) {
-            NSLog(@"Mode: %@", mode);
             destination.activeMode = mode;
             break;
         }

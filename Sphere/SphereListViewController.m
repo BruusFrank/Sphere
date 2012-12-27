@@ -223,6 +223,8 @@ dispatch_queue_t fetchQ = NULL;
     self.menuTableView.dataSource = self;
     self.menuTableView.delegate = self;
     
+    [self setupMainLayout];
+    
     fetchQ = dispatch_queue_create("fetchQ", NULL);
 }
 
@@ -240,8 +242,8 @@ dispatch_queue_t fetchQ = NULL;
     
     menuSections = [[NSArray alloc] initWithObjects:sharing, mode, filters, nil];
     
-    [self setupMainLayout];
     [self setupMenu];
+    [self resetInterface];
 }
 
 - (void)didReceiveMemoryWarning
@@ -325,6 +327,7 @@ dispatch_queue_t fetchQ = NULL;
     if (menuShown) {
         [self toggleMenu];
     }
+    [self.menuTableView reloadData];
 }
 
 #pragma mark UITableViewDataSource
@@ -347,6 +350,7 @@ dispatch_queue_t fetchQ = NULL;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"reloaded table");
     if (tableView.tag == 2) {
         return [[[menuSections objectAtIndex:section] objectForKey:@"listItems"] count];
     }
@@ -460,19 +464,23 @@ dispatch_queue_t fetchQ = NULL;
     
     NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:cellTitle, @"title", cellImage, @"image", nil];
     
-    //for not adding them more times
-    if ([cell.subviews count] < 2) {
-        switch (indexPath.section) {
-            case 0:
-                [cell addSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data]];
-                break;
-            case 1:
-                [cell addSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeMode cellData:data]];
-                break;
-            case 2:
-                [cell addSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeFilter cellData:data]];
-                break;
-        }
+    //NSLog(@"data: %i %i %@", indexPath.section, indexPath.row, data);
+    for (int i = 2; i < [[cell subviews] count]; i++) {
+        [[[cell subviews] objectAtIndex:i] removeFromSuperview];
+    }
+        
+    
+    switch (indexPath.section) {
+        case 0:
+            NSLog(@"subviews: %@", [cell subviews]);
+            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data] atIndex:2];
+            break;
+        case 1:
+            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeMode cellData:data] atIndex:2];
+            break;
+        case 2:
+            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeFilter cellData:data] atIndex:2];
+            break;
     }
     
     return cell;
@@ -735,6 +743,7 @@ dispatch_queue_t fetchQ = NULL;
 - (void)objectsDidChange:(NSNotification *)notification
 {
     [self.menuTableView reloadData];
+    [self.menuTableView setNeedsDisplay];
 }
 
 @end
