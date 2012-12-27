@@ -36,6 +36,7 @@
 {
     _activeMode = activeMode;
     activeMode.isActive = [NSNumber numberWithBool:YES];
+    self.constants.activeMode = activeMode;
     
     [self.sphereUserTableView reloadData];
 }

@@ -37,7 +37,8 @@ typedef enum fontType{
 @property (nonatomic, assign, getter=isRetina) BOOL retina;
 @property (nonatomic, assign) int RETINA_FACTOR;
 
-//User logged in
+//User specific
 @property (nonatomic, strong) User *user;
+@property (nonatomic, strong) Mode *activeMode;
 
 @end
