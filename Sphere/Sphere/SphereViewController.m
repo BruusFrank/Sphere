@@ -8,6 +8,7 @@
 
 #import "SphereViewController.h"
 #import "MBProgressHUD.h"
+#import "SphereListViewController.h"
 
 @interface SphereViewController ()
 
@@ -106,23 +107,48 @@
                 ConstantsHandler *constants = [ConstantsHandler sharedConstants];
                 constants.user = [User userWithFacebookInfo:userData inContext:document.managedObjectContext];
                 
-                //Set up interests, skills and modes for test version.
-                [constants.user addHasInterestsObject:[Interest interestWithName:@"Snowboarding" inContext:document.managedObjectContext]];
-                [constants.user addHasInterestsObject:[Interest interestWithName:@"Programming" inContext:document.managedObjectContext]];
-                [constants.user addHasInterestsObject:[Interest interestWithName:@"Partying" inContext:document.managedObjectContext]];
-                
-                [constants.user addHasSkillsObject:[Skill skillWithName:@"iOS development" inContext:document.managedObjectContext]];
-                [constants.user addHasSkillsObject:[Skill skillWithName:@"Software Architecture" inContext:document.managedObjectContext]];
-                
-                [constants.user addHasModesObject:[Mode modeWithName:@"Study" withImage:[UIImage imageNamed:@"mode_study.png"] inContext:document.managedObjectContext]];
-                [constants.user addHasModesObject:[Mode modeWithName:@"Party" withImage:[UIImage imageNamed:@"mode_party.png"] inContext:document.managedObjectContext]];
-                [constants.user addHasModesObject:[Mode modeWithName:@"Casual" withImage:[UIImage imageNamed:@"mode_casual.png"] inContext:document.managedObjectContext]];
-                [constants.user addHasModesObject:[Mode modeWithName:@"Work" withImage:[UIImage imageNamed:@"mode_work.png"] inContext:document.managedObjectContext]];
+                if ([constants.user.hasModes count] == 0) {
+                    //Set up interests, skills and modes for test version.
+                    [constants.user addHasInterestsObject:[Interest interestWithName:@"Snowboarding" inContext:document.managedObjectContext]];
+                    [constants.user addHasInterestsObject:[Interest interestWithName:@"Programming" inContext:document.managedObjectContext]];
+                    [constants.user addHasInterestsObject:[Interest interestWithName:@"Partying" inContext:document.managedObjectContext]];
+                    
+                    [constants.user addHasSkillsObject:[Skill skillWithName:@"iOS development" inContext:document.managedObjectContext]];
+                    [constants.user addHasSkillsObject:[Skill skillWithName:@"Software Architecture" inContext:document.managedObjectContext]];
+                    
+                    Mode *study = [Mode modeWithName:@"Study" withImage:[UIImage imageNamed:@"mode_study.png"] inContext:document.managedObjectContext];
+                    study.mainCellShows = @"skills";
+                    Mode *work = [Mode modeWithName:@"Work" withImage:[UIImage imageNamed:@"mode_work.png"] inContext:document.managedObjectContext];
+                    work.mainCellShows = @"skills";
+                    Mode *party = [Mode modeWithName:@"Party" withImage:[UIImage imageNamed:@"mode_party.png"] inContext:document.managedObjectContext];
+                    Mode *casual = [Mode modeWithName:@"Casual" withImage:[UIImage imageNamed:@"mode_casual.png"] inContext:document.managedObjectContext];
+                    casual.isActive = [NSNumber numberWithBool:YES];
+                    
+                    [constants.user addHasModesObject:study];
+                    [constants.user addHasModesObject:work];
+                    [constants.user addHasModesObject:party];
+                    [constants.user addHasModesObject:casual];
+                }
                 
                 [self performSegueWithIdentifier:@"loginSegue" sender:self];
             }];
         }
     }];
+}
+
+#pragma mark prepareForSegue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SphereListViewController *destination = segue.destinationViewController;
+    ConstantsHandler *constants = [ConstantsHandler sharedConstants];
+    
+    for (Mode *mode in [constants.user.hasModes allObjects]) {
+        if ([mode.isActive boolValue] == YES) {
+            destination.activeMode = mode;
+            break;
+        }
+    }
 }
 
 @end

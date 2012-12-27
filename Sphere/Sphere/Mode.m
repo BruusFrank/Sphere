@@ -2,7 +2,7 @@
 //  Mode.m
 //  Sphere
 //
-//  Created by Søren Bruus Frank on 12/25/12.
+//  Created by Søren Bruus Frank on 12/27/12.
 //  Copyright (c) 2012 Storm of Brains. All rights reserved.
 //
 
@@ -12,9 +12,9 @@
 
 @implementation Mode
 
-@dynamic active;
 @dynamic broadcasting;
 @dynamic contactable;
+@dynamic image;
 @dynamic name;
 @dynamic showAge;
 @dynamic showEducation;
@@ -22,7 +22,8 @@
 @dynamic showQuote;
 @dynamic showSkills;
 @dynamic showWork;
-@dynamic image;
+@dynamic isActive;
+@dynamic mainCellShows;
 @dynamic isModeOfUser;
 
 @end

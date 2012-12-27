@@ -8,7 +8,7 @@
 
 #import "User.h"
 
-@interface User (Facebook) <NSURLConnectionDelegate>
+@interface User (Facebook)
 
 + (User *)userWithFacebookInfo:(NSDictionary *)facebookInfo
                      inContext:(NSManagedObjectContext *)context;

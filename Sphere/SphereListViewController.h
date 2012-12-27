@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *menuNavigationItem;
 
 @property (nonatomic, strong) NSIndexPath *selectedRow;
+@property (nonatomic, strong) Mode *activeMode;
 
 
 @end

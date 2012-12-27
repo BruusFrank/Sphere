@@ -32,7 +32,16 @@
     return _constants;
 }
 
+- (void)setActiveMode:(Mode *)activeMode
+{
+    _activeMode = activeMode;
+    activeMode.isActive = [NSNumber numberWithBool:YES];
+    
+    [self.sphereUserTableView reloadData];
+}
+
 //***Placeholder values***.
+
 NSDictionary *kasperBF;
 NSDictionary *kasperBJ;
 NSDictionary *soerenBF;
@@ -46,6 +55,8 @@ NSDictionary *ngabe;
 
 NSArray *users;
 
+//***End of placeholder values***.
+
 //***Menu***
 
 NSDictionary *sharing;
@@ -54,13 +65,10 @@ NSDictionary *filters;
 
 NSArray *menuSections;
 
-//***End of placeholder values***.
-
 //Classwide variables.
 BOOL menuShown = NO;
 BOOL cellExpanded = NO;
 dispatch_queue_t fetchQ = NULL;
-Mode *activeMode;
 
 #pragma mark IBActions
 
@@ -116,65 +124,75 @@ Mode *activeMode;
     //************************PLACEHOLDER CONTENT********************************.
     
     kasperBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Bruus Frank", @"name",
-                [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"Design", nil], @"tags",
+                [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"Design", nil], @"interests",
+                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
                 [UIImage imageNamed:@"kbf.jpg"], @"picture",
                 [NSNumber numberWithInt:1], @"happiness",
                 [NSNumber numberWithInt:1], @"request",
                 nil];
     
     kasperBJ = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Buhl Jakobsen", @"name",
-                [[NSArray alloc] initWithObjects:@"Tricking", @"IT", @"Android", nil], @"tags",
+                [[NSArray alloc] initWithObjects:@"Tricking", @"IT", @"Android", nil], @"interests",
+                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
                 [UIImage imageNamed:@"kbj.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"happiness",
                 [NSNumber numberWithInt:0], @"request",
                 nil];
     
     soerenBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Søren Bruus Frank", @"name",
-                [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"iOS development", nil], @"tags",
+                [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"iOS development", nil], @"interests",
+                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
                 [UIImage imageNamed:@"sbf.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"happiness",
                 [NSNumber numberWithInt:0], @"request",
                 nil];
     
     boP = [[NSDictionary alloc] initWithObjectsAndKeys:@"Bo Penstoft", @"name",
-           [[NSArray alloc] initWithObjects:@"Gaming", @"IT", @"Exercise", nil], @"tags",
+           [[NSArray alloc] initWithObjects:@"Gaming", @"IT", @"Exercise", nil], @"interests",
+           [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
            [UIImage imageNamed:@"bo.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"happiness",
            [NSNumber numberWithInt:0], @"request",
            nil];
     
     courtney = [[NSDictionary alloc] initWithObjectsAndKeys:@"Courtney Davis", @"name",
-               [[NSArray alloc] initWithObjects:@"Movies", @"Journalism", @"Exercise", nil], @"tags",
+               [[NSArray alloc] initWithObjects:@"Movies", @"Journalism", @"Exercise", nil], @"interests",
+                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
                [UIImage imageNamed:@"cd.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"happiness",
                 [NSNumber numberWithInt:0], @"request",
                nil];
     stine = [[NSDictionary alloc] initWithObjectsAndKeys:@"Stine Frank Kristensen", @"name",
-            [[NSArray alloc] initWithObjects:@"Economics", @"Horseriding", @"Cleaning", nil], @"tags",
+            [[NSArray alloc] initWithObjects:@"Economics", @"Horseriding", @"Cleaning", nil], @"interests",
+             [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
             [UIImage imageNamed:@"stine.jpg"], @"picture",
             [NSNumber numberWithInt:0], @"happiness",
              [NSNumber numberWithInt:0], @"request",
             nil];
     pernille = [[NSDictionary alloc] initWithObjectsAndKeys:@"Pernille Bohl Clausen", @"name",
-               [[NSArray alloc] initWithObjects:@"Journalism", @"Party-planning", @"Traveling", nil], @"tags",
+               [[NSArray alloc] initWithObjects:@"Journalism", @"Party-planning", @"Traveling", nil], @"interests",
+                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
                [UIImage imageNamed:@"pernille.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"happiness",
                 [NSNumber numberWithInt:0], @"request",
                nil];
     ganesh = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ganesh (Knallert starter)", @"name",
-             [[NSArray alloc] initWithObjects:@"Fitness", @"Music", @"Business", nil], @"tags",
+             [[NSArray alloc] initWithObjects:@"Fitness", @"Music", @"Business", nil], @"interests",
+              [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
              [UIImage imageNamed:@"ganesh.jpg"], @"picture",
              [NSNumber numberWithInt:0], @"happiness",
               [NSNumber numberWithInt:0], @"request",
              nil];
     ida = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ida Hekman Nielsen", @"name",
-           [[NSArray alloc] initWithObjects:@"Photography", @"Media", @"Money", nil], @"tags",
+           [[NSArray alloc] initWithObjects:@"Photography", @"Media", @"Money", nil], @"interests",
+           [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
            [UIImage imageNamed:@"ida.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"happiness",
            [NSNumber numberWithInt:0], @"request",
            nil];
     ngabe = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ngabe Johnson", @"name",
-             [[NSArray alloc] initWithObjects:@"Therapy", @"Cooking", @"Disco dancing", nil], @"tags",
+             [[NSArray alloc] initWithObjects:@"Therapy", @"Cooking", @"Disco dancing", nil], @"interests",
+             [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
              [UIImage imageNamed:@"ngabe.jpg"], @"picture",
              [NSNumber numberWithInt:1], @"happiness",
              [NSNumber numberWithInt:0], @"request",
@@ -352,7 +370,7 @@ Mode *activeMode;
     
     //Concatenate tags into one string.
     NSString *tagsString = @"";
-    NSArray *tags = [concreteUser objectForKey:@"tags"];
+    NSArray *tags = [concreteUser objectForKey:self.activeMode.mainCellShows];
     
     for (int i = 0; i < tags.count; i++) {
         if (i < tags.count - 1) {
@@ -420,7 +438,7 @@ Mode *activeMode;
         mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
         cellTitle = mode.name;
         cellImage = [UIImage imageWithData:mode.image];
-        if (mode.active == [NSNumber numberWithBool:YES]) {
+        if ([mode.isActive boolValue]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     } else {
@@ -442,17 +460,6 @@ Mode *activeMode;
                 [cell addSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeFilter cellData:data]];
                 break;
         }
-    }
-    
-    for (Mode *mode in [[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"]) {
-        if (mode.active == [NSNumber numberWithBool:YES]) {
-            activeMode = mode;
-        }
-    }
-    
-    if (indexPath.row == 0 && indexPath.section == 1 && !activeMode) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        activeMode.active = [NSNumber numberWithBool:YES];
     }
     
     return cell;
@@ -550,15 +557,17 @@ Mode *activeMode;
         [self tableView:tableView animateCellAtIndexPath:indexPath expand:![self.selectedRow isEqual:indexPath]];
     }else if(tableView.tag == 2){
         if (indexPath.section == 1) {
+            Mode *mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
+            self.activeMode = mode;
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+            
+            //Set the rest inactive.
             for (int i = 0; i < [tableView numberOfRowsInSection:1]; i++) {
                 NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
                 if (indexPath.row != path.row) {
                     [tableView cellForRowAtIndexPath:path].accessoryType = UITableViewCellAccessoryNone;
                 }
             }
-            
-            //Do something clever with Interests/skills and, in the future, set what you share!
         }
     }
 }

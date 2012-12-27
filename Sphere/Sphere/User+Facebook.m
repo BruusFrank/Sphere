@@ -30,46 +30,37 @@ User *user;
     } else if (![matches count]) {
         //Create the user.
         user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
-        [user updateWithUserInformation:facebookInfo];
+        [user updateWithUserInformation:facebookInfo updateImage:YES];
     } else {
         user = [matches lastObject];
-        [user updateWithUserInformation:facebookInfo];
+        [user updateWithUserInformation:facebookInfo updateImage:NO];
     }
     
     return user;
 }
 
 - (void)updateWithUserInformation:(NSDictionary *)information
+                      updateImage:(BOOL)update
 {
     user.name = [information objectForKey:@"name"];
 //    user.age;
 //    user.work;
 //    user.education;
     
-    // Download the user's facebook profile picture
-    imageData = [[NSMutableData alloc] init]; // the data will be loaded in here
-    
-    // URL should point to https://graph.facebook.com/{facebookId}/picture?type=large&return_ssl_resources=1
-    NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", [information objectForKey:@"id"]]];
-    
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:pictureURL
-                                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                          timeoutInterval:2.0f];
-    // Run network request asynchronously
-    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
-}
-
-#pragma mark NSURLConnectionDelegate
-
-// Called every time a chunk of the data is received
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [imageData appendData:data]; // Build the image
-}
-
-// Called when the entire image is finished downloading
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // Set the image in the header imageView
-    user.image = imageData;
+    if (update) {
+        // Download the user's facebook profile picture
+        imageData = [[NSMutableData alloc] init]; // the data will be loaded in here
+        
+        // URL should point to https://graph.facebook.com/{facebookId}/picture?type=large&return_ssl_resources=1
+        NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", [information objectForKey:@"id"]]];
+        
+        NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:pictureURL
+                                                                  cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                              timeoutInterval:2.0f];
+        // Run network request asynchronously
+        NSData *response = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:nil error:nil];
+        user.image = response;
+    }
 }
 
 @end
