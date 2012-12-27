@@ -13,6 +13,7 @@
 
 @interface Mode : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * active;
 @property (nonatomic, retain) NSNumber * broadcasting;
 @property (nonatomic, retain) NSNumber * contactable;
 @property (nonatomic, retain) NSString * name;

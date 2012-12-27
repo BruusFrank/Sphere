@@ -5,6 +5,7 @@
         <relationship name="isInterestOfUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasInterests" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Mode" representedClassName="Mode" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="broadcasting" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="contactable" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
@@ -36,7 +37,7 @@
     </entity>
     <elements>
         <element name="Interest" positionX="-720" positionY="-64" width="128" height="73"/>
-        <element name="Mode" positionX="-54" positionY="18" width="128" height="208"/>
+        <element name="Mode" positionX="-54" positionY="18" width="128" height="223"/>
         <element name="Skill" positionX="-720" positionY="36" width="128" height="73"/>
         <element name="User" positionX="-389" positionY="-81" width="128" height="208"/>
     </elements>

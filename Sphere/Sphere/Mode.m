@@ -12,6 +12,7 @@
 
 @implementation Mode
 
+@dynamic active;
 @dynamic broadcasting;
 @dynamic contactable;
 @dynamic name;

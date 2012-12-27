@@ -60,6 +60,7 @@ NSArray *menuSections;
 BOOL menuShown = NO;
 BOOL cellExpanded = NO;
 dispatch_queue_t fetchQ = NULL;
+Mode *activeMode;
 
 #pragma mark IBActions
 
@@ -200,8 +201,10 @@ dispatch_queue_t fetchQ = NULL;
     
     //***********************************MENU*************************************.
     
+    NSArray *descriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    
     sharing = [[NSDictionary alloc] initWithObjectsAndKeys:@"Sharing", @"name", [[NSArray alloc] initWithObjects:@"Broadcast", @"Come talk to me!", nil], @"listItems", nil];
-    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [self.constants.user.hasModes allObjects], @"listItems", nil];
+    mode = [[NSDictionary alloc] initWithObjectsAndKeys:@"Mode", @"name", [[self.constants.user.hasModes allObjects].mutableCopy sortedArrayUsingDescriptors:descriptors], @"listItems", nil];
     filters = [[NSDictionary alloc] initWithObjectsAndKeys:@"Filters", @"name", [[NSArray alloc] initWithObjects:@"Age", @"Gender", nil], @"listItems", nil];
     
     menuSections = [[NSArray alloc] initWithObjects:sharing, mode, filters, nil];
@@ -417,6 +420,9 @@ dispatch_queue_t fetchQ = NULL;
         mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
         cellTitle = mode.name;
         cellImage = [UIImage imageWithData:mode.image];
+        if (mode.active == [NSNumber numberWithBool:YES]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     } else {
         cellTitle = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
     }
@@ -438,9 +444,15 @@ dispatch_queue_t fetchQ = NULL;
         }
     }
     
-    //SET STUDY ACTIVE.
-    if (indexPath.row == 1 && indexPath.section == 1) {
+    for (Mode *mode in [[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"]) {
+        if (mode.active == [NSNumber numberWithBool:YES]) {
+            activeMode = mode;
+        }
+    }
+    
+    if (indexPath.row == 0 && indexPath.section == 1 && !activeMode) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        activeMode.active = [NSNumber numberWithBool:YES];
     }
     
     return cell;
@@ -448,33 +460,13 @@ dispatch_queue_t fetchQ = NULL;
 
 - (UIView *)expandedInformationViewForPerson:(NSDictionary *)person
 {
-    UIView *infoView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, 320.0f, 240.0f)];
+    UIView *infoView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, 320.0f, 300.0f)];
     
-    UILabel *age = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 20.0f)];
-    age.text = @"Age: 23";
-    age.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
-    age.backgroundColor = [UIColor clearColor];
-    age.font = [UIFont fontWithName:@"Arial" size:14.0f];
-    
-    UILabel *school = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 20.0f)];
-    school.text = @"Studying at: Aarhus University";
-    school.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
-    school.backgroundColor = [UIColor clearColor];
-    school.font = [UIFont fontWithName:@"Arial" size:14.0f];
-    
-    UILabel *work = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 20.0f)];
-    work.text = @"Working at: Aarhus University";
-    work.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
-    work.backgroundColor = [UIColor clearColor];
-    work.font = [UIFont fontWithName:@"Arial" size:14.0f];
-    
-    UITextView *quote = [[UITextView alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 80.0f)];
-    quote.text = @"\"It is better to conquer yourself than to win a thousand battles. Then the victory is yours. it cannot be taken from you, not by anges or by demons, heaven or hell.\" - Buddha";
-    quote.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
-    quote.backgroundColor = [UIColor clearColor];
-    quote.font = [UIFont fontWithName:@"Arial" size:14.0f];
-    quote.editable = NO;
-    quote.scrollEnabled = NO;
+    //Check for the individual elements
+    UIView *personalInfoView = nil;
+    UIView *secondaryView = nil; //The one of skills/interests, which isn't shown in the main part of the cell.
+    UIView *employmentView = nil;
+    UIView *quoteView = nil;
     
     UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 30.0f)];
     if ([[person objectForKey:@"request"] integerValue] == 1) {
@@ -505,17 +497,19 @@ dispatch_queue_t fetchQ = NULL;
         [buttonsView addSubview:requestbutton];
     }
     
-    NSArray *informationArray = [[NSArray alloc] initWithObjects:age, school, work, quote, buttonsView, nil];
+    NSArray *informationArray = [[NSArray alloc] initWithObjects:personalInfoView, secondaryView, employmentView, quoteView, buttonsView, nil];
     
     UIView *prevView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
     
     for (UIView *view in informationArray) {
-        view.frame = CGRectMake(view.frame.origin.x,
-                                view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 7.0f,
-                                view.frame.size.width,
-                                view.frame.size.height);
-        [infoView addSubview:view];
-        prevView = view;
+        if (view != nil) {
+            view.frame = CGRectMake(view.frame.origin.x,
+                                    view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 7.0f,
+                                    view.frame.size.width,
+                                    view.frame.size.height);
+            [infoView addSubview:view];
+            prevView = view;
+        }
     }
     
     return infoView;
