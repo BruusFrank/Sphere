@@ -43,9 +43,11 @@ BOOL keyboardIsShown;
     }else{
         ConstantsHandler *constants = [ConstantsHandler sharedConstants];
         [[SharedDocument sharedDocumentHandler].document.managedObjectContext performBlock:^{
-            [constants.user addHasModesObject:[Mode modeWithName:self.modeNameTextField.text
-                                                       withImage:[self.changeModeIconButton backgroundImageForState:UIControlStateNormal]
-                                                       inContext:[SharedDocument sharedDocumentHandler].document.managedObjectContext]];
+            Mode *mode = [Mode modeWithName:self.modeNameTextField.text
+                                  withImage:[self.changeModeIconButton backgroundImageForState:UIControlStateNormal]
+                                  inContext:[SharedDocument sharedDocumentHandler].document.managedObjectContext];
+            constants.activeMode = mode;
+            [constants.user addHasModesObject:mode];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self performSegueWithIdentifier:@"addAndConfigureSegue" sender:self];
             });
@@ -218,9 +220,6 @@ BOOL keyboardIsShown;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     EditModeViewController *controller = (EditModeViewController *)segue.destinationViewController;
-    
-    [controller.modeImages addObject:[self.changeModeIconButton backgroundImageForState:UIControlStateNormal]];
-    [controller.modeTitles addObject:self.modeNameTextField.text];
     controller.settingsController = self.settingsController;
 }
 

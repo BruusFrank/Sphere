@@ -10,6 +10,18 @@
 
 @implementation ConstantsHandler
 
+- (void)setActiveMode:(Mode *)activeMode
+{
+    _activeMode = activeMode;
+    
+    NSArray *modes = [self.user.hasModes allObjects];
+    for (Mode *mode in modes) {
+        mode.isActive = [NSNumber numberWithBool:NO];
+    }
+    
+    activeMode.isActive = [NSNumber numberWithBool:YES];
+}
+
 + (id)sharedConstants
 {
     static ConstantsHandler *sharedConstants = nil;

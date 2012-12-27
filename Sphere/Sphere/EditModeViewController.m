@@ -87,7 +87,9 @@ NSArray *modes;
     self.editModeTableView.dataSource = self;
     self.editModeTableView.delegate = self;
     
-    NSArray *descriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    NSSortDescriptor *activeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"isActive" ascending:NO];
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSArray *descriptors = [NSArray arrayWithObjects:activeDescriptor, nameDescriptor, nil];
     modes = [[[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects].mutableCopy sortedArrayUsingDescriptors:descriptors];
     
     [self setupMainLayout];
@@ -206,20 +208,26 @@ NSArray *modes;
     
     int row = indexPath.row + (indexPath.section * [collectionView numberOfItemsInSection:indexPath.section]);
     
+    cell.modeTitle.textColor = [UIColor darkTextColor];
+    
     if (row < [modes count]) {
         Mode *mode = [modes objectAtIndex:row];
         cell.editModeImage.image = [UIImage imageWithData:mode.image];
         cell.modeTitle.text = mode.name;
+        if ([mode.isActive boolValue] == YES) {
+            cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+            [self.modesCollection selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        }
     } else {
         cell.editModeImage.image = nil;
         cell.modeTitle.text = @"";
     }
     
-    cell.modeTitle.textColor = [UIColor darkTextColor];
-    if ([indexPath isEqual:selectedCell]) {
-        cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
-        [self.modesCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-    }
+    
+//    if ([indexPath isEqual:selectedCell]) {
+//        cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+//        [self.modesCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+//    }
     
     return cell;
 }

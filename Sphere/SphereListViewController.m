@@ -35,14 +35,6 @@
 - (void)setActiveMode:(Mode *)activeMode
 {
     _activeMode = activeMode;
-    
-    //Set the rest inactive.
-    for (int i = 0; i < [self.menuTableView numberOfRowsInSection:1]; i++) {
-        Mode *mode = [[[menuSections objectAtIndex:1] objectForKey:@"listItems"] objectAtIndex:i];
-        mode.isActive = [NSNumber numberWithBool:NO];
-    }
-    
-    activeMode.isActive = [NSNumber numberWithBool:YES];
     self.constants.activeMode = activeMode;
     
     [self.sphereUserTableView reloadData];
