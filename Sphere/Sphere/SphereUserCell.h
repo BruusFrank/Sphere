@@ -17,5 +17,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *tagsLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *accessory;
 @property (nonatomic, strong) IBOutlet UIImageView *smiley;
+@property (nonatomic, strong) IBOutlet UIView *userInfoView;
 
 @end

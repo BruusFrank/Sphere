@@ -209,6 +209,9 @@
                                                             <color key="textColor" white="0.56566491789999995" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hrq-k2-0Yh" userLabel="User info view">
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -216,10 +219,14 @@
                                                         <constraint firstItem="mRF-x5-jV8" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" constant="24" id="1IU-Xm-jGp"/>
                                                         <constraint firstItem="ABZ-na-LE8" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" type="default" id="3H6-fC-FJL"/>
                                                         <constraint firstItem="ZLE-K4-Tjb" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" constant="14" id="500-zR-eKc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Hrq-k2-0Yh" secondAttribute="bottom" constant="181" id="6Eg-pd-7bg"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Hrq-k2-0Yh" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="GfD-vs-nkI"/>
+                                                        <constraint firstItem="Hrq-k2-0Yh" firstAttribute="leading" secondItem="ORe-YP-bAv" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JMN-fW-yj4"/>
                                                         <constraint firstItem="YEN-4a-KiW" firstAttribute="centerY" secondItem="TgT-4a-n6f" secondAttribute="centerY" type="default" id="K5u-c6-eKu"/>
                                                         <constraint firstItem="YEN-4a-KiW" firstAttribute="centerY" secondItem="ABZ-na-LE8" secondAttribute="centerY" type="default" id="VyO-8a-z5j"/>
                                                         <constraint firstItem="mRF-x5-jV8" firstAttribute="leading" secondItem="ZLE-K4-Tjb" secondAttribute="leading" type="default" id="Wky-Lj-BoY"/>
                                                         <constraint firstItem="ZLE-K4-Tjb" firstAttribute="leading" secondItem="ORe-YP-bAv" secondAttribute="leading" constant="73" id="X47-gC-gb0"/>
+                                                        <constraint firstItem="Hrq-k2-0Yh" firstAttribute="top" secondItem="ORe-YP-bAv" secondAttribute="top" constant="60" id="cqo-4O-FMd"/>
                                                         <constraint firstAttribute="trailing" secondItem="YEN-4a-KiW" secondAttribute="trailing" constant="40" id="fhU-VA-BuJ"/>
                                                         <constraint firstItem="ZLE-K4-Tjb" firstAttribute="trailing" secondItem="mRF-x5-jV8" secondAttribute="trailing" type="default" id="oqH-u0-tU9"/>
                                                         <constraint firstAttribute="trailing" secondItem="TgT-4a-n6f" secondAttribute="trailing" constant="15" id="qlf-kV-0ML"/>
@@ -240,6 +247,7 @@
                                             <outlet property="nameLabel" destination="ZLE-K4-Tjb" id="8a6-ma-Ka2"/>
                                             <outlet property="smiley" destination="YEN-4a-KiW" id="HZ5-GU-3eB"/>
                                             <outlet property="tagsLabel" destination="mRF-x5-jV8" id="RxH-na-J9M"/>
+                                            <outlet property="userInfoView" destination="Hrq-k2-0Yh" id="Y8S-wI-vbX"/>
                                             <outlet property="userPicture" destination="ABZ-na-LE8" id="zWz-DB-dk4"/>
                                         </connections>
                                     </tableViewCell>
@@ -743,6 +751,7 @@
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="smiley" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tagsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userInfoView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="userPicture" candidateClass="UIImageView"/>
             </relationships>
         </class>

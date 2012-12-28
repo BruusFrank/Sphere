@@ -400,12 +400,7 @@ dispatch_queue_t fetchQ = NULL;
         cell.smiley.image = nil;
     }
     
-    //Reset the cell.
-    while ([[cell.expandView subviews] count] > 5) {
-        [[[cell.expandView subviews] lastObject] removeFromSuperview];
-    }
-    
-    [cell.expandView addSubview:[self expandedInformationViewForPerson:concreteUser]];
+    cell.userInfoView = [self expandedInformationViewForPerson:concreteUser];
     
     //If the cell is selected.
     if ([self.selectedRow isEqual:indexPath]) {
@@ -736,7 +731,8 @@ dispatch_queue_t fetchQ = NULL;
     }else{
         [self.sphereUserTableView setUserInteractionEnabled:YES];
         [self.statementTextField resignFirstResponder];
-        [self.sphereUserTableView reloadData];
+        
+        [self resetInterface];
     }
 }
 
