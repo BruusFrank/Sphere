@@ -566,7 +566,6 @@ dispatch_queue_t fetchQ = NULL;
         if (indexPath.section == 1) {
             Mode *mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
             self.constants.activeMode = mode;
-            [self.sphereUserTableView reloadData];
         }
     }
 }
@@ -737,6 +736,7 @@ dispatch_queue_t fetchQ = NULL;
     }else{
         [self.sphereUserTableView setUserInteractionEnabled:YES];
         [self.statementTextField resignFirstResponder];
+        [self.sphereUserTableView reloadData];
     }
 }
 
