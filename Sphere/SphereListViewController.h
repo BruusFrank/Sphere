@@ -16,7 +16,7 @@
 #import "Interest+Create.h"
 #import "Mode+Create.h"
 
-@interface SphereListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EGORefreshTableHeaderDelegate>{
+@interface SphereListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EGORefreshTableHeaderDelegate, UITextFieldDelegate>{
     
     //EGOResfreshHeaderView.
     EGORefreshTableHeaderView *_refreshHeaderView;
@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *menuNavigationBar;
 @property (weak, nonatomic) IBOutlet UIView *menuTableViewBackground;
 @property (weak, nonatomic) IBOutlet UINavigationItem *menuNavigationItem;
+@property (weak, nonatomic) IBOutlet UITextField *statementTextField;
 
 @property (nonatomic, strong) NSIndexPath *selectedRow;
 

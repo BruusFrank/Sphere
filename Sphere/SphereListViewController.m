@@ -207,6 +207,8 @@ dispatch_queue_t fetchQ = NULL;
     self.menuTableView.dataSource = self;
     self.menuTableView.delegate = self;
     
+    self.statementTextField.delegate = self;
+        
     [self setupMainLayout];
     
     fetchQ = dispatch_queue_create("fetchQ", NULL);
@@ -695,6 +697,20 @@ dispatch_queue_t fetchQ = NULL;
 	return [NSDate date]; // should return date data source was last changed	
 }
 
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (![textField.text isEqual:@""]) {
+        //Post it!
+        textField.placeholder = textField.text;
+        textField.text = @"";
+    }
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
 #pragma mark UIMovement methods
 
 - (CGRect)moveFrame:(CGRect)frame
@@ -720,6 +736,7 @@ dispatch_queue_t fetchQ = NULL;
         [self.sphereUserTableView setUserInteractionEnabled:NO];
     }else{
         [self.sphereUserTableView setUserInteractionEnabled:YES];
+        [self.statementTextField resignFirstResponder];
     }
 }
 
