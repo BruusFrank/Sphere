@@ -96,16 +96,16 @@
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Make a personal statement:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOg-iZ-oQ9">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="6il-96-3Gt"/>
                                                         <constraint firstAttribute="height" constant="19" id="R5x-iz-BS0"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.10588235294117647" green="0.69411764705882351" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cool statement!" minimumFontSize="12" background="textfield_bg_blue.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HAi-bB-DIS">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cool statement!" minimumFontSize="17" background="textfield_bg_blue.png" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="f9c-TR-jYk">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="35e-sX-C6l"/>
+                                                        <constraint firstAttribute="width" constant="200" id="rNw-0f-Ac0"/>
+                                                        <constraint firstAttribute="height" constant="30" id="vfd-Vt-K74"/>
                                                     </constraints>
                                                     <color key="textColor" red="0.9137254901960784" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -114,13 +114,13 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pOg-iZ-oQ9" firstAttribute="leading" secondItem="FLu-kE-e3L" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="1c8-fE-gGk"/>
-                                                <constraint firstAttribute="trailing" secondItem="HAi-bB-DIS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Gxd-2W-Tyk"/>
+                                                <constraint firstAttribute="bottom" secondItem="f9c-TR-jYk" secondAttribute="bottom" constant="26" id="1et-2g-SQT"/>
                                                 <constraint firstItem="ZIw-U6-qPy" firstAttribute="top" secondItem="FLu-kE-e3L" secondAttribute="top" constant="31" id="T2W-aK-Dpe"/>
                                                 <constraint firstAttribute="bottom" secondItem="pOg-iZ-oQ9" secondAttribute="bottom" constant="61" id="VRT-qA-bkg"/>
+                                                <constraint firstItem="f9c-TR-jYk" firstAttribute="leading" secondItem="FLu-kE-e3L" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="YSK-7G-pI1"/>
+                                                <constraint firstItem="f9c-TR-jYk" firstAttribute="trailing" secondItem="pOg-iZ-oQ9" secondAttribute="trailing" type="default" id="bPU-Xd-Gg4"/>
                                                 <constraint firstItem="ZIw-U6-qPy" firstAttribute="leading" secondItem="FLu-kE-e3L" secondAttribute="leading" constant="93" id="j1d-SE-B9j"/>
                                                 <constraint firstItem="VZW-bG-wde" firstAttribute="leading" secondItem="FLu-kE-e3L" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ksk-YI-sjg"/>
-                                                <constraint firstAttribute="bottom" secondItem="HAi-bB-DIS" secondAttribute="bottom" constant="26" id="lNI-7Y-tdb"/>
-                                                <constraint firstItem="HAi-bB-DIS" firstAttribute="leading" secondItem="FLu-kE-e3L" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lvl-4Z-Obh"/>
                                                 <constraint firstItem="12s-7T-OX4" firstAttribute="trailing" secondItem="ZIw-U6-qPy" secondAttribute="trailing" type="default" id="nHC-U4-KIY"/>
                                                 <constraint firstItem="12s-7T-OX4" firstAttribute="leading" secondItem="ZIw-U6-qPy" secondAttribute="leading" type="default" id="u8O-SI-ws4"/>
                                                 <constraint firstItem="12s-7T-OX4" firstAttribute="top" secondItem="FLu-kE-e3L" secondAttribute="top" constant="46" id="unj-J0-TEu"/>
@@ -274,7 +274,7 @@
                         <outlet property="menuUserPicture" destination="VZW-bG-wde" id="r7Z-ZK-wMs"/>
                         <outlet property="menuUsername" destination="ZIw-U6-qPy" id="eJR-Y5-FOG"/>
                         <outlet property="sphereUserTableView" destination="8c8-d1-xnX" id="NP7-Se-96g"/>
-                        <outlet property="statementTextField" destination="HAi-bB-DIS" id="kbz-RP-XB2"/>
+                        <outlet property="statementTextField" destination="f9c-TR-jYk" id="aLc-If-hXG"/>
                         <segue destination="qBu-pl-9Ku" kind="push" identifier="settingsSegue" id="CMx-tB-tKS"/>
                     </connections>
                 </viewController>
@@ -757,6 +757,9 @@
         </class>
         <class className="SphereViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButtonAction:"/>
+            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
@@ -766,6 +769,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

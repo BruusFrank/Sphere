@@ -2,7 +2,7 @@
 //  User.m
 //  Sphere
 //
-//  Created by Søren Bruus Frank on 12/20/12.
+//  Created by Søren Bruus Frank on 12/29/12.
 //  Copyright (c) 2012 Storm of Brains. All rights reserved.
 //
 
@@ -14,16 +14,17 @@
 
 @implementation User
 
-@dynamic name;
-@dynamic quote;
-@dynamic education;
-@dynamic work;
+@dynamic age;
 @dynamic broadcasting;
 @dynamic contactable;
-@dynamic age;
+@dynamic education;
+@dynamic hometown;
 @dynamic image;
+@dynamic name;
+@dynamic statement;
+@dynamic work;
 @dynamic hasInterests;
-@dynamic hasSkills;
 @dynamic hasModes;
+@dynamic hasSkills;
 
 @end

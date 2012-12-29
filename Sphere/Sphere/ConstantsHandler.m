@@ -10,6 +10,8 @@
 
 @implementation ConstantsHandler
 
+static ConstantsHandler *sharedConstants = nil;
+
 - (void)setActiveMode:(Mode *)activeMode
 {
     _activeMode = activeMode;
@@ -22,12 +24,12 @@
     activeMode.isActive = [NSNumber numberWithBool:YES];
 }
 
-+ (id)sharedConstants
++ (ConstantsHandler *)sharedConstants
 {
-    static ConstantsHandler *sharedConstants = nil;
-    if (!sharedConstants) {
-        sharedConstants = [[ConstantsHandler alloc] init];
-    }
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        sharedConstants = [[self alloc] init];
+    });
     return sharedConstants;
 }
 

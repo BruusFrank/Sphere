@@ -20,7 +20,7 @@ typedef enum fontType{
     fontTypeExtraBold
 } fontType;
 
-+ (id)sharedConstants;
++ (ConstantsHandler *)sharedConstants;
 
 //Fonts.
 - (UIFont *)originType:(fontType)type FontSize:(CGFloat)size;

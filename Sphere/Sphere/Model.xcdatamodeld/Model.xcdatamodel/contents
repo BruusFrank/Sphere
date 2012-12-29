@@ -13,9 +13,10 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="showAge" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="showEducation" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="showHometown" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="showInterests" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
-        <attribute name="showQuote" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="showSkills" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="showStatement" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="showWork" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <relationship name="isModeOfUser" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="hasModes" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -28,9 +29,10 @@
         <attribute name="broadcasting" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="contactable" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="education" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hometown" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="quote" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statement" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hasInterests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interest" inverseName="isInterestOfUser" inverseEntity="Interest" syncable="YES"/>
         <relationship name="hasModes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mode" inverseName="isModeOfUser" inverseEntity="Mode" syncable="YES"/>
@@ -38,8 +40,8 @@
     </entity>
     <elements>
         <element name="Interest" positionX="-720" positionY="-64" width="128" height="73"/>
-        <element name="Mode" positionX="-54" positionY="18" width="128" height="238"/>
+        <element name="Mode" positionX="-54" positionY="18" width="128" height="253"/>
         <element name="Skill" positionX="-720" positionY="36" width="128" height="73"/>
-        <element name="User" positionX="-389" positionY="-81" width="128" height="208"/>
+        <element name="User" positionX="-389" positionY="-81" width="128" height="223"/>
     </elements>
 </model>

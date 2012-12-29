@@ -9,6 +9,7 @@
 #import "SphereListViewController.h"
 #import "SphereUserCell.h"
 #import "MenuTableViewCellView.h"
+#import "UserInfoView.h"
 
 #import "UIImage+Resizing.h"
 #import "UIImage+ScaleAndCrop.h"
@@ -123,75 +124,85 @@ dispatch_queue_t fetchQ = NULL;
     kasperBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Bruus Frank", @"name",
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"Design", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
                 [UIImage imageNamed:@"kbf.jpg"], @"picture",
-                [NSNumber numberWithInt:1], @"happiness",
+                [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:1], @"request",
                 nil];
     
     kasperBJ = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Buhl Jakobsen", @"name",
                 [[NSArray alloc] initWithObjects:@"Tricking", @"IT", @"Android", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
                 [UIImage imageNamed:@"kbj.jpg"], @"picture",
-                [NSNumber numberWithInt:0], @"happiness",
+                [NSNumber numberWithInt:0], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
                 nil];
     
     soerenBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Søren Bruus Frank", @"name",
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"iOS development", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
                 [UIImage imageNamed:@"sbf.jpg"], @"picture",
-                [NSNumber numberWithInt:0], @"happiness",
+                [NSNumber numberWithInt:0], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
                 nil];
     
     boP = [[NSDictionary alloc] initWithObjectsAndKeys:@"Bo Penstoft", @"name",
            [[NSArray alloc] initWithObjects:@"Gaming", @"IT", @"Exercise", nil], @"interests",
            [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+           @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
            [UIImage imageNamed:@"bo.jpg"], @"picture",
-           [NSNumber numberWithInt:1], @"happiness",
+           [NSNumber numberWithInt:1], @"contactable",
            [NSNumber numberWithInt:0], @"request",
            nil];
     
     courtney = [[NSDictionary alloc] initWithObjectsAndKeys:@"Courtney Davis", @"name",
                [[NSArray alloc] initWithObjects:@"Movies", @"Journalism", @"Exercise", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
                [UIImage imageNamed:@"cd.jpg"], @"picture",
-               [NSNumber numberWithInt:1], @"happiness",
+               [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
                nil];
     stine = [[NSDictionary alloc] initWithObjectsAndKeys:@"Stine Frank Kristensen", @"name",
             [[NSArray alloc] initWithObjects:@"Economics", @"Horseriding", @"Cleaning", nil], @"interests",
              [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+             @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
             [UIImage imageNamed:@"stine.jpg"], @"picture",
-            [NSNumber numberWithInt:0], @"happiness",
+            [NSNumber numberWithInt:0], @"contactable",
              [NSNumber numberWithInt:0], @"request",
             nil];
     pernille = [[NSDictionary alloc] initWithObjectsAndKeys:@"Pernille Bohl Clausen", @"name",
                [[NSArray alloc] initWithObjects:@"Journalism", @"Party-planning", @"Traveling", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
                [UIImage imageNamed:@"pernille.jpg"], @"picture",
-               [NSNumber numberWithInt:1], @"happiness",
+               [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
                nil];
     ganesh = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ganesh (Knallert starter)", @"name",
              [[NSArray alloc] initWithObjects:@"Fitness", @"Music", @"Business", nil], @"interests",
               [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+              @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
              [UIImage imageNamed:@"ganesh.jpg"], @"picture",
-             [NSNumber numberWithInt:0], @"happiness",
+             [NSNumber numberWithInt:0], @"contactable",
               [NSNumber numberWithInt:0], @"request",
              nil];
     ida = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ida Hekman Nielsen", @"name",
            [[NSArray alloc] initWithObjects:@"Photography", @"Media", @"Money", nil], @"interests",
            [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+           @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
            [UIImage imageNamed:@"ida.jpg"], @"picture",
-           [NSNumber numberWithInt:1], @"happiness",
+           [NSNumber numberWithInt:1], @"contactable",
            [NSNumber numberWithInt:0], @"request",
            nil];
     ngabe = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ngabe Johnson", @"name",
              [[NSArray alloc] initWithObjects:@"Therapy", @"Cooking", @"Disco dancing", nil], @"interests",
              [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+             @"", @"age", @"", @"education", @"", @"statement", @"", @"work", @"", @"hometown",
              [UIImage imageNamed:@"ngabe.jpg"], @"picture",
-             [NSNumber numberWithInt:1], @"happiness",
+             [NSNumber numberWithInt:1], @"contactable",
              [NSNumber numberWithInt:0], @"request",
              nil];
     
@@ -278,6 +289,10 @@ dispatch_queue_t fetchQ = NULL;
     
     self.menuUsername.text = self.constants.user.name;
     self.menuUsername.textColor = self.constants.COLOR_WHITE;
+    
+    if (![self.constants.user.statement isEqual:@""] && self.constants.user.statement) {
+        self.statementTextField.placeholder = self.constants.user.statement;
+    }
     
     NSString *tags = @"";
     NSArray *interests = [self.constants.user.hasInterests allObjects];    
@@ -394,13 +409,15 @@ dispatch_queue_t fetchQ = NULL;
     
     cell.accessory.image = [UIImage imageNamed:@"cell_accessory_down.png"];
     
-    if ([[concreteUser objectForKey:@"happiness"] integerValue] == 1) {
+    if ([[concreteUser objectForKey:@"contactable"] integerValue] == 1) {
         cell.smiley.image = [UIImage imageNamed:@"smiley.png"];
     }else{
         cell.smiley.image = nil;
     }
     
-    cell.userInfoView = [self expandedInformationViewForPerson:concreteUser];
+    cell.userInfoView = [[UserInfoView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, 320.0f, 300.0f)
+                                               withUserInfo:concreteUser
+                                               buttonTarget:self];
     
     //If the cell is selected.
     if ([self.selectedRow isEqual:indexPath]) {
@@ -465,63 +482,6 @@ dispatch_queue_t fetchQ = NULL;
     }
     
     return cell;
-}
-
-- (UIView *)expandedInformationViewForPerson:(NSDictionary *)person
-{
-    UIView *infoView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, 320.0f, 300.0f)];
-    
-    //Check for the individual elements
-    UIView *personalInfoView = nil;
-    UIView *secondaryView = nil; //The one of skills/interests, which isn't shown in the main part of the cell.
-    UIView *employmentView = nil;
-    UIView *quoteView = nil;
-    
-    UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 30.0f)];
-    if ([[person objectForKey:@"request"] integerValue] == 1) {
-        UIButton *acceptButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [acceptButton addTarget:self
-                   action:@selector(acceptAction:)
-         forControlEvents:UIControlEventTouchDown];
-        [acceptButton setTitle:@"Y" forState:UIControlStateNormal];
-        acceptButton.frame = CGRectMake(74.0, 0.0, 62.0, 30.0);
-        
-        UIButton *denyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [denyButton addTarget:self
-                         action:@selector(denyAction:)
-               forControlEvents:UIControlEventTouchDown];
-        [denyButton setTitle:@"N" forState:UIControlStateNormal];
-        denyButton.frame = CGRectMake(154.0, 0.0, 62.0, 30.0);
-        
-        [buttonsView addSubview:acceptButton];
-        [buttonsView addSubview:denyButton];
-    }else if ([[person objectForKey:@"request"] integerValue] == 0){
-        UIButton *requestbutton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [requestbutton addTarget:self
-                          action:@selector(sphereRequest:)
-                forControlEvents:UIControlEventTouchDown];
-        [requestbutton setTitle:@"Request" forState:UIControlStateNormal];
-        requestbutton.frame = CGRectMake(40.0, 0.0, 227.0, 40.0);
-        [requestbutton setImage:[UIImage imageNamed:@"meet"] forState:UIControlStateNormal];
-        [buttonsView addSubview:requestbutton];
-    }
-    
-    NSArray *informationArray = [[NSArray alloc] initWithObjects:personalInfoView, secondaryView, employmentView, quoteView, buttonsView, nil];
-    
-    UIView *prevView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
-    
-    for (UIView *view in informationArray) {
-        if (view != nil) {
-            view.frame = CGRectMake(view.frame.origin.x,
-                                    view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 7.0f,
-                                    view.frame.size.width,
-                                    view.frame.size.height);
-            [infoView addSubview:view];
-            prevView = view;
-        }
-    }
-    
-    return infoView;
 }
 
 #pragma mark UITableViewDelegate
@@ -697,6 +657,8 @@ dispatch_queue_t fetchQ = NULL;
 {
     if (![textField.text isEqual:@""]) {
         //Post it!
+        self.constants.user.statement = textField.text;
+        
         textField.placeholder = textField.text;
         textField.text = @"";
     }

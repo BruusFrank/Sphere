@@ -18,8 +18,9 @@
 @dynamic name;
 @dynamic showAge;
 @dynamic showEducation;
+@dynamic showHometown;
 @dynamic showInterests;
-@dynamic showQuote;
+@dynamic showStatement;
 @dynamic showSkills;
 @dynamic showWork;
 @dynamic isActive;

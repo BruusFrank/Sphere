@@ -19,8 +19,9 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * showAge;
 @property (nonatomic, retain) NSNumber * showEducation;
+@property (nonatomic, retain) NSNumber * showHometown;
 @property (nonatomic, retain) NSNumber * showInterests;
-@property (nonatomic, retain) NSNumber * showQuote;
+@property (nonatomic, retain) NSNumber * showStatement;
 @property (nonatomic, retain) NSNumber * showSkills;
 @property (nonatomic, retain) NSNumber * showWork;
 @property (nonatomic, retain) NSNumber * isActive;
