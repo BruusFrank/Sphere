@@ -56,7 +56,7 @@
         for (UIView *view in informationArray) {
             if (view != nil) {
                 view.frame = CGRectMake((320.0f/2 - view.frame.size.width/2),
-                                        view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 10.0f,
+                                        view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 8.0f,
                                         view.frame.size.width,
                                         view.frame.size.height);
                 [self addSubview:view];
@@ -74,9 +74,20 @@
     UIView *statementView = nil;
     
     if ([userInfo objectForKey:@"statement"]) {
-        statementView = [[UIView alloc] initWithFrame:CGRectMake(USER_INFO_MARGIN, 0.0f, USER_INFO_WIDTH, 30.0f)];
+        CGSize maximumLabelSize = CGSizeMake(USER_INFO_WIDTH - 10.0f ,100.0f);
+        CGSize labelSize = [[userInfo objectForKey:@"statement"] sizeWithFont:USER_INFO_DETAIL_FONT constrainedToSize:maximumLabelSize lineBreakMode:NSLineBreakByWordWrapping];
+        statementView = [[UIView alloc] initWithFrame:CGRectMake(USER_INFO_MARGIN, 0.0f, USER_INFO_WIDTH, labelSize.height + 10.0f)];
+        statementView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.2f];
         
-        UILabel *statementLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, USER_INFO_WIDTH, statementView.frame.size.height)];
+        UILabel *statementLabel = [[UILabel alloc] initWithFrame:CGRectMake(5.0f, 5.0f, USER_INFO_WIDTH - 10.0f, statementView.frame.size.height - 10.0f)];
+        statementLabel.backgroundColor = [UIColor clearColor];
+        statementLabel.font = USER_INFO_DETAIL_FONT;
+        statementLabel.textColor = [ConstantsHandler sharedConstants].COLOR_WHITE;
+        statementLabel.textAlignment = NSTextAlignmentCenter;
+        statementLabel.text = [userInfo objectForKey:@"statement"];
+        statementLabel.numberOfLines = 100;
+        
+        [statementView addSubview:statementLabel];
     }
     return statementView;
 }
@@ -260,21 +271,24 @@
 - (UIView *)buttonsViewWithInfo:(NSDictionary *)userInfo
             withTargetForAction:(id)sender
 {
-    UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 0.0f, 290.0f, 30.0f)];
+    UIView *buttonsView = [[UIView alloc] initWithFrame:CGRectMake(USER_INFO_MARGIN, 0.0f, USER_INFO_WIDTH, 44.0f)];
     if ([[userInfo objectForKey:@"request"] integerValue] == 1) {
+        CGFloat one_third = USER_INFO_WIDTH/3;
+        CGFloat buttonInset = one_third - 62.0f/2;
+        
         UIButton *acceptButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [acceptButton addTarget:sender
                          action:@selector(acceptAction:)
                forControlEvents:UIControlEventTouchDown];
         [acceptButton setTitle:@"Y" forState:UIControlStateNormal];
-        acceptButton.frame = CGRectMake(74.0, 0.0, 62.0, 30.0);
+        acceptButton.frame = CGRectMake(buttonInset, 0.0f, 62.0f, 44.0f);
         
         UIButton *denyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [denyButton addTarget:sender
                        action:@selector(denyAction:)
              forControlEvents:UIControlEventTouchDown];
         [denyButton setTitle:@"N" forState:UIControlStateNormal];
-        denyButton.frame = CGRectMake(154.0, 0.0, 62.0, 30.0);
+        denyButton.frame = CGRectMake(one_third + buttonInset, 0.0f, 62.0f, 44.0f);
         
         [buttonsView addSubview:acceptButton];
         [buttonsView addSubview:denyButton];
@@ -284,7 +298,7 @@
                           action:@selector(sphereRequest:)
                 forControlEvents:UIControlEventTouchDown];
         [requestbutton setTitle:@"Request" forState:UIControlStateNormal];
-        requestbutton.frame = CGRectMake(40.0, 0.0, 227.0, 40.0);
+        requestbutton.frame = CGRectMake((USER_INFO_WIDTH - 234.0f)/2, 0.0f, 234.0f, 44.0f);
         [requestbutton setImage:[UIImage imageNamed:@"meet"] forState:UIControlStateNormal];
         [buttonsView addSubview:requestbutton];
     }
