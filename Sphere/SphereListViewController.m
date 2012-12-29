@@ -415,9 +415,14 @@ dispatch_queue_t fetchQ = NULL;
         cell.smiley.image = nil;
     }
     
-    cell.userInfoView = [[UserInfoView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, 320.0f, 300.0f)
-                                               withUserInfo:concreteUser
-                                               buttonTarget:self];
+    //Reset the cell.
+    while ([[cell.expandView subviews] count] > 5) {
+        [[[cell.expandView subviews] lastObject] removeFromSuperview];
+    }
+    [cell.expandView addSubview:[[UserInfoView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, 320.0f, 300.0f)
+                                                       withUserInfo:concreteUser
+                                                       buttonTarget:self]];
+    
     
     //If the cell is selected.
     if ([self.selectedRow isEqual:indexPath]) {
