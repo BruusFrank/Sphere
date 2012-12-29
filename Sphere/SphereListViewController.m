@@ -82,18 +82,17 @@ dispatch_queue_t fetchQ = NULL;
 
 - (void)sphereRequest:(UIButton *)sender
 {
-    [sender setTitle:@"Sent..." forState:UIControlStateNormal];
     sender.enabled = NO;
 }
 
 - (void)acceptAction:(UIButton *)sender
 {
-    
+    [[sender superview] setHidden:YES];
 }
 
 - (void)denyAction:(UIButton *)sender
 {
-    
+    [[sender superview] setHidden:YES];
 }
 
 
