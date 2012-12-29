@@ -33,7 +33,22 @@
     if (self) {
         //Initialization code.
         
-        NSArray *informationArray = [[NSArray alloc] initWithObjects:[self personalInfoViewWithInfo:userInfo], [self secondaryViewWithInfo:userInfo], [self employmentViewWithInfo:userInfo], [self statementViewWithInfo:userInfo], [self buttonsViewWithInfo:userInfo withTargetForAction:sender], nil];
+        NSMutableArray *informationArray = [[NSMutableArray alloc] init];
+        
+        UIView *statement = [self statementViewWithInfo:userInfo];
+        if (statement) { [informationArray addObject:statement]; };
+        
+        UIView *personalInfo = [self personalInfoViewWithInfo:userInfo];
+        if (personalInfo) { [informationArray addObject:personalInfo]; }
+        
+        UIView *secondary = [self secondaryViewWithInfo:userInfo];
+        if (secondary) { [informationArray addObject:secondary]; };
+        
+        UIView *employment = [self employmentViewWithInfo:userInfo];
+        if (employment) { [informationArray addObject:employment]; };
+        
+        UIView *buttons = [self buttonsViewWithInfo:userInfo withTargetForAction:sender];
+        if (buttons) { [informationArray addObject:buttons]; };
         
         UIView *prevView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
         int combinedHeight = 0;
@@ -41,7 +56,7 @@
         for (UIView *view in informationArray) {
             if (view != nil) {
                 view.frame = CGRectMake((320.0f/2 - view.frame.size.width/2),
-                                        view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 7.0f,
+                                        view.frame.origin.y + prevView.frame.size.height + prevView.frame.origin.y + 10.0f,
                                         view.frame.size.width,
                                         view.frame.size.height);
                 [self addSubview:view];
@@ -52,6 +67,18 @@
     }
     
     return self;
+}
+
+- (UIView *)statementViewWithInfo:(NSDictionary *)userInfo
+{
+    UIView *statementView = nil;
+    
+    if ([userInfo objectForKey:@"statement"]) {
+        statementView = [[UIView alloc] initWithFrame:CGRectMake(USER_INFO_MARGIN, 0.0f, USER_INFO_WIDTH, 30.0f)];
+        
+        UILabel *statementLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, USER_INFO_WIDTH, statementView.frame.size.height)];
+    }
+    return statementView;
 }
 
 - (UIView *)personalInfoViewWithInfo:(NSDictionary *)userInfo
@@ -159,19 +186,75 @@
     
     if ([userInfo objectForKey:@"education"] || [userInfo objectForKey:@"work"])
     {
-        employmentView = [[UIView alloc] initWithFrame:CGRectMake(50.0f, 0.0f, 220.0f, 30.0f)];
+        employmentView = [[UIView alloc] initWithFrame:CGRectMake(USER_INFO_MARGIN, 0.0f, USER_INFO_WIDTH, 70.0f)];
+        
+        int views = 0;
+        
+        UIView *educationView = nil;
+        if ([userInfo objectForKey:@"education"]) {
+            views++;
+            educationView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, USER_INFO_WIDTH/2, 90.0f)];
+            
+            UILabel *educationHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, USER_INFO_WIDTH/2 - 3.0f, 18.0f)];
+            educationHeaderLabel.font = USER_INFO_IDENTIFIER_FONT;
+            educationHeaderLabel.textColor = [ConstantsHandler sharedConstants].COLOR_CYANID_BLUE;
+            educationHeaderLabel.textAlignment = NSTextAlignmentCenter;
+            educationHeaderLabel.backgroundColor = [UIColor clearColor];
+            educationHeaderLabel.text = @"Education";
+            
+            UILabel *educationDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, educationHeaderLabel.frame.size.height, USER_INFO_WIDTH/2 - 6.0f, educationView.frame.size.height - educationHeaderLabel.frame.size.height)];
+            educationDetailLabel.font = USER_INFO_DETAIL_FONT;
+            educationDetailLabel.textColor = [ConstantsHandler sharedConstants].COLOR_WHITE;
+            educationDetailLabel.backgroundColor = [UIColor clearColor];
+            educationDetailLabel.text = [userInfo objectForKey:@"education"];
+            educationDetailLabel.numberOfLines = 5;
+            educationDetailLabel.textAlignment = NSTextAlignmentCenter;
+            [educationDetailLabel sizeToFit];
+            
+            [educationHeaderLabel sizeThatFits:CGSizeMake(educationDetailLabel.frame.size.width, educationHeaderLabel.frame.size.height)];
+            
+            [educationView addSubview:educationHeaderLabel];
+            [educationView addSubview:educationDetailLabel];
+            
+            [employmentView addSubview:educationView];
+        }
+        
+        UIView *workView = nil;
+        if ([userInfo objectForKey:@"work"]) {
+            views++;
+            workView = [[UIView alloc] initWithFrame:CGRectMake(USER_INFO_WIDTH/2, 0.0f, USER_INFO_WIDTH/2, 70.0f)];
+            
+            UILabel *workHeaderLabel = [[UILabel alloc] initWithFrame:CGRectMake(3.0f, 0.0f, USER_INFO_WIDTH/2 - 3.0f, 18.0f)];
+            workHeaderLabel.font = USER_INFO_IDENTIFIER_FONT;
+            workHeaderLabel.textColor = [ConstantsHandler sharedConstants].COLOR_CYANID_BLUE;
+            workHeaderLabel.textAlignment = NSTextAlignmentCenter;
+            workHeaderLabel.backgroundColor = [UIColor clearColor];
+            workHeaderLabel.text = @"Work";
+            
+            UILabel *workDetailLabel = [[UILabel alloc] initWithFrame:CGRectMake(3.0f, workHeaderLabel.frame.size.height, USER_INFO_WIDTH/2 - 6.0f, workView.frame.size.height - workHeaderLabel.frame.size.height)];
+            workDetailLabel.font = USER_INFO_DETAIL_FONT;
+            workDetailLabel.textColor = [ConstantsHandler sharedConstants].COLOR_WHITE;
+            workDetailLabel.backgroundColor = [UIColor clearColor];
+            workDetailLabel.text = [userInfo objectForKey:@"work"];
+            workDetailLabel.numberOfLines = 5;
+            workDetailLabel.textAlignment = NSTextAlignmentCenter;
+            [workDetailLabel sizeToFit];
+            
+            [workHeaderLabel sizeThatFits:CGSizeMake(workDetailLabel.frame.size.width, workHeaderLabel.frame.size.height)];
+                        
+            [workView addSubview:workHeaderLabel];
+            [workView addSubview:workDetailLabel];
+            
+            [employmentView addSubview:workView];
+        }
+        
+        if (views == 1) {
+            UIView *view = [[employmentView subviews] lastObject];
+            view.frame = CGRectMake(USER_INFO_WIDTH/4, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
+        }
     }
-    return employmentView;
-}
-
-- (UIView *)statementViewWithInfo:(NSDictionary *)userInfo
-{
-    UIView *statementView = nil;
     
-    if ([userInfo objectForKey:@"statement"]) {
-        statementView = [[UIView alloc] initWithFrame:CGRectMake(50.0f, 0.0f, 220.0f, 30.0f)];
-    }
-    return statementView;
+    return employmentView;
 }
 
 - (UIView *)buttonsViewWithInfo:(NSDictionary *)userInfo

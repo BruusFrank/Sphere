@@ -124,7 +124,7 @@ dispatch_queue_t fetchQ = NULL;
     kasperBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Bruus Frank", @"name",
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"Design", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+                @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                 [UIImage imageNamed:@"kbf.jpg"], @"picture",
                 [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:1], @"request",
@@ -133,7 +133,7 @@ dispatch_queue_t fetchQ = NULL;
     kasperBJ = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Buhl Jakobsen", @"name",
                 [[NSArray alloc] initWithObjects:@"Tricking", @"IT", @"Android", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+                @"23", @"age", @"", @"statement", @"Instruktor (Innovation processes), Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                 [UIImage imageNamed:@"kbj.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
@@ -142,7 +142,7 @@ dispatch_queue_t fetchQ = NULL;
     soerenBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Søren Bruus Frank", @"name",
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"iOS development", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+                @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                 [UIImage imageNamed:@"sbf.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
@@ -151,7 +151,7 @@ dispatch_queue_t fetchQ = NULL;
     boP = [[NSDictionary alloc] initWithObjectsAndKeys:@"Bo Penstoft", @"name",
            [[NSArray alloc] initWithObjects:@"Gaming", @"IT", @"Exercise", nil], @"interests",
            [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-           @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+           @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
            [UIImage imageNamed:@"bo.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"contactable",
            [NSNumber numberWithInt:0], @"request",
@@ -160,7 +160,7 @@ dispatch_queue_t fetchQ = NULL;
     courtney = [[NSDictionary alloc] initWithObjectsAndKeys:@"Courtney Davis", @"name",
                [[NSArray alloc] initWithObjects:@"Movies", @"Journalism", @"Exercise", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+                @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                [UIImage imageNamed:@"cd.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
@@ -168,7 +168,7 @@ dispatch_queue_t fetchQ = NULL;
     stine = [[NSDictionary alloc] initWithObjectsAndKeys:@"Stine Frank Kristensen", @"name",
             [[NSArray alloc] initWithObjects:@"Economics", @"Horseriding", @"Cleaning", nil], @"interests",
              [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-             @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+             @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
             [UIImage imageNamed:@"stine.jpg"], @"picture",
             [NSNumber numberWithInt:0], @"contactable",
              [NSNumber numberWithInt:0], @"request",
@@ -176,7 +176,7 @@ dispatch_queue_t fetchQ = NULL;
     pernille = [[NSDictionary alloc] initWithObjectsAndKeys:@"Pernille Bohl Clausen", @"name",
                [[NSArray alloc] initWithObjects:@"Journalism", @"Party-planning", @"Traveling", nil], @"interests",
                 [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+                @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                [UIImage imageNamed:@"pernille.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
@@ -184,7 +184,7 @@ dispatch_queue_t fetchQ = NULL;
     ganesh = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ganesh (Knallert starter)", @"name",
              [[NSArray alloc] initWithObjects:@"Fitness", @"Music", @"Business", nil], @"interests",
               [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-              @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+              @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
              [UIImage imageNamed:@"ganesh.jpg"], @"picture",
              [NSNumber numberWithInt:0], @"contactable",
               [NSNumber numberWithInt:0], @"request",
@@ -192,7 +192,7 @@ dispatch_queue_t fetchQ = NULL;
     ida = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ida Hekman Nielsen", @"name",
            [[NSArray alloc] initWithObjects:@"Photography", @"Media", @"Money", nil], @"interests",
            [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-           @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+           @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
            [UIImage imageNamed:@"ida.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"contactable",
            [NSNumber numberWithInt:0], @"request",
@@ -200,7 +200,7 @@ dispatch_queue_t fetchQ = NULL;
     ngabe = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ngabe Johnson", @"name",
              [[NSArray alloc] initWithObjects:@"Therapy", @"Cooking", @"Disco dancing", nil], @"interests",
              [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-             @"23", @"age", @"", @"education", @"", @"statement", @"", @"work", @"Aarhus, Denmark", @"hometown",
+             @"23", @"age", @"Information Technology, Aarhus University", @"education", @"", @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
              [UIImage imageNamed:@"ngabe.jpg"], @"picture",
              [NSNumber numberWithInt:1], @"contactable",
              [NSNumber numberWithInt:0], @"request",
@@ -419,7 +419,7 @@ dispatch_queue_t fetchQ = NULL;
     while ([[cell.expandView subviews] count] > 5) {
         [[[cell.expandView subviews] lastObject] removeFromSuperview];
     }
-    [cell.expandView addSubview:[[UserInfoView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, 320.0f, 300.0f)
+    [cell.expandView addSubview:[[UserInfoView alloc] initWithFrame:CGRectMake(0.0f, 80.0f, 320.0f, 280.0f)
                                                        withUserInfo:concreteUser
                                                        buttonTarget:self]];
     
