@@ -8,11 +8,24 @@
 
 #import "ProfileViewController.h"
 
+#import "UIImage+Resizing.h"
+#import "UIImage+ScaleAndCrop.h"
+
 @interface ProfileViewController ()
+
+@property (nonatomic, strong) ConstantsHandler *constants;
 
 @end
 
 @implementation ProfileViewController
+
+- (ConstantsHandler *)constants
+{
+    if (!_constants) {
+        _constants = [ConstantsHandler sharedConstants];
+    }
+    return _constants;
+}
 
 #pragma mark IBActions
 
@@ -38,6 +51,27 @@
 	// Do any additional setup after loading the view.
     
     [self setupMainLayout];
+    
+    self.profileTableView.delegate = self;
+    self.profileTableView.dataSource = self;
+    
+    self.profilePictureImageView.image = [[UIImage imageWithData:self.constants.user.image] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
+    
+    self.profilePictureImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.profilePictureImageView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.profilePictureImageView.layer.shadowOpacity = 1.0;
+    self.profilePictureImageView.layer.shadowRadius = 7.0;
+    self.profilePictureImageView.clipsToBounds = NO;
+    
+    self.nameLabel.text = self.constants.user.name;
+    self.nameLabel.textColor = self.constants.COLOR_WHITE;
+    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.constants.user.age];
+    self.ageLabel.textColor = self.constants.COLOR_WHITE;
+    self.studyLabel.text = self.constants.user.education;
+    self.studyLabel.textColor = self.constants.COLOR_WHITE;
+    self.workLabel.text = self.constants.user.work;
+    self.workLabel.textColor = self.constants.COLOR_WHITE;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +102,26 @@
     [backButton addTarget:self action:@selector(popController:) forControlEvents:UIControlEventTouchDown];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"profileCell"];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"profileCell"];
+    }
+    return cell;
 }
 
 - (void)resetInterface
