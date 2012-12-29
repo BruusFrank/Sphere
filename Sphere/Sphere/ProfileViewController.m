@@ -124,6 +124,30 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        return @"Interrests";
+    } else {
+        return @"Skills";
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 240.0f, 40.0f)];
+    headerView.backgroundColor = [UIColor clearColor];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 0.0f, 200.0f, 40.0f)];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
+    headerLabel.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    headerLabel.font = [[ConstantsHandler sharedConstants] FONT_HEADER];
+    
+    [headerView addSubview:headerLabel];
+    return headerView;
+}
+
 - (void)resetInterface
 {
 }

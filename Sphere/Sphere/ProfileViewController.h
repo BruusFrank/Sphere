@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
 @property (weak, nonatomic) IBOutlet UILabel *studyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workLabel;
+@property (nonatomic, retain) UIView *headerView;
 
 @end

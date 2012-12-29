@@ -687,11 +687,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="30" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rpz-gO-k4U">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="30" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rpz-gO-k4U">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="252" id="zkM-fx-8Wr"/>
+                                    <constraint firstAttribute="height" constant="304" id="d9M-fb-wuR"/>
                                 </constraints>
+                                <color key="separatorColor" red="0.27450981740000002" green="0.27450981740000002" blue="0.27450981740000002" alpha="1" colorSpace="deviceRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="profileCell" textLabel="YRF-b6-30c" style="IBUITableViewCellStyleDefault" id="RD6-kv-0Qd">
                                         <rect key="frame" x="0.0" y="46" width="280" height="32"/>
@@ -727,26 +728,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VEo-ap-Jmt" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="88" id="5bA-yo-OOi"/>
                             <constraint firstItem="ndf-B9-zdT" firstAttribute="leading" secondItem="nJQ-SE-dVT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5hS-et-cVL"/>
                             <constraint firstItem="V4n-i7-oWX" firstAttribute="leading" secondItem="nJQ-SE-dVT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7Tl-Mc-fpJ"/>
-                            <constraint firstItem="E8k-ns-pRd" firstAttribute="baseline" secondItem="ndf-B9-zdT" secondAttribute="baseline" type="default" id="DqQ-2c-QbY"/>
                             <constraint firstItem="1NV-2y-oAP" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="50" id="E6H-7C-wFE"/>
                             <constraint firstItem="Rpz-gO-k4U" firstAttribute="leading" secondItem="nJQ-SE-dVT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="GD6-TT-58j"/>
                             <constraint firstItem="TAR-CC-pR7" firstAttribute="leading" secondItem="nJQ-SE-dVT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Gd1-T8-trg"/>
                             <constraint firstItem="E8k-ns-pRd" firstAttribute="leading" secondItem="VEo-ap-Jmt" secondAttribute="leading" type="default" id="GgZ-Z4-ovw"/>
-                            <constraint firstItem="V4n-i7-oWX" firstAttribute="top" secondItem="TAR-CC-pR7" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GoE-bq-zHr"/>
                             <constraint firstAttribute="trailing" secondItem="Di2-pz-viF" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="HHZ-sE-5vr"/>
                             <constraint firstAttribute="trailing" secondItem="Rpz-gO-k4U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="R2u-qo-zej"/>
                             <constraint firstItem="jwm-RU-7dY" firstAttribute="leading" secondItem="nJQ-SE-dVT" secondAttribute="leading" constant="111" id="RH1-nq-X2Y"/>
+                            <constraint firstItem="E8k-ns-pRd" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="122" id="VAZ-X5-Uh8"/>
                             <constraint firstItem="Di2-pz-viF" firstAttribute="baseline" secondItem="1NV-2y-oAP" secondAttribute="baseline" type="default" id="Vmn-75-ADa"/>
-                            <constraint firstItem="VEo-ap-Jmt" firstAttribute="baseline" secondItem="V4n-i7-oWX" secondAttribute="baseline" type="default" id="aum-5Z-USp"/>
                             <constraint firstItem="TAR-CC-pR7" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="20" symbolic="YES" type="default" id="c4t-3L-0rA"/>
+                            <constraint firstItem="ndf-B9-zdT" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="125" id="gQ7-sK-iaL"/>
                             <constraint firstItem="VEo-ap-Jmt" firstAttribute="leading" secondItem="nJQ-SE-dVT" secondAttribute="leading" constant="99" id="hDx-pm-l3a"/>
-                            <constraint firstItem="ndf-B9-zdT" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="122" id="kSH-G8-MDt"/>
-                            <constraint firstAttribute="bottom" secondItem="Rpz-gO-k4U" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="nKJ-6X-n7J"/>
                             <constraint firstItem="jwm-RU-7dY" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="30" id="oTO-zW-QF5"/>
                             <constraint firstItem="1NV-2y-oAP" firstAttribute="leading" secondItem="jwm-RU-7dY" secondAttribute="leading" type="default" id="rB7-jA-6sS"/>
                             <constraint firstItem="VEo-ap-Jmt" firstAttribute="trailing" secondItem="E8k-ns-pRd" secondAttribute="trailing" type="default" id="s43-1e-DUo"/>
+                            <constraint firstItem="Rpz-gO-k4U" firstAttribute="bottom" secondItem="nJQ-SE-dVT" secondAttribute="bottom" type="default" id="uuL-XF-q6z"/>
+                            <constraint firstItem="V4n-i7-oWX" firstAttribute="top" secondItem="nJQ-SE-dVT" secondAttribute="top" constant="91" id="xlc-MB-GmW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fvl-dn-E1V"/>
@@ -825,6 +826,15 @@
         </class>
         <class className="ProfileViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="ageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hometownLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="profilePictureImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="profileTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="studyLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="workLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="SettingsCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsCell.h"/>
