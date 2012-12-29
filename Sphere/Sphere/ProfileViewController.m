@@ -34,6 +34,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)editTableView:(id)sender {
+    if ([self.editTableViewButton.title isEqualToString:@"Save"]) {
+        [self.profileTableView setEditing:NO animated:YES];
+        [self.editTableViewButton setTitle:@"Edit"];
+    } else {
+        [self.profileTableView setEditing:YES animated:YES];
+        [self.editTableViewButton setTitle:@"Save"];
+    }
+}
+
 #pragma mark view lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -72,6 +82,16 @@
     self.workLabel.text = self.constants.user.work;
     self.workLabel.textColor = self.constants.COLOR_WHITE;
     
+    if (![self.constants.user.statement isEqualToString:@""] && self.constants.user.statement) {
+        self.statementTextField.placeholder = self.constants.user.statement;
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:NO];
+    
+     [self.profileScrollView setContentSize:CGSizeMake(self.profileScrollView.frame.size.width, self.profileScrollView.frame.size.height + 80)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,6 +123,12 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
 }
+
+- (void)resetInterface
+{
+}
+
+#pragma mark profileTableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -148,8 +174,20 @@
     return headerView;
 }
 
-- (void)resetInterface
+#pragma mark UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if (![textField.text isEqual:@""]) {
+        //Post it!
+        self.constants.user.statement = textField.text;
+        
+        textField.placeholder = textField.text;
+        textField.text = @"";
+    }
+    
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

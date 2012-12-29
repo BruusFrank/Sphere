@@ -11,7 +11,7 @@
 #import "ConstantsHandler.h"
 #import "UIView+CustomTitleView.h"
 
-@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
@@ -20,5 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *studyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workLabel;
 @property (nonatomic, retain) UIView *headerView;
+@property (weak, nonatomic) IBOutlet UITextField *statementTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editTableViewButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *profileScrollView;
 
 @end
