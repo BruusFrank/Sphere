@@ -92,7 +92,7 @@
 {
     [super viewDidAppear:NO];
     
-     [self.profileScrollView setContentSize:CGSizeMake(self.profileScrollView.frame.size.width, self.profileScrollView.frame.size.height + 80)];
+     [self.profileScrollView setContentSize:CGSizeMake(self.profileScrollView.frame.size.width, 584)];
 }
 
 - (void)didReceiveMemoryWarning
