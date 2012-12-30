@@ -71,7 +71,6 @@ User *user;
     }
     
     NSArray *educationArray = information[@"education"];
-    NSLog(@"%@", educationArray);
     for (NSDictionary *eduStuff in educationArray) {
         if ([eduStuff objectForKey:@"concentration"]) {
             for (NSDictionary *stuffDict in eduStuff[@"concentration"]) {
