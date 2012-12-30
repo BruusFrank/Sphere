@@ -860,8 +860,6 @@
         <class className="NewModeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewModeViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addMode:"/>
-                <relationship kind="action" name="changeModeIcon:"/>
                 <relationship kind="outlet" name="changeModeIconButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeImageCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="modeImageCollectionContainer" candidateClass="UIView"/>
@@ -872,7 +870,6 @@
         <class className="ProfileViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
             <relationships>
-                <relationship kind="action" name="editTableView:"/>
                 <relationship kind="outlet" name="ageLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="editTableViewButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="hometownLabel" candidateClass="UILabel"/>
@@ -926,9 +923,6 @@
         </class>
         <class className="SphereViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginButtonAction:"/>
-            </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>

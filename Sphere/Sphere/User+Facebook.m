@@ -42,10 +42,39 @@ User *user;
 - (void)updateWithUserInformation:(NSDictionary *)information
                       updateImage:(BOOL)update
 {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    
     user.name = [information objectForKey:@"name"];
-//    user.age;
-//    user.work;
-//    user.education;
+    NSString* birthdayString = information[@"birthday"];
+    NSDate *birthday = [dateFormatter dateFromString:birthdayString];
+    
+    NSDate* now = [NSDate date];
+    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                       components:NSYearCalendarUnit
+                                       fromDate:birthday
+                                       toDate:now
+                                       options:0];
+    NSInteger age = [ageComponents year];
+    user.age = [NSNumber numberWithInt:age];
+    
+    NSArray *workArray = information[@"work"];
+    for (NSDictionary *workStuff in workArray) {
+        if ([workStuff objectForKey:@"position"]) {
+            NSDictionary *position = workStuff[@"position"];
+            user.work = position[@"name"];
+        }
+    }
+    
+    NSArray *educationArray = information[@"education"];
+    for (NSDictionary *eduStuff in educationArray) {
+        if ([eduStuff objectForKey:@"concentration"]) {
+            for (NSDictionary *stuffDict in eduStuff[@"concentration"]) {
+                user.education = stuffDict[@"name"];
+            }
+        }
+    }
+    user.hometown = information[@"location"][@"name"];
     
     if (update) {
         // Download the user's facebook profile picture

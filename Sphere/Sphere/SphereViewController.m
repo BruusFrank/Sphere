@@ -89,6 +89,7 @@
             self.HUD.labelText = @"Completed";
             [self.HUD show:NO];
             [VC getFacebookInformation];
+            NSLog(@"%@", user);
         }
     }];
 }

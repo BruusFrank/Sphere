@@ -81,6 +81,7 @@
     self.studyLabel.textColor = self.constants.COLOR_WHITE;
     self.workLabel.text = self.constants.user.work;
     self.workLabel.textColor = self.constants.COLOR_WHITE;
+    self.hometownLabel.text = self.constants.user.hometown;
     
     if (![self.constants.user.statement isEqualToString:@""] && self.constants.user.statement) {
         self.statementTextField.placeholder = self.constants.user.statement;
