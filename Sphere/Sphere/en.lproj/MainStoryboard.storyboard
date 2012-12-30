@@ -717,23 +717,6 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Study" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="189" translatesAutoresizingMaskIntoConstraints="NO" id="VEo-ap-Jmt">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="189" id="IBP-hG-8d4"/>
-                                            <constraint firstAttribute="height" constant="30" id="Ysu-AM-QBN"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Work" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="189" translatesAutoresizingMaskIntoConstraints="NO" id="E8k-ns-pRd">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="LwH-c3-MWS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Personal statement:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urQ-f7-0KK">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="6To-cQ-zCB"/>
@@ -757,7 +740,6 @@
                                     <constraint firstItem="Di2-pz-viF" firstAttribute="baseline" secondItem="1NV-2y-oAP" secondAttribute="baseline" type="default" id="4ao-RD-vP0"/>
                                     <constraint firstItem="daM-NU-ruA" firstAttribute="top" secondItem="urQ-f7-0KK" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4gd-9S-FrZ"/>
                                     <constraint firstItem="ndf-B9-zdT" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8FZ-Dj-K0o"/>
-                                    <constraint firstItem="VEo-ap-Jmt" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="99" id="90N-qX-hyv"/>
                                     <constraint firstItem="daM-NU-ruA" firstAttribute="centerX" secondItem="nvk-P3-fMN" secondAttribute="centerX" type="default" id="E6S-gC-WGr"/>
                                     <constraint firstAttribute="trailing" secondItem="daM-NU-ruA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IUU-74-yAH"/>
                                     <constraint firstItem="jwm-RU-7dY" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="94" id="LTH-fV-bhL"/>
@@ -768,15 +750,11 @@
                                     <constraint firstItem="urQ-f7-0KK" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WRR-fX-GXe"/>
                                     <constraint firstItem="TAR-CC-pR7" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Wnj-57-HF3"/>
                                     <constraint firstItem="ndf-B9-zdT" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="125" id="XxL-eT-ygj"/>
-                                    <constraint firstItem="VEo-ap-Jmt" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="96" id="afI-hF-too"/>
                                     <constraint firstItem="urQ-f7-0KK" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="157" id="f72-nc-jGw"/>
-                                    <constraint firstItem="VEo-ap-Jmt" firstAttribute="trailing" secondItem="E8k-ns-pRd" secondAttribute="trailing" type="default" id="ieU-CW-XQE"/>
-                                    <constraint firstItem="E8k-ns-pRd" firstAttribute="leading" secondItem="VEo-ap-Jmt" secondAttribute="leading" type="default" id="ltv-E1-NJu"/>
+                                    <constraint firstItem="Di2-pz-viF" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="128" id="hk0-Mn-pKA"/>
                                     <constraint firstItem="jwm-RU-7dY" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="29" id="oo4-PN-ggH"/>
                                     <constraint firstItem="V4n-i7-oWX" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="94" id="que-Kx-UBe"/>
-                                    <constraint firstItem="VEo-ap-Jmt" firstAttribute="centerX" secondItem="Di2-pz-viF" secondAttribute="centerX" type="default" id="tsp-EY-lmM"/>
                                     <constraint firstItem="Rpz-gO-k4U" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="212" id="u7e-fL-CeX"/>
-                                    <constraint firstItem="E8k-ns-pRd" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="127" id="wgz-QE-owk"/>
                                     <constraint firstAttribute="bottom" secondItem="Rpz-gO-k4U" secondAttribute="bottom" constant="-108" id="yqr-oh-guu"/>
                                     <constraint firstItem="TAR-CC-pR7" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="z13-zP-8dN"/>
                                     <constraint firstAttribute="trailing" secondItem="Rpz-gO-k4U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zlh-gK-tz7"/>
@@ -807,8 +785,6 @@
                         <outlet property="profileScrollView" destination="nvk-P3-fMN" id="Sih-D0-4xz"/>
                         <outlet property="profileTableView" destination="Rpz-gO-k4U" id="43W-hB-qzP"/>
                         <outlet property="statementTextField" destination="daM-NU-ruA" id="kVZ-fW-SG5"/>
-                        <outlet property="studyLabel" destination="VEo-ap-Jmt" id="6m0-UI-cic"/>
-                        <outlet property="workLabel" destination="E8k-ns-pRd" id="lxa-uX-HuO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxC-t7-5KR" userLabel="First Responder" sceneMemberID="firstResponder"/>

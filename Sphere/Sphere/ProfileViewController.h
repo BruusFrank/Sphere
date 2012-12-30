@@ -17,8 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *ageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *hometownLabel;
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
-@property (weak, nonatomic) IBOutlet UILabel *studyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *workLabel;
 @property (nonatomic, retain) UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITextField *statementTextField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editTableViewButton;
