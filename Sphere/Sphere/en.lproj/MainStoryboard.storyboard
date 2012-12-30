@@ -678,15 +678,16 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" type="user" id="Buu-d7-XL2"/>
                                             <constraint firstAttribute="width" constant="73" id="JEH-rn-302"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
                                         <color key="textColor" red="0.1058823529" green="0.69411764710000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Work:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndf-B9-zdT">
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="9LM-JL-Kl0"/>
                                             <constraint firstAttribute="width" constant="50" id="mj3-U0-GNs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
                                         <color key="textColor" red="0.1058823529" green="0.69411764710000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -716,16 +717,20 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Study" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="189" translatesAutoresizingMaskIntoConstraints="NO" id="VEo-ap-Jmt">
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Study" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="189" translatesAutoresizingMaskIntoConstraints="NO" id="VEo-ap-Jmt">
                                         <constraints>
                                             <constraint firstAttribute="width" constant="189" id="IBP-hG-8d4"/>
+                                            <constraint firstAttribute="height" constant="30" id="Ysu-AM-QBN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Work" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="189" translatesAutoresizingMaskIntoConstraints="NO" id="E8k-ns-pRd">
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Work" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="189" translatesAutoresizingMaskIntoConstraints="NO" id="E8k-ns-pRd">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="LwH-c3-MWS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -750,29 +755,29 @@
                                 <constraints>
                                     <constraint firstItem="daM-NU-ruA" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3dg-d4-pWP"/>
                                     <constraint firstItem="Di2-pz-viF" firstAttribute="baseline" secondItem="1NV-2y-oAP" secondAttribute="baseline" type="default" id="4ao-RD-vP0"/>
-                                    <constraint firstItem="Rpz-gO-k4U" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="200" id="7fJ-Fp-awX"/>
+                                    <constraint firstItem="daM-NU-ruA" firstAttribute="top" secondItem="urQ-f7-0KK" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4gd-9S-FrZ"/>
                                     <constraint firstItem="ndf-B9-zdT" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8FZ-Dj-K0o"/>
                                     <constraint firstItem="VEo-ap-Jmt" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="99" id="90N-qX-hyv"/>
                                     <constraint firstItem="daM-NU-ruA" firstAttribute="centerX" secondItem="nvk-P3-fMN" secondAttribute="centerX" type="default" id="E6S-gC-WGr"/>
                                     <constraint firstAttribute="trailing" secondItem="daM-NU-ruA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IUU-74-yAH"/>
                                     <constraint firstItem="jwm-RU-7dY" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="94" id="LTH-fV-bhL"/>
-                                    <constraint firstItem="VEo-ap-Jmt" firstAttribute="baseline" secondItem="V4n-i7-oWX" secondAttribute="baseline" type="default" id="MbZ-9O-jnf"/>
                                     <constraint firstItem="V4n-i7-oWX" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="N9T-nT-9ae"/>
                                     <constraint firstItem="Rpz-gO-k4U" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="OLD-dW-aCe"/>
                                     <constraint firstItem="1NV-2y-oAP" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="51" id="OPN-hf-S2b"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rpz-gO-k4U" secondAttribute="bottom" constant="-96" id="PXh-jV-lyX"/>
                                     <constraint firstItem="jwm-RU-7dY" firstAttribute="leading" secondItem="1NV-2y-oAP" secondAttribute="leading" type="default" id="Vl3-uc-ywK"/>
                                     <constraint firstItem="urQ-f7-0KK" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WRR-fX-GXe"/>
                                     <constraint firstItem="TAR-CC-pR7" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Wnj-57-HF3"/>
+                                    <constraint firstItem="ndf-B9-zdT" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="125" id="XxL-eT-ygj"/>
+                                    <constraint firstItem="VEo-ap-Jmt" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="96" id="afI-hF-too"/>
+                                    <constraint firstItem="urQ-f7-0KK" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="157" id="f72-nc-jGw"/>
                                     <constraint firstItem="VEo-ap-Jmt" firstAttribute="trailing" secondItem="E8k-ns-pRd" secondAttribute="trailing" type="default" id="ieU-CW-XQE"/>
                                     <constraint firstItem="E8k-ns-pRd" firstAttribute="leading" secondItem="VEo-ap-Jmt" secondAttribute="leading" type="default" id="ltv-E1-NJu"/>
-                                    <constraint firstItem="daM-NU-ruA" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="172" id="lv7-mR-cJL"/>
-                                    <constraint firstItem="E8k-ns-pRd" firstAttribute="baseline" secondItem="ndf-B9-zdT" secondAttribute="baseline" type="default" id="nl6-o6-lW1"/>
                                     <constraint firstItem="jwm-RU-7dY" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="29" id="oo4-PN-ggH"/>
                                     <constraint firstItem="V4n-i7-oWX" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="94" id="que-Kx-UBe"/>
-                                    <constraint firstItem="ndf-B9-zdT" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="119" id="rpn-LP-OBW"/>
                                     <constraint firstItem="VEo-ap-Jmt" firstAttribute="centerX" secondItem="Di2-pz-viF" secondAttribute="centerX" type="default" id="tsp-EY-lmM"/>
-                                    <constraint firstItem="urQ-f7-0KK" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="149" id="uGW-a4-Aut"/>
+                                    <constraint firstItem="Rpz-gO-k4U" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="212" id="u7e-fL-CeX"/>
+                                    <constraint firstItem="E8k-ns-pRd" firstAttribute="top" secondItem="nvk-P3-fMN" secondAttribute="top" constant="127" id="wgz-QE-owk"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rpz-gO-k4U" secondAttribute="bottom" constant="-108" id="yqr-oh-guu"/>
                                     <constraint firstItem="TAR-CC-pR7" firstAttribute="leading" secondItem="nvk-P3-fMN" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="z13-zP-8dN"/>
                                     <constraint firstAttribute="trailing" secondItem="Rpz-gO-k4U" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zlh-gK-tz7"/>
                                 </constraints>
@@ -870,6 +875,7 @@
         <class className="ProfileViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editTableView:"/>
                 <relationship kind="outlet" name="ageLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="editTableViewButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="hometownLabel" candidateClass="UILabel"/>

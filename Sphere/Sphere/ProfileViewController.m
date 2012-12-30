@@ -64,35 +64,13 @@
     
     self.profileTableView.delegate = self;
     self.profileTableView.dataSource = self;
-    
-    self.profilePictureImageView.image = [[UIImage imageWithData:self.constants.user.image] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
-    
-    self.profilePictureImageView.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.profilePictureImageView.layer.shadowOffset = CGSizeMake(0, 0);
-    self.profilePictureImageView.layer.shadowOpacity = 1.0;
-    self.profilePictureImageView.layer.shadowRadius = 7.0;
-    self.profilePictureImageView.clipsToBounds = NO;
-    
-    self.nameLabel.text = self.constants.user.name;
-    self.nameLabel.textColor = self.constants.COLOR_WHITE;
-    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.constants.user.age];
-    self.ageLabel.textColor = self.constants.COLOR_WHITE;
-    self.studyLabel.text = self.constants.user.education;
-    self.studyLabel.textColor = self.constants.COLOR_WHITE;
-    self.workLabel.text = self.constants.user.work;
-    self.workLabel.textColor = self.constants.COLOR_WHITE;
-    self.hometownLabel.text = self.constants.user.hometown;
-    
-    if (![self.constants.user.statement isEqualToString:@""] && self.constants.user.statement) {
-        self.statementTextField.placeholder = self.constants.user.statement;
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
     
-     [self.profileScrollView setContentSize:CGSizeMake(self.profileScrollView.frame.size.width, 584)];
+    [self.profileScrollView setContentSize:CGSizeMake(self.profileScrollView.frame.size.width, self.profileScrollView.frame.size.height + 92)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,6 +91,46 @@
     [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
+    
+    self.profilePictureImageView.image = [[UIImage imageWithData:self.constants.user.image] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
+    
+    self.profilePictureImageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.profilePictureImageView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.profilePictureImageView.layer.shadowOpacity = 1.0;
+    self.profilePictureImageView.layer.shadowRadius = 7.0;
+    self.profilePictureImageView.clipsToBounds = NO;
+    
+    CGSize maxSize = CGSizeMake(189.0f, 30.0f);
+    CGSize studySize = [self.constants.user.education sizeWithFont:[UIFont fontWithName:@"thonburi" size:12.0f] constrainedToSize:maxSize lineBreakMode:NSLineBreakByWordWrapping];
+    CGSize workSize = [self.constants.user.work sizeWithFont:[UIFont fontWithName:@"thonburi" size:12.0f] constrainedToSize:maxSize lineBreakMode:NSLineBreakByWordWrapping];
+    
+    UILabel *studyLabel = [[UILabel alloc] initWithFrame:CGRectMake(99.0f, 98.0f, studySize.width, studySize.height)];
+    UILabel *workLabel = [[UILabel alloc] initWithFrame:CGRectMake(99.0f, 129.0f, workSize.width, workSize.height)];
+    
+    self.nameLabel.text = self.constants.user.name;
+    self.nameLabel.textColor = self.constants.COLOR_WHITE;
+    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.constants.user.age];
+    self.ageLabel.textColor = self.constants.COLOR_WHITE;
+    
+    studyLabel.text = self.constants.user.education;
+    studyLabel.textColor = self.constants.COLOR_WHITE;
+    studyLabel.backgroundColor = [UIColor clearColor];
+    studyLabel.numberOfLines = 3;
+    studyLabel.font = [UIFont fontWithName:@"thonburi" size:12.0f];
+    workLabel.text = self.constants.user.work;
+    workLabel.textColor = self.constants.COLOR_WHITE;
+    workLabel.backgroundColor = [UIColor clearColor];
+    workLabel.numberOfLines = 3;
+    workLabel.font = [UIFont fontWithName:@"thonburi" size:12.0f];;
+    
+    [self.profileScrollView addSubview:studyLabel];
+    [self.profileScrollView addSubview:workLabel];
+    
+    self.hometownLabel.text = self.constants.user.hometown;
+    
+    if (![self.constants.user.statement isEqualToString:@""] && self.constants.user.statement) {
+        self.statementTextField.placeholder = self.constants.user.statement;
+    }
 }
 
 - (void)setupBarButtonItems

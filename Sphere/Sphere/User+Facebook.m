@@ -64,13 +64,21 @@ User *user;
             NSDictionary *position = workStuff[@"position"];
             user.work = position[@"name"];
         }
+        if ([workStuff objectForKey:@"employer"]) {
+            NSDictionary *employer = workStuff[@"employer"];
+            user.work = [user.work stringByAppendingFormat:@", %@", employer[@"name"]];
+        }
     }
     
     NSArray *educationArray = information[@"education"];
+    NSLog(@"%@", educationArray);
     for (NSDictionary *eduStuff in educationArray) {
         if ([eduStuff objectForKey:@"concentration"]) {
             for (NSDictionary *stuffDict in eduStuff[@"concentration"]) {
                 user.education = stuffDict[@"name"];
+            }
+            if ([eduStuff objectForKey:@"school"]) {
+                user.education = [user.education stringByAppendingFormat:@", %@", eduStuff[@"school"][@"name"]];
             }
         }
     }
