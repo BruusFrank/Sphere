@@ -65,8 +65,7 @@ User *user;
             user.work = position[@"name"];
         }
         if ([workStuff objectForKey:@"employer"]) {
-            NSDictionary *employer = workStuff[@"employer"];
-            user.work = [user.work stringByAppendingFormat:@", %@", employer[@"name"]];
+            user.work = [user.work stringByAppendingFormat:@", %@", workStuff[@"employer"][@"name"]];
         }
     }
     
