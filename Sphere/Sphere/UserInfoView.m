@@ -297,9 +297,8 @@
         [requestbutton addTarget:sender
                           action:@selector(sphereRequest:)
                 forControlEvents:UIControlEventTouchDown];
-        [requestbutton setTitle:@"Request" forState:UIControlStateNormal];
         requestbutton.frame = CGRectMake((USER_INFO_WIDTH - 234.0f)/2, 0.0f, 234.0f, 44.0f);
-        [requestbutton setImage:[UIImage imageNamed:@"meet"] forState:UIControlStateNormal];
+        [requestbutton setImage:[UIImage imageNamed:@"meet_button"] forState:UIControlStateNormal];
         [buttonsView addSubview:requestbutton];
     }
     
