@@ -20,6 +20,8 @@ NSIndexPath *selectedCell;
 NSInteger pageIndex;
 NSArray *modes;
 
+NSArray *tableViewInfo;
+
 #pragma mark IBActions
 
 - (void)popController:(id)sender
@@ -82,8 +84,21 @@ NSArray *modes;
 	// Do any additional setup after loading the view.
     
     //Placeholder information:
+    NSString *pInfo = [NSString stringWithFormat:@"%@ from %@", [ConstantsHandler sharedConstants].user.age, [ConstantsHandler sharedConstants].user.hometown];
+    NSString *eInfo = @"";
     
+    if ([ConstantsHandler sharedConstants].user.education) {
+        eInfo = [ConstantsHandler sharedConstants].user.education;
+    } else if ([ConstantsHandler sharedConstants].user.work) {
+        eInfo = [ConstantsHandler sharedConstants].user.work;
+    } else {
+        eInfo = @"Your education and work information.";
+    }
+    NSDictionary *personalInfo = [[NSDictionary alloc] initWithObjectsAndKeys:@"Personal: ", @"title", pInfo, @"subtitle", nil];
+    NSDictionary *employmentInfo = [[NSDictionary alloc] initWithObjectsAndKeys:@"Study/Work: ", @"title", eInfo, @"subtitle", nil];
+    NSDictionary *statement = [[NSDictionary alloc] initWithObjectsAndKeys:@"Statement: ", @"title", [ConstantsHandler sharedConstants].user.statement, @"subtitle", nil];
     
+    tableViewInfo = [NSArray arrayWithObjects:personalInfo, employmentInfo, statement, nil];
     
     self.modesCollection.dataSource = self;
     self.modesCollection.delegate = self;
@@ -171,7 +186,7 @@ NSArray *modes;
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return [tableViewInfo count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -184,10 +199,12 @@ NSArray *modes;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.textLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
-    cell.textLabel.text = @"Education:";
+    NSDictionary *cellInfo = [tableViewInfo objectAtIndex:indexPath.row];
     
-    cell.detailTextLabel.text = @"Studying IT at Aarhus University";
+    cell.textLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
+    cell.textLabel.text = cellInfo[@"title"];
+    
+    cell.detailTextLabel.text = cellInfo[@"subtitle"];
     cell.detailTextLabel.font = [UIFont fontWithName:@"helvetica" size:12.0f];
     cell.detailTextLabel.textColor = [UIColor lightGrayColor];
     
