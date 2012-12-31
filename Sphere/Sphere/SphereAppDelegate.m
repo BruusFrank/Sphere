@@ -66,6 +66,39 @@
 
 - (void)customizeAppearance
 {
+    UIImage *transparent = [UIImage imageNamed:@"transparent.png"];
+    
+    [[UISegmentedControl appearance] setBackgroundImage:transparent forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setBackgroundImage:transparent forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    
+    [[UISegmentedControl appearance] setDividerImage:[UIImage imageNamed:@"transparent_div"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+    [[UISegmentedControl appearance] setDividerImage:[UIImage imageNamed:@"transparent_div"] forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    //Text color for segmented control
+    NSDictionary *textAttributesSelected = [NSDictionary dictionaryWithObjectsAndKeys:[ConstantsHandler sharedConstants].COLOR_CYANID_BLUE,
+                                            UITextAttributeTextColor,
+                                            [UIColor colorWithWhite:1 alpha:0],
+                                            UITextAttributeTextShadowColor,
+                                            [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+                                            UITextAttributeTextShadowOffset,
+                                            [UIFont fontWithName:@"Thonburi" size:14.0f],
+                                            UITextAttributeFont,
+                                            
+                                            nil];
+    
+    NSDictionary *textAttributesNormal = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor lightGrayColor],
+                                          UITextAttributeTextColor,
+                                          [UIColor colorWithWhite:1 alpha:0],
+                                          UITextAttributeTextShadowColor,
+                                          [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+                                          UITextAttributeTextShadowOffset,
+                                          [UIFont fontWithName:@"Thonburi" size:14.0f],
+                                          UITextAttributeFont,
+                                          
+                                          nil];
+    
+    [[UISegmentedControl appearance] setTitleTextAttributes:textAttributesNormal forState:UIControlStateNormal];
+    [[UISegmentedControl appearance] setTitleTextAttributes:textAttributesSelected forState:UIControlStateSelected];
 }
 
 @end

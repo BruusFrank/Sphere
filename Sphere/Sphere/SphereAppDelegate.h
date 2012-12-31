@@ -13,6 +13,8 @@
 
 #import "UIImageView+GradientTexture.h"
 
+#import "ConstantsHandler.h"
+
 @interface SphereAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

@@ -501,6 +501,43 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtA-Ll-igO">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="user_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-la-IrU">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="I9t-9W-eP3"/>
+                                            <constraint firstAttribute="height" constant="60" id="pwB-JK-2Bt"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="John Doe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRG-FW-eDl">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="IE1-kv-htB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mph-MI-Hcu">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="95" id="edN-Oo-9pn"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Interests" width="55"/>
+                                            <segment title="Skills" width="40"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" type="user" id="2Xa-As-SEd"/>
+                                    <constraint firstItem="sqT-la-IrU" firstAttribute="top" secondItem="mtA-Ll-igO" secondAttribute="top" type="default" id="N7l-EP-oHs"/>
+                                    <constraint firstItem="mph-MI-Hcu" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" constant="72" id="NUp-dA-gcg"/>
+                                    <constraint firstItem="sqT-la-IrU" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" type="default" id="QfI-8L-vIT"/>
+                                    <constraint firstItem="mph-MI-Hcu" firstAttribute="centerY" secondItem="mtA-Ll-igO" secondAttribute="centerY" type="default" id="Vvc-vp-psb"/>
+                                    <constraint firstItem="vRG-FW-eDl" firstAttribute="top" secondItem="mtA-Ll-igO" secondAttribute="top" constant="10" id="lfM-CE-3TT"/>
+                                    <constraint firstItem="vRG-FW-eDl" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" constant="73" id="ljc-z9-dii"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xf-wJ-e7s" userLabel="Collection container">
                                 <subviews>
                                     <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y4d-Iy-Cyt">
@@ -614,19 +651,24 @@
                             <constraint firstItem="I3o-eO-54h" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="3J5-oO-q5u"/>
                             <constraint firstItem="I3o-eO-54h" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="4Ov-9f-v0U"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="bottom" secondItem="S8o-YX-LSk" secondAttribute="bottom" type="user" id="7NY-v0-b0S"/>
-                            <constraint firstItem="fcj-D0-Z7z" firstAttribute="centerX" secondItem="I3o-eO-54h" secondAttribute="centerX" type="default" id="UcF-Np-0yI"/>
+                            <constraint firstItem="mtA-Ll-igO" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="Mm9-RN-0nA"/>
+                            <constraint firstItem="mtA-Ll-igO" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="Oaj-vM-r84"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="top" secondItem="I3o-eO-54h" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YxB-6r-GGJ"/>
+                            <constraint firstItem="mtA-Ll-igO" firstAttribute="top" secondItem="S8o-YX-LSk" secondAttribute="top" constant="-1" type="user" id="hfE-pR-NIE"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="kK4-4L-dE1"/>
+                            <constraint firstItem="mtA-Ll-igO" firstAttribute="centerX" secondItem="fcj-D0-Z7z" secondAttribute="centerX" type="default" id="q6W-3L-kiK"/>
                             <constraint firstItem="I3o-eO-54h" firstAttribute="top" secondItem="fcj-D0-Z7z" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="snu-fz-XA2"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="vPY-ny-K9i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lWO-Aa-IeQ"/>
                     <connections>
+                        <outlet property="cellStyleView" destination="mtA-Ll-igO" id="iv3-qI-LQ9"/>
                         <outlet property="editModeTableView" destination="I3o-eO-54h" id="Ltk-Dt-qVW"/>
                         <outlet property="modeCollectionContainer" destination="1xf-wJ-e7s" id="yN2-bc-qSX"/>
                         <outlet property="modesCollection" destination="0hI-BN-ve8" id="eCo-5v-fVa"/>
                         <outlet property="modesPageControl" destination="Y4d-Iy-Cyt" id="Eg0-bS-o1D"/>
+                        <outlet property="segmentedControl" destination="mph-MI-Hcu" id="qrr-7L-27W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofa-58-nnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -830,6 +872,7 @@
         <image name="sphere_logo.png" width="188" height="251"/>
         <image name="textfield_bg_blue.png" width="200" height="30"/>
         <image name="textfield_bg_white.png" width="200" height="30"/>
+        <image name="user_placeholder.png" width="150" height="150"/>
     </resources>
     <classes>
         <class className="EditModeCell" superclassName="UICollectionViewCell">
@@ -842,10 +885,12 @@
         <class className="EditModeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EditModeViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="cellStyleView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="editModeTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="modeCollectionContainer" candidateClass="UIView"/>
                 <relationship kind="outlet" name="modesCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="modesPageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
@@ -854,6 +899,8 @@
         <class className="NewModeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewModeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addMode:"/>
+                <relationship kind="action" name="changeModeIcon:"/>
                 <relationship kind="outlet" name="changeModeIconButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="modeImageCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="modeImageCollectionContainer" candidateClass="UIView"/>

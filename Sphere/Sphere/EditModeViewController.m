@@ -81,6 +81,10 @@ NSArray *modes;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    //Placeholder information:
+    
+    
+    
     self.modesCollection.dataSource = self;
     self.modesCollection.delegate = self;
     
@@ -91,7 +95,7 @@ NSArray *modes;
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     NSArray *descriptors = [NSArray arrayWithObjects:activeDescriptor, nameDescriptor, nil];
     modes = [[[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects].mutableCopy sortedArrayUsingDescriptors:descriptors];
-    
+        
     [self setupMainLayout];
 }
 
@@ -122,6 +126,11 @@ NSArray *modes;
     self.modeCollectionContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_bg"]];
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
+    self.cellStyleView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cell_style_bg.png"]];
+    
+    [self.segmentedControl addTarget:self
+                              action:@selector(segmentedControlValueChanged:)
+                    forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)setupBarButtonItems
@@ -138,6 +147,19 @@ NSArray *modes;
 {
     pageIndex = 0;
     selectedCell = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    [self resetViewData];
+}
+
+- (void)resetViewData
+{
+    if ([[ConstantsHandler sharedConstants].activeMode.mainCellShows isEqual:@"interests"]) {
+        self.segmentedControl.selectedSegmentIndex = 0;
+    } else {
+        self.segmentedControl.selectedSegmentIndex = 1;
+    }
+    
+    [self.editModeTableView reloadData];
 }
 
 #pragma mark UITableViewDataSource
@@ -219,10 +241,10 @@ NSArray *modes;
     }
     
     
-//    if ([indexPath isEqual:selectedCell]) {
-//        cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
-//        [self.modesCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-//    }
+    //    if ([indexPath isEqual:selectedCell]) {
+    //        cell.modeTitle.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+    //        [self.modesCollection selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    //    }
     
     return cell;
 }
@@ -238,6 +260,8 @@ NSArray *modes;
     constants.activeMode = [modes objectAtIndex:(indexPath.row + indexPath.section * 4)];
     
     selectedCell = indexPath;
+    
+    [self resetViewData];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -253,6 +277,19 @@ NSArray *modes;
     CGFloat pageWidth = scrollView.frame.size.width;
     int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.modesPageControl.currentPage = page;
+}
+
+#pragma mark segmented control
+
+- (void)segmentedControlValueChanged:(id)sender
+{
+    if([self.segmentedControl selectedSegmentIndex] == 0){
+        //Set interests active.
+        [ConstantsHandler sharedConstants].activeMode.mainCellShows = @"interests";
+    }else {
+        //Set skills active.
+        [ConstantsHandler sharedConstants].activeMode.mainCellShows = @"skills";
+    }
 }
 
 @end

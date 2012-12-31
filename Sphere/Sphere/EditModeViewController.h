@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *modesPageControl;
 @property (weak, nonatomic) IBOutlet UIView *modeCollectionContainer;
 @property (weak, nonatomic) IBOutlet UITableView *editModeTableView;
+@property (weak, nonatomic) IBOutlet UIView *cellStyleView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (strong, nonatomic) NSMutableArray *modeImages;
 @property (strong, nonatomic) NSMutableArray *modeTitles;
