@@ -147,6 +147,10 @@
 		EF31FBD6167FCD290052278F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF31FBD5167FCD290052278F /* Parse.framework */; };
 		EF490C85168A788400EA260E /* meet.png in Resources */ = {isa = PBXBuildFile; fileRef = EF490C83168A788400EA260E /* meet.png */; };
 		EF490C86168A788400EA260E /* meet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF490C84168A788400EA260E /* meet@2x.png */; };
+		EFC804BC1691C321001994FE /* edit_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC804B81691C321001994FE /* edit_button.png */; };
+		EFC804BD1691C321001994FE /* edit_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC804B91691C321001994FE /* edit_button@2x.png */; };
+		EFC804BE1691C321001994FE /* save_button.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC804BA1691C321001994FE /* save_button.png */; };
+		EFC804BF1691C321001994FE /* save_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC804BB1691C321001994FE /* save_button@2x.png */; };
 		EFCA089C167FC76D00FB4041 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCA089B167FC76D00FB4041 /* AudioToolbox.framework */; };
 		EFCA089E167FC77900FB4041 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCA089D167FC77900FB4041 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EFCA08A0167FC78200FB4041 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFCA089F167FC78200FB4041 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -352,6 +356,10 @@
 		EF31FBD5167FCD290052278F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		EF490C83168A788400EA260E /* meet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meet.png; sourceTree = "<group>"; };
 		EF490C84168A788400EA260E /* meet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meet@2x.png"; sourceTree = "<group>"; };
+		EFC804B81691C321001994FE /* edit_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_button.png; sourceTree = "<group>"; };
+		EFC804B91691C321001994FE /* edit_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_button@2x.png"; sourceTree = "<group>"; };
+		EFC804BA1691C321001994FE /* save_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save_button.png; sourceTree = "<group>"; };
+		EFC804BB1691C321001994FE /* save_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save_button@2x.png"; sourceTree = "<group>"; };
 		EFCA089B167FC76D00FB4041 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		EFCA089D167FC77900FB4041 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		EFCA089F167FC78200FB4041 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -581,6 +589,10 @@
 		26342975166936EE00280B39 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				EFC804B81691C321001994FE /* edit_button.png */,
+				EFC804B91691C321001994FE /* edit_button@2x.png */,
+				EFC804BA1691C321001994FE /* save_button.png */,
+				EFC804BB1691C321001994FE /* save_button@2x.png */,
 				EF490C83168A788400EA260E /* meet.png */,
 				EF490C84168A788400EA260E /* meet@2x.png */,
 				26F2F5861678D52900830499 /* add_mode_button.png */,
@@ -1010,6 +1022,10 @@
 				26F2F58B167AAB5500830499 /* kbj.jpg in Resources */,
 				EF490C85168A788400EA260E /* meet.png in Resources */,
 				EF490C86168A788400EA260E /* meet@2x.png in Resources */,
+				EFC804BC1691C321001994FE /* edit_button.png in Resources */,
+				EFC804BD1691C321001994FE /* edit_button@2x.png in Resources */,
+				EFC804BE1691C321001994FE /* save_button.png in Resources */,
+				EFC804BF1691C321001994FE /* save_button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

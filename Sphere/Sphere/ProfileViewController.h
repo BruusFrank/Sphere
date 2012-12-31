@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
 @property (nonatomic, retain) UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITextField *statementTextField;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editTableViewButton;
+@property (weak, nonatomic) IBOutlet UIButton *editTableViewButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *profileScrollView;
 
 @end

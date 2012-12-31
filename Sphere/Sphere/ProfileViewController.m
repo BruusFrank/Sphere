@@ -19,6 +19,7 @@
 
 @implementation ProfileViewController
 
+int editInt;
 - (ConstantsHandler *)constants
 {
     if (!_constants) {
@@ -35,14 +36,17 @@
 }
 
 - (IBAction)editTableView:(id)sender {
-    if ([self.editTableViewButton.title isEqualToString:@"Save"]) {
-        [self.profileTableView setEditing:NO animated:YES];
-        [self.editTableViewButton setTitle:@"Edit"];
-    } else {
+    if (editInt == 1) {
         [self.profileTableView setEditing:YES animated:YES];
-        [self.editTableViewButton setTitle:@"Save"];
+        [self.editTableViewButton setImage:[UIImage imageNamed:@"save_button.png"] forState:UIControlStateNormal];
+        editInt = 0;
+    } else {
+        [self.profileTableView setEditing:NO animated:YES];
+        [self.editTableViewButton setImage:[UIImage imageNamed:@"edit_button.png"] forState:UIControlStateNormal];
+        editInt = 1;
     }
 }
+
 
 #pragma mark view lifecycle
 
@@ -60,10 +64,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    editInt = 1;
+    
     [self setupMainLayout];
     
     self.profileTableView.delegate = self;
     self.profileTableView.dataSource = self;
+    self.statementTextField.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
