@@ -124,7 +124,7 @@ dispatch_queue_t fetchQ = NULL;
     
     kasperBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Bruus Frank", @"name",
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"Design", nil], @"interests",
-                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                [[NSArray alloc] initWithObjects:@"Photoshop", @"Front-end programming", @"iOS development", nil], @"skills",
                 @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                 [UIImage imageNamed:@"kbf.jpg"], @"picture",
                 [NSNumber numberWithInt:1], @"contactable",
@@ -142,7 +142,7 @@ dispatch_queue_t fetchQ = NULL;
     
     soerenBF = [[NSDictionary alloc] initWithObjectsAndKeys:@"Søren Bruus Frank", @"name",
                 [[NSArray alloc] initWithObjects:@"Snowboarding", @"IT", @"iOS development", nil], @"interests",
-                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                [[NSArray alloc] initWithObjects:@"Client-side programming", @"Server-side programming", @"iOS development", nil], @"skills",
                 @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                 [UIImage imageNamed:@"sbf.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"contactable",
@@ -176,7 +176,7 @@ dispatch_queue_t fetchQ = NULL;
             nil];
     pernille = [[NSDictionary alloc] initWithObjectsAndKeys:@"Pernille Bohl Clausen", @"name",
                [[NSArray alloc] initWithObjects:@"Journalism", @"Party-planning", @"Traveling", nil], @"interests",
-                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
+                [[NSArray alloc] initWithObjects:@"Project management", @"Skill2", @"Skill3", nil], @"skills",
                 @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                [UIImage imageNamed:@"pernille.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"contactable",
