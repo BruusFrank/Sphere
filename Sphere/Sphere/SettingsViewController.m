@@ -48,7 +48,7 @@ NSArray *cellArray;
     
     NSArray *modesSection = [[NSArray alloc] initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:@"New mode", @"title", @"plus.png", @"image", nil],
                                                              [[NSDictionary alloc] initWithObjectsAndKeys:@"Edit modes", @"title", @"cogwheel_settings.png", @"image", nil], nil];
-    NSArray *profileSection = [[NSArray alloc] initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:@"My profile", @"title", @"cogwheel_settings.png", @"image", nil], nil];
+    NSArray *profileSection = [[NSArray alloc] initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:@"My profile", @"title", @"profile_button_icon.png", @"image", nil], nil];
     
     cellArray = [[NSArray alloc] initWithObjects:modesSection, profileSection, nil];
     

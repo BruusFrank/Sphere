@@ -10,6 +10,8 @@
 
 #import "ConstantsHandler.h"
 #import "UIView+CustomTitleView.h"
+#import "Skill+Create.h"
+#import "Interest+Create.h"
 
 @interface ProfileViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;

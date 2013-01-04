@@ -19,7 +19,9 @@
 
 @implementation ProfileViewController
 
+NSArray *cellTitlesArray;
 int editInt;
+
 - (ConstantsHandler *)constants
 {
     if (!_constants) {
@@ -63,6 +65,10 @@ int editInt;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    NSArray *skillsArray = [[ConstantsHandler sharedConstants].user.hasSkills allObjects];
+    NSArray *interestsArray = [[ConstantsHandler sharedConstants].user.hasInterests allObjects];
+    
+    cellTitlesArray = [NSArray arrayWithObjects:skillsArray, interestsArray, nil];
     
     editInt = 1;
     
@@ -162,7 +168,7 @@ int editInt;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [[cellTitlesArray objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,13 +179,26 @@ int editInt;
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"profileCell"];
     }
+
+    NSManagedObject *obj = [[cellTitlesArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    if (indexPath.section == 1) {
+        Skill *skill = (Skill *)obj;
+        cell.textLabel.text = skill.name;
+    } else {
+        Interest *interest = (Interest *)obj;
+        cell.textLabel.text = interest.name;
+    }
+    
+    cell.textLabel.font = [UIFont fontWithName:@"thonburi" size:16.0f];
+    
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 1) {
-        return @"Interrests";
+        return @"Interests";
     } else {
         return @"Skills";
     }

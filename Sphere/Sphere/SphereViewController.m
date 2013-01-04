@@ -115,7 +115,8 @@
                     [constants.user addHasInterestsObject:[Interest interestWithName:@"Partying" inContext:document.managedObjectContext]];
                     
                     [constants.user addHasSkillsObject:[Skill skillWithName:@"iOS development" inContext:document.managedObjectContext]];
-                    [constants.user addHasSkillsObject:[Skill skillWithName:@"Software Architecture" inContext:document.managedObjectContext]];
+                    [constants.user addHasSkillsObject:[Skill skillWithName:@"Software architecture" inContext:document.managedObjectContext]];
+                    [constants.user addHasSkillsObject:[Skill skillWithName:@"Interaction design" inContext:document.managedObjectContext]];
                     
                     Mode *study = [Mode modeWithName:@"Study" withImage:[UIImage imageNamed:@"mode_study.png"] inContext:document.managedObjectContext];
                     study.mainCellShows = @"skills";

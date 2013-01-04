@@ -242,6 +242,7 @@ dispatch_queue_t fetchQ = NULL;
     
     [self setupMenu];
     [self resetInterface];
+    [self resetMenu];
 }
 
 - (void)didReceiveMemoryWarning
@@ -294,17 +295,6 @@ dispatch_queue_t fetchQ = NULL;
     if (![self.constants.user.statement isEqual:@""] && self.constants.user.statement) {
         self.statementTextField.placeholder = self.constants.user.statement;
     }
-    
-    NSString *tags = @"";
-    NSArray *interests = [self.constants.user.hasInterests allObjects];    
-    
-    for (int i = 0; i < [interests count]; i++) {
-        if (i != 0) {
-            tags = [tags stringByAppendingString:@", "];
-        }
-        tags = [tags stringByAppendingString:[(Interest *)[interests objectAtIndex:i] name]];
-    }
-    self.menuTags.text = tags;
 }
 
 - (void)setupBarButtonItems
@@ -333,6 +323,23 @@ dispatch_queue_t fetchQ = NULL;
     
     [self.sphereUserTableView setContentOffset:CGPointMake(0.0f, -65.0f) animated:NO];
     [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.sphereUserTableView];
+}
+
+- (void)resetMenu
+{
+    NSString *tags = @"";
+    NSArray *interests = [self.constants.user.hasInterests allObjects];
+    if ([self.constants.activeMode.mainCellShows isEqual:@"skills"]) {
+        interests = [self.constants.user.hasSkills allObjects];
+    }
+    
+    for (int i = 0; i < [interests count]; i++) {
+        if (i != 0) {
+            tags = [tags stringByAppendingString:@", "];
+        }
+        tags = [tags stringByAppendingString:[(Interest *)[interests objectAtIndex:i] name]];
+    }
+    self.menuTags.text = tags;
 }
 
 #pragma mark UITableViewDataSource
@@ -527,6 +534,7 @@ dispatch_queue_t fetchQ = NULL;
         if (indexPath.section == 1) {
             Mode *mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
             self.constants.activeMode = mode;
+            [self resetMenu];
         }
     }
 }
