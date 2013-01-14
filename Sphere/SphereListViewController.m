@@ -62,6 +62,8 @@ NSArray *menuSections;
 BOOL menuShown = NO;
 BOOL cellExpanded = NO;
 dispatch_queue_t fetchQ = NULL;
+BOOL broadcasting = YES;
+BOOL contactable = NO;
 
 #pragma mark IBActions
 
@@ -128,13 +130,13 @@ dispatch_queue_t fetchQ = NULL;
                 @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
                 [UIImage imageNamed:@"kbf.jpg"], @"picture",
                 [NSNumber numberWithInt:1], @"contactable",
-                [NSNumber numberWithInt:1], @"request",
+                [NSNumber numberWithInt:0], @"request",
                 nil];
     
     kasperBJ = [[NSDictionary alloc] initWithObjectsAndKeys:@"Kasper Buhl Jakobsen", @"name",
                 [[NSArray alloc] initWithObjects:@"Tricking", @"IT", @"Android", nil], @"interests",
-                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", statement, @"statement", @"Instruktor (Innovation processes), Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
+                [[NSArray alloc] initWithObjects:@"Android development", @"Poker", @"Concept development", nil], @"skills",
+                @"23", @"age", statement, @"statement", @"Instruktor (Innovation processes), Aarhus University", @"work", @"Aarhus, Denmark", @"hometown", @"Information Technology, Aarhus University", @"education",
                 [UIImage imageNamed:@"kbj.jpg"], @"picture",
                 [NSNumber numberWithInt:0], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
@@ -151,8 +153,8 @@ dispatch_queue_t fetchQ = NULL;
     
     boP = [[NSDictionary alloc] initWithObjectsAndKeys:@"Bo Penstoft", @"name",
            [[NSArray alloc] initWithObjects:@"Gaming", @"IT", @"Exercise", nil], @"interests",
-           [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-           @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
+           [[NSArray alloc] initWithObjects:@"After effects", @"Business models", nil], @"skills",
+           @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"IT supporter, Danske Bank", @"work", @"Aarhus, Denmark", @"hometown",
            [UIImage imageNamed:@"bo.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"contactable",
            [NSNumber numberWithInt:0], @"request",
@@ -160,24 +162,24 @@ dispatch_queue_t fetchQ = NULL;
     
     courtney = [[NSDictionary alloc] initWithObjectsAndKeys:@"Courtney Davis", @"name",
                [[NSArray alloc] initWithObjects:@"Movies", @"Journalism", @"Exercise", nil], @"interests",
-                [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
+                [[NSArray alloc] initWithObjects:@"Photography", @"Writing", @"Article layout", nil], @"skills",
+                @"23", @"age", @"War, Media and Globalization, Aarhus University", @"education", statement, @"statement", @"Cashier, Coles", @"work", @"Aarhus, Denmark", @"hometown",
                [UIImage imageNamed:@"cd.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
                nil];
     stine = [[NSDictionary alloc] initWithObjectsAndKeys:@"Stine Frank Kristensen", @"name",
             [[NSArray alloc] initWithObjects:@"Economics", @"Horseriding", @"Cleaning", nil], @"interests",
-             [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-             @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
+             [[NSArray alloc] initWithObjects:@"Micro economics", @"Project planning", nil], @"skills",
+             @"23", @"age", @"Økonomi, Aarhus University", @"education", statement, @"statement", @"Postomdeler, Post Danmark", @"work", @"Aarhus, Denmark", @"hometown",
             [UIImage imageNamed:@"stine.jpg"], @"picture",
             [NSNumber numberWithInt:0], @"contactable",
              [NSNumber numberWithInt:0], @"request",
             nil];
     pernille = [[NSDictionary alloc] initWithObjectsAndKeys:@"Pernille Bohl Clausen", @"name",
                [[NSArray alloc] initWithObjects:@"Journalism", @"Party-planning", @"Traveling", nil], @"interests",
-                [[NSArray alloc] initWithObjects:@"Project management", @"Skill2", @"Skill3", nil], @"skills",
-                @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
+                [[NSArray alloc] initWithObjects:@"Project management", @"HTML & CSS", @"Digital media layout", nil], @"skills",
+                @"23", @"age", @"Digital design, Aarhus University", @"education", statement, @"statement", @"Piccolo, Scandic Hotel", @"work", @"Aarhus, Denmark", @"hometown",
                [UIImage imageNamed:@"pernille.jpg"], @"picture",
                [NSNumber numberWithInt:1], @"contactable",
                 [NSNumber numberWithInt:0], @"request",
@@ -191,9 +193,9 @@ dispatch_queue_t fetchQ = NULL;
               [NSNumber numberWithInt:0], @"request",
              nil];
     ida = [[NSDictionary alloc] initWithObjectsAndKeys:@"Ida Hekman Nielsen", @"name",
-           [[NSArray alloc] initWithObjects:@"Photography", @"Media", @"Money", nil], @"interests",
-           [[NSArray alloc] initWithObjects:@"Skill1", @"Skill2", @"Skill3", nil], @"skills",
-           @"23", @"age", @"Information Technology, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
+           [[NSArray alloc] initWithObjects:@"Photography", @"Media", @"Music", nil], @"interests",
+           [[NSArray alloc] initWithObjects:@"HTML", @"Commercial law", nil], @"skills",
+           @"23", @"age", @"Jura, Aarhus University", @"education", statement, @"statement", @"Helpdesk supporter, Aarhus University", @"work", @"Aarhus, Denmark", @"hometown",
            [UIImage imageNamed:@"ida.jpg"], @"picture",
            [NSNumber numberWithInt:1], @"contactable",
            [NSNumber numberWithInt:0], @"request",
@@ -207,7 +209,7 @@ dispatch_queue_t fetchQ = NULL;
              [NSNumber numberWithInt:0], @"request",
              nil];
     
-    users = [[NSArray alloc] initWithObjects:kasperBF, kasperBJ, pernille, soerenBF, ngabe, stine, boP, courtney, ganesh, ida, nil];
+    users = [[NSArray alloc] initWithObjects:kasperBF, kasperBJ, pernille, stine, boP, courtney, ida, nil];
     
     //************************END OF PLACEHOLDER CONTENT**************************.
     
@@ -480,17 +482,21 @@ dispatch_queue_t fetchQ = NULL;
     for (int i = 2; i < [[cell subviews] count]; i++) {
         [[[cell subviews] objectAtIndex:i] removeFromSuperview];
     }
-        
     
     switch (indexPath.section) {
         case 0:
-            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data] atIndex:2];
+            if (indexPath.row == 0) {
+                [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data switchState:broadcasting delegate:self tag:indexPath.row] atIndex:2];
+            } else if (indexPath.row == 1) {
+                [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data switchState:contactable delegate:self tag:indexPath.row] atIndex:2];
+            }
+            
             break;
         case 1:
-            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeMode cellData:data] atIndex:2];
+            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeMode cellData:data switchState:NO delegate:self tag:indexPath.row] atIndex:2];
             break;
         case 2:
-            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeFilter cellData:data] atIndex:2];
+            [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeFilter cellData:data switchState:NO delegate:self tag:indexPath.row] atIndex:2];
             break;
     }
     
@@ -709,6 +715,15 @@ dispatch_queue_t fetchQ = NULL;
         [self.statementTextField resignFirstResponder];
         
         [self resetInterface];
+    }
+}
+
+- (void)flip:(UISwitch *)sender
+{
+    if (sender.tag == 0) {
+        broadcasting = sender.on;
+    } else if (sender.tag == 1) {
+        contactable = sender.on;
     }
 }
 

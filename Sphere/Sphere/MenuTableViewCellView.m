@@ -19,17 +19,19 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame cellType:(CellType)type cellData:(NSDictionary *)data
+- (id)initWithFrame:(CGRect)frame cellType:(CellType)type cellData:(NSDictionary *)data switchState:(BOOL)state delegate:(SphereListViewController *)del tag:(NSInteger)tag
 {
     self = [super initWithFrame:frame];
     if (self) {
         if (type == CellTypeSharing) {
-            [self addSubview:[self cellViewForSharingWithFrame:frame cellData:data]];
+            [self addSubview:[self cellViewForSharingWithFrame:frame cellData:data switchState:state tag:tag]];
         }else if (type == CellTypeMode){
             [self addSubview:[self cellViewForModeWithFrame:frame cellData:data]];
         }else if (type == CellTypeFilter){
             [self addSubview:[self cellViewForFilterWithFrame:frame cellData:data]];
         }
+        
+        self.delegate = del;
     }
     return self;
 }
@@ -43,7 +45,7 @@
 }
 */
 
-- (UIView *)cellViewForSharingWithFrame:(CGRect)frame cellData:(NSDictionary *)data
+- (UIView *)cellViewForSharingWithFrame:(CGRect)frame cellData:(NSDictionary *)data switchState:(BOOL)state tag:(NSInteger)tag
 {
     UIView *sharingView = [[UIView alloc] initWithFrame:frame];
     sharingView.backgroundColor = [UIColor clearColor];
@@ -55,6 +57,12 @@
     sharingTitle.backgroundColor = [UIColor clearColor];
         
     sharingTitle.text = [data objectForKey:@"title"];
+    
+    UISwitch *onoff = [[UISwitch alloc] initWithFrame:CGRectMake(165.0f, 8.0f, 0, 0)];
+    [sharingView insertSubview:onoff atIndex:3];
+    [onoff setOn:state animated:NO];
+    [onoff addTarget:self.delegate action: @selector(flip:) forControlEvents:UIControlEventValueChanged];
+    onoff.tag = tag;
     
     [sharingView addSubview:sharingTitle];
     
