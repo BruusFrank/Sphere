@@ -62,8 +62,6 @@ NSArray *menuSections;
 BOOL menuShown = NO;
 BOOL cellExpanded = NO;
 dispatch_queue_t fetchQ = NULL;
-BOOL broadcasting = YES;
-BOOL contactable = NO;
 
 #pragma mark IBActions
 
@@ -270,8 +268,8 @@ BOOL contactable = NO;
 
 - (void)setupMenu
 {
-    [self.menuNavigationBar setBackgroundImage:[UIImageView gradientTextureWithFrame:self.menuNavigationBar.bounds withImage:[UIImage imageNamed:@"navigation_bar.png"]].image forBarMetrics:UIBarMetricsDefault];
-    self.menuNavigationItem.titleView = [UIView customTitle:@"Quick settings" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
+    [self.menuNavigationBar setBackgroundImage:[UIImageView gradientTextureWithFrame:self.menuNavigationBar.bounds withImage:[UIImage imageNamed:@"navbar_bg.png"]].image forBarMetrics:UIBarMetricsDefault];
+    self.menuNavigationItem.titleView = [UIView customTitle:@"Quick settings" withColor:[ConstantsHandler sharedConstants].COLOR_WHITE inFrame:self.navigationItem.titleView.frame];
     
     self.menuUserPicture.image = [[UIImage imageWithData:self.constants.user.image] scaleAndCropToFit:(60.0f * [[ConstantsHandler sharedConstants] RETINA_FACTOR]) usingMode:NYXCropModeCenter];
     
@@ -476,9 +474,9 @@ BOOL contactable = NO;
     switch (indexPath.section) {
         case 0:
             if (indexPath.row == 0) {
-                [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data switchState:broadcasting delegate:self tag:indexPath.row] atIndex:2];
+                [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data switchState:[[ConstantsHandler sharedConstants].user.broadcasting boolValue] delegate:self tag:indexPath.row] atIndex:2];
             } else if (indexPath.row == 1) {
-                [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data switchState:contactable delegate:self tag:indexPath.row] atIndex:2];
+                [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data switchState:[[ConstantsHandler sharedConstants].user.contactable boolValue] delegate:self tag:indexPath.row] atIndex:2];
             }
             break;
         case 1:
@@ -529,6 +527,8 @@ BOOL contactable = NO;
         if (indexPath.section == 1) {
             Mode *mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
             self.constants.activeMode = mode;
+            self.constants.user.broadcasting = mode.broadcasting;
+            self.constants.user.contactable = mode.contactable;
             [self resetMenuText];
         }
     }
@@ -718,9 +718,9 @@ BOOL contactable = NO;
 - (void)flip:(UISwitch *)sender
 {
     if (sender.tag == 0) {
-        broadcasting = sender.on;
+        [ConstantsHandler sharedConstants].user.broadcasting = [NSNumber numberWithBool:sender.on];
     } else if (sender.tag == 1) {
-        contactable = sender.on;
+        [ConstantsHandler sharedConstants].user.contactable = [NSNumber numberWithBool:sender.on];
     }
 }
 

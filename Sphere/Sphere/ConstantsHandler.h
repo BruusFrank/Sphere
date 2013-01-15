@@ -38,6 +38,7 @@ typedef enum fontType{
 //Fonts.
 @property (strong, nonatomic) UIFont *FONT_NAVBAR_TITLE;
 @property (strong, nonatomic) UIFont *FONT_HEADER;
+@property (strong, nonatomic) UIFont *FONT_SECTION_TITLE_UNGROUPED;
 
 //Retina
 @property (nonatomic, assign, getter=isRetina) BOOL retina;

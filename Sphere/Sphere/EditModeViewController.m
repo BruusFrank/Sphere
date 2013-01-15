@@ -21,6 +21,7 @@ NSInteger pageIndex;
 NSArray *modes;
 
 NSArray *tableViewInfo;
+NSArray *tableViewHeaders;
 
 #pragma mark IBActions
 
@@ -99,6 +100,7 @@ NSArray *tableViewInfo;
     NSDictionary *statement = [[NSDictionary alloc] initWithObjectsAndKeys:@"Statement: ", @"title", [ConstantsHandler sharedConstants].user.statement, @"subtitle", nil];
     
     tableViewInfo = [NSArray arrayWithObjects:personalInfo, employmentInfo, statement, nil];
+    tableViewHeaders = [NSArray arrayWithObjects:@"What do you want to share?", @"Skills", @"Interests", @"Social level", nil];
     
     self.modesCollection.dataSource = self;
     self.modesCollection.delegate = self;
@@ -142,6 +144,11 @@ NSArray *tableViewInfo;
     [self.segmentedControl addTarget:self
                               action:@selector(segmentedControlValueChanged:)
                     forControlEvents:UIControlEventValueChanged];
+    
+    //Setup the background of scroll offset above tableview.
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, -200.0f, 320.0f, 200.0f)];
+    view.backgroundColor = [ConstantsHandler sharedConstants].COLOR_WHITE;
+    [self.editModeTableView addSubview:view];
 }
 
 - (void)setupBarButtonItems
@@ -177,7 +184,12 @@ NSArray *tableViewInfo;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 4;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [tableViewHeaders objectAtIndex:section];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -214,6 +226,23 @@ NSArray *tableViewInfo;
     [cell addSubview:checkbox];
     
     return cell;
+}
+
+#pragma mark UITableViewDelegate
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 240.0f, 20.0f)];
+    headerView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.2f];
+    
+    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 2.0f, 200.0f, 20.0f)];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.textColor = [ConstantsHandler sharedConstants].COLOR_WHITE;
+    headerLabel.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    headerLabel.font = [ConstantsHandler sharedConstants].FONT_SECTION_TITLE_UNGROUPED;
+    
+    [headerView addSubview:headerLabel];
+    return headerView;
 }
 
 #pragma mark UICollectionViewDataSource

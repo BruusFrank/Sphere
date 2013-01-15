@@ -16,7 +16,7 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 3.0f, 200.0f, 30.0f)];
     titleLabel.text = title;
     titleLabel.font = [[ConstantsHandler sharedConstants] FONT_NAVBAR_TITLE];
-    titleLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
+    titleLabel.textColor = color;
     titleLabel.backgroundColor = [UIColor clearColor];
 //    titleLabel.shadowColor = [UIColor blackColor];
 //    titleLabel.shadowOffset = CGSizeMake(0.0f, 0.0f);

@@ -501,43 +501,75 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtA-Ll-igO">
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="user_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-la-IrU">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="I9t-9W-eP3"/>
-                                            <constraint firstAttribute="height" constant="60" id="pwB-JK-2Bt"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="John Doe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRG-FW-eDl">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="IE1-kv-htB"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mph-MI-Hcu">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="95" id="edN-Oo-9pn"/>
-                                        </constraints>
-                                        <segments>
-                                            <segment title="Interests" width="55"/>
-                                            <segment title="Skills" width="40"/>
-                                        </segments>
-                                    </segmentedControl>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I3o-eO-54h">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="81" type="user" id="2Xa-As-SEd"/>
-                                    <constraint firstItem="sqT-la-IrU" firstAttribute="top" secondItem="mtA-Ll-igO" secondAttribute="top" type="default" id="N7l-EP-oHs"/>
-                                    <constraint firstItem="mph-MI-Hcu" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" constant="72" id="NUp-dA-gcg"/>
-                                    <constraint firstItem="sqT-la-IrU" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" type="default" id="QfI-8L-vIT"/>
-                                    <constraint firstItem="mph-MI-Hcu" firstAttribute="centerY" secondItem="mtA-Ll-igO" secondAttribute="centerY" type="default" id="Vvc-vp-psb"/>
-                                    <constraint firstItem="vRG-FW-eDl" firstAttribute="top" secondItem="mtA-Ll-igO" secondAttribute="top" constant="10" id="lfM-CE-3TT"/>
-                                    <constraint firstItem="vRG-FW-eDl" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" constant="73" id="ljc-z9-dii"/>
+                                    <constraint firstAttribute="height" constant="385" id="TD2-UT-9ft"/>
                                 </constraints>
-                            </view>
+                                <color key="separatorColor" white="0.49997148720000001" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="mtA-Ll-igO" userLabel="Table header">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="user_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-la-IrU">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="I9t-9W-eP3"/>
+                                                <constraint firstAttribute="height" constant="60" id="pwB-JK-2Bt"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="What's most valuable to you?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRG-FW-eDl">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="227" id="Jla-hv-Oe6"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                            <color key="textColor" red="0.10588235294117647" green="0.69411764705882351" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mph-MI-Hcu">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="edN-Oo-9pn"/>
+                                            </constraints>
+                                            <segments>
+                                                <segment title="Interests" width="55"/>
+                                                <segment title="Skills" width="40"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="81" type="user" id="2Xa-As-SEd"/>
+                                        <constraint firstAttribute="trailing" secondItem="vRG-FW-eDl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="I9r-iG-dup"/>
+                                        <constraint firstItem="sqT-la-IrU" firstAttribute="top" secondItem="mtA-Ll-igO" secondAttribute="top" type="default" id="N7l-EP-oHs"/>
+                                        <constraint firstItem="mph-MI-Hcu" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" constant="72" id="NUp-dA-gcg"/>
+                                        <constraint firstItem="sqT-la-IrU" firstAttribute="leading" secondItem="mtA-Ll-igO" secondAttribute="leading" type="default" id="QfI-8L-vIT"/>
+                                        <constraint firstItem="mph-MI-Hcu" firstAttribute="centerY" secondItem="mtA-Ll-igO" secondAttribute="centerY" type="default" id="Vvc-vp-psb"/>
+                                        <constraint firstItem="vRG-FW-eDl" firstAttribute="top" secondItem="mtA-Ll-igO" secondAttribute="top" constant="10" id="lfM-CE-3TT"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="editModeCell" textLabel="d9Z-lb-wib" detailTextLabel="j3L-bp-Rua" style="IBUITableViewCellStyleValue2" id="7XT-8o-Toa">
+                                        <rect key="frame" x="0.0" y="103" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9Z-lb-wib">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-bp-Rua">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xf-wJ-e7s" userLabel="Collection container">
                                 <subviews>
                                     <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y4d-Iy-Cyt">
@@ -605,59 +637,14 @@
                                     <constraint firstItem="0hI-BN-ve8" firstAttribute="trailing" secondItem="1xf-wJ-e7s" secondAttribute="trailing" type="default" id="nmR-wc-yUB"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="I3o-eO-54h">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="174" id="W8n-bg-rcq"/>
-                                </constraints>
-                                <color key="separatorColor" white="0.49997148720000001" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="editModeCell" textLabel="d9Z-lb-wib" detailTextLabel="j3L-bp-Rua" style="IBUITableViewCellStyleValue2" id="7XT-8o-Toa">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9Z-lb-wib">
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                    <color key="textColor" red="0.32156862745098042" green="0.40000000000000002" blue="0.56862745098039214" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3L-bp-Rua">
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                            </tableView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sharing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcj-D0-Z7z">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="62" id="CmD-m2-755"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.1058823529" green="0.69411764710000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="I3o-eO-54h" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="3J5-oO-q5u"/>
                             <constraint firstItem="I3o-eO-54h" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="4Ov-9f-v0U"/>
+                            <constraint firstItem="I3o-eO-54h" firstAttribute="top" secondItem="S8o-YX-LSk" secondAttribute="top" type="default" id="5cW-SU-2f6"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="bottom" secondItem="S8o-YX-LSk" secondAttribute="bottom" type="user" id="7NY-v0-b0S"/>
-                            <constraint firstItem="mtA-Ll-igO" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="Mm9-RN-0nA"/>
-                            <constraint firstItem="mtA-Ll-igO" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="Oaj-vM-r84"/>
-                            <constraint firstItem="1xf-wJ-e7s" firstAttribute="top" secondItem="I3o-eO-54h" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="YxB-6r-GGJ"/>
-                            <constraint firstItem="mtA-Ll-igO" firstAttribute="top" secondItem="S8o-YX-LSk" secondAttribute="top" constant="-1" type="user" id="hfE-pR-NIE"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="leading" secondItem="S8o-YX-LSk" secondAttribute="leading" type="default" id="kK4-4L-dE1"/>
-                            <constraint firstItem="mtA-Ll-igO" firstAttribute="centerX" secondItem="fcj-D0-Z7z" secondAttribute="centerX" type="default" id="q6W-3L-kiK"/>
-                            <constraint firstItem="I3o-eO-54h" firstAttribute="top" secondItem="fcj-D0-Z7z" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="snu-fz-XA2"/>
                             <constraint firstItem="1xf-wJ-e7s" firstAttribute="trailing" secondItem="S8o-YX-LSk" secondAttribute="trailing" type="default" id="vPY-ny-K9i"/>
                         </constraints>
                     </view>
@@ -874,103 +861,6 @@
         <image name="textfield_bg_white.png" width="200" height="30"/>
         <image name="user_placeholder.png" width="150" height="150"/>
     </resources>
-    <classes>
-        <class className="EditModeCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditModeCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="editModeImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="modeTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="EditModeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditModeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellStyleView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="editModeTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="modeCollectionContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="modesCollection" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="modesPageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NewModeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewModeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="changeModeIconButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="modeImageCollection" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="modeImageCollectionContainer" candidateClass="UIView"/>
-                <relationship kind="outlet" name="modeImagePageController" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="modeNameTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ProfileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="ageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="editTableViewButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="hometownLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="profilePictureImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="profileScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="profileTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="statementTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SettingsCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="buttonImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="buttonLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="settingsTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SphereListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="menuNavigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="menuNavigationItem" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="menuTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="menuTableViewBackground" candidateClass="UIView"/>
-                <relationship kind="outlet" name="menuTags" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="menuUserPicture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="menuUsername" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sphereUserTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="statementTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SphereUserCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereUserCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="accessory" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="expandView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="smiley" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tagsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="userInfoView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="userPicture" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SphereViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SphereViewController.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -43,6 +43,7 @@ static ConstantsHandler *sharedConstants = nil;
     //Fonts.
     self.FONT_NAVBAR_TITLE = [self originType:fontTypeExtraBold FontSize:18.0f];
     self.FONT_HEADER = [self originType:fontTypeExtraBold FontSize:14.0f];
+    self.FONT_SECTION_TITLE_UNGROUPED = [UIFont fontWithName:@"Thonburi" size:16.0f];
     
     //Check for retina display.
     if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
@@ -84,11 +85,12 @@ static ConstantsHandler *sharedConstants = nil;
 {
     controller.navigationController.navigationBarHidden = NO;
     [controller.navigationItem setHidesBackButton:YES];
-    controller.navigationItem.titleView = [UIView customTitle:title withColor:self.COLOR_CYANID_BLUE inFrame:controller.navigationItem.titleView.frame];
+    controller.navigationItem.titleView = [UIView customTitle:title withColor:self.COLOR_WHITE inFrame:controller.navigationItem.titleView.frame];
     
     UINavigationBar *navBar = controller.navigationController.navigationBar;
-    [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
-    navBar.shadowImage = [[UIImage alloc] init];
+    [navBar setBackgroundImage:[UIImage imageNamed:@"navbar_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    //navBar.shadowImage = [[UIImage alloc] init];
+    //navBar.tintColor = self.COLOR_CYANID_BLUE;
 }
 
 @end
