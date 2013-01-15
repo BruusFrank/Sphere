@@ -480,7 +480,6 @@ BOOL contactable = NO;
             } else if (indexPath.row == 1) {
                 [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeSharing cellData:data switchState:contactable delegate:self tag:indexPath.row] atIndex:2];
             }
-            
             break;
         case 1:
             [cell insertSubview:[[MenuTableViewCellView alloc] initWithFrame:cell.bounds cellType:CellTypeMode cellData:data switchState:NO delegate:self tag:indexPath.row] atIndex:2];
@@ -666,7 +665,6 @@ BOOL contactable = NO;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (![textField.text isEqual:@""]) {
-        //Post it!
         self.constants.user.statement = textField.text;
         
         textField.placeholder = textField.text;
