@@ -18,10 +18,10 @@
     titleLabel.font = [[ConstantsHandler sharedConstants] FONT_NAVBAR_TITLE];
     titleLabel.textColor = [[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.shadowColor = [UIColor blackColor];
-    titleLabel.shadowOffset = CGSizeMake(0.0f, 0.0f);
-    titleLabel.layer.shadowOpacity = 1.0f;
-    titleLabel.layer.shadowRadius = 3.0f;
+//    titleLabel.shadowColor = [UIColor blackColor];
+//    titleLabel.shadowOffset = CGSizeMake(0.0f, 0.0f);
+//    titleLabel.layer.shadowOpacity = 1.0f;
+//    titleLabel.layer.shadowRadius = 3.0f;
     [titleLabel sizeToFit];
     
     customTitleView.frame = CGRectMake(frame.size.width/2 - titleLabel.frame.size.width/2, frame.size.height/2 - titleLabel.frame.size.height/2, titleLabel.frame.size.width, titleLabel.frame.size.height);

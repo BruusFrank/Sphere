@@ -65,14 +65,10 @@ NSArray *cellArray;
 
 - (void)setupMainLayout
 {
-    [self.navigationItem setHidesBackButton:YES];
-    self.navigationItem.titleView = [UIView customTitle:@"Settings" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
-    [self setupBarButtonItems];
-    
-    UINavigationBar *navBar = self.navigationController.navigationBar;
-    [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
+    [[ConstantsHandler sharedConstants] setNavigationBarLayoutWithNavigtionController:self WithTitle:@"Settings"];
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
+    [self setupBarButtonItems];
 }
 
 - (void)setupBarButtonItems

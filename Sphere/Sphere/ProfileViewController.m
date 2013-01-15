@@ -96,12 +96,10 @@ int editInt;
 
 - (void)setupMainLayout
 {
-    [self.navigationItem setHidesBackButton:YES];
-    self.navigationItem.titleView = [UIView customTitle:@"Profile" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
-    [self setupBarButtonItems];
+    ConstantsHandler *constants = [ConstantsHandler sharedConstants];
+    [constants setNavigationBarLayoutWithNavigtionController:self WithTitle:@"Your profile"];
     
-    UINavigationBar *navBar = self.navigationController.navigationBar;
-    [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
+    [self setupBarButtonItems];
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
     

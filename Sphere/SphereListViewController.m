@@ -69,12 +69,7 @@ BOOL contactable = NO;
 
 - (void)showMenuAction:(id)sender
 {
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.17f];
-    
-    [self toggleMenu];
-
-    [UIView commitAnimations];
+    [self toggleMenuAnimated:YES];
 }
 
 - (void)showSettingsAction:(id)sender
@@ -244,7 +239,7 @@ BOOL contactable = NO;
     
     [self setupMenu];
     [self resetInterface];
-    [self resetMenu];
+    [self resetMenuText];
 }
 
 - (void)didReceiveMemoryWarning
@@ -257,13 +252,8 @@ BOOL contactable = NO;
 
 - (void)setupMainLayout
 {
-    self.navigationController.navigationBarHidden = NO;
-    [self.navigationItem setHidesBackButton:YES];
-    self.navigationItem.titleView = [UIView customTitle:@"Sphere" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
+    [[ConstantsHandler sharedConstants] setNavigationBarLayoutWithNavigtionController:self WithTitle:@"Sphere"];
     [self setupBarButtonItems];
-    
-    UINavigationBar *navBar = self.navigationController.navigationBar;
-    [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
     self.sphereUserTableView.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_WHITE];
     
@@ -319,7 +309,7 @@ BOOL contactable = NO;
 - (void)resetInterface
 {
     if (menuShown) {
-        [self toggleMenu];
+        [self toggleMenuAnimated:NO];
     }
     [self.menuTableView reloadData];
     
@@ -327,7 +317,7 @@ BOOL contactable = NO;
     [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.sphereUserTableView];
 }
 
-- (void)resetMenu
+- (void)resetMenuText
 {
     NSString *tags = @"";
     NSArray *interests = [self.constants.user.hasInterests allObjects];
@@ -540,7 +530,7 @@ BOOL contactable = NO;
         if (indexPath.section == 1) {
             Mode *mode = [[[menuSections objectAtIndex:indexPath.section] objectForKey:@"listItems"] objectAtIndex:indexPath.row];
             self.constants.activeMode = mode;
-            [self resetMenu];
+            [self resetMenuText];
         }
     }
 }
@@ -701,8 +691,13 @@ BOOL contactable = NO;
     return frame;
 }
 
-- (void) toggleMenu
+- (void) toggleMenuAnimated:(BOOL)animated
 {
+    if (animated) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.17f];
+    }
+    
     self.navigationController.navigationBar.frame = [self moveFrame:self.navigationController.navigationBar.frame];
     self.sphereUserTableView.frame = [self moveFrame:self.sphereUserTableView.frame];
     
@@ -715,6 +710,10 @@ BOOL contactable = NO;
         [self.statementTextField resignFirstResponder];
         
         [self resetInterface];
+    }
+    
+    if (animated) {
+        [UIView commitAnimations];
     }
 }
 

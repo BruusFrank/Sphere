@@ -10,6 +10,7 @@
 
 #import "User+Facebook.h"
 #import "Mode+Create.h"
+#import "UIView+CustomTitleView.h"
 
 @interface ConstantsHandler : NSObject
 
@@ -24,6 +25,10 @@ typedef enum fontType{
 
 //Fonts.
 - (UIFont *)originType:(fontType)type FontSize:(CGFloat)size;
+
+//Layout
+- (void)setNavigationBarLayoutWithNavigtionController:(UIViewController *)controller
+                                            WithTitle:(NSString *)title;
 
 //Colors.
 @property (strong, nonatomic) UIColor *COLOR_CYANID_BLUE;

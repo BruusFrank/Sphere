@@ -95,12 +95,8 @@ BOOL keyboardIsShown;
 
 - (void)setupMainLayout
 {
-    [self.navigationItem setHidesBackButton:YES];
-    self.navigationItem.titleView = [UIView customTitle:@"New mode" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
+    [[ConstantsHandler sharedConstants] setNavigationBarLayoutWithNavigtionController:self WithTitle:@"New mode"];
     [self setupBarButtonItems];
-    
-    UINavigationBar *navBar = self.navigationController.navigationBar;
-    [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
     self.modeImageCollectionContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_bg"]];

@@ -41,7 +41,7 @@ static ConstantsHandler *sharedConstants = nil;
     self.COLOR_LINEN_PATTERN = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menu_bg.png"]];
     
     //Fonts.
-    self.FONT_NAVBAR_TITLE = [self originType:fontTypeExtraBold FontSize:20.0f];
+    self.FONT_NAVBAR_TITLE = [self originType:fontTypeExtraBold FontSize:18.0f];
     self.FONT_HEADER = [self originType:fontTypeExtraBold FontSize:14.0f];
     
     //Check for retina display.
@@ -75,6 +75,20 @@ static ConstantsHandler *sharedConstants = nil;
             break;
     }
     return [UIFont fontWithName:@"Origin-Regular" size:size];
+}
+
+//Layout
+
+- (void)setNavigationBarLayoutWithNavigtionController:(UIViewController *)controller
+                                      WithTitle:(NSString *)title
+{
+    controller.navigationController.navigationBarHidden = NO;
+    [controller.navigationItem setHidesBackButton:YES];
+    controller.navigationItem.titleView = [UIView customTitle:title withColor:self.COLOR_CYANID_BLUE inFrame:controller.navigationItem.titleView.frame];
+    
+    UINavigationBar *navBar = controller.navigationController.navigationBar;
+    [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
+    navBar.shadowImage = [[UIImage alloc] init];
 }
 
 @end

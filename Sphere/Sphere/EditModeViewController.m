@@ -131,12 +131,8 @@ NSArray *tableViewInfo;
 
 - (void)setupMainLayout
 {
-    [self.navigationItem setHidesBackButton:YES];
-    self.navigationItem.titleView = [UIView customTitle:@"Edit modes" withColor:[[ConstantsHandler sharedConstants] COLOR_CYANID_BLUE] inFrame:self.navigationItem.titleView.frame];
+    [[ConstantsHandler sharedConstants] setNavigationBarLayoutWithNavigtionController:self WithTitle:@"Edit modes"];
     [self setupBarButtonItems];
-    
-    UINavigationBar *navBar = self.navigationController.navigationBar;
-    [navBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
     
     self.modeCollectionContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_bg"]];
     
