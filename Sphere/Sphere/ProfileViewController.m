@@ -20,7 +20,7 @@
 @implementation ProfileViewController
 
 NSArray *cellTitlesArray;
-int editInt;
+BOOL editing;
 
 - (ConstantsHandler *)constants
 {
@@ -38,15 +38,14 @@ int editInt;
 }
 
 - (IBAction)editTableView:(id)sender {
-    if (editInt == 1) {
+    if (!editing) {
         [self.profileTableView setEditing:YES animated:YES];
         [self.editTableViewButton setImage:[UIImage imageNamed:@"save_button.png"] forState:UIControlStateNormal];
-        editInt = 0;
     } else {
         [self.profileTableView setEditing:NO animated:YES];
         [self.editTableViewButton setImage:[UIImage imageNamed:@"edit_button.png"] forState:UIControlStateNormal];
-        editInt = 1;
     }
+    editing = !editing;
 }
 
 
@@ -70,7 +69,7 @@ int editInt;
     
     cellTitlesArray = [NSArray arrayWithObjects:skillsArray, interestsArray, nil];
     
-    editInt = 1;
+    editing = NO;
     
     [self setupMainLayout];
     
@@ -156,6 +155,9 @@ int editInt;
 
 - (void)resetInterface
 {
+    editing = NO;
+    [self.profileTableView setEditing:NO animated:NO];
+    [self.editTableViewButton setImage:[UIImage imageNamed:@"edit_button.png"] forState:UIControlStateNormal];
 }
 
 #pragma mark profileTableView

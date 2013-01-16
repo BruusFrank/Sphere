@@ -84,34 +84,11 @@ NSArray *tableViewHeaders;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    //Placeholder information:
-    NSString *pInfo = [NSString stringWithFormat:@"%@ from %@", [ConstantsHandler sharedConstants].user.age, [ConstantsHandler sharedConstants].user.hometown];
-    NSString *eInfo = @"";
-    
-    if ([ConstantsHandler sharedConstants].user.education) {
-        eInfo = [ConstantsHandler sharedConstants].user.education;
-    } else if ([ConstantsHandler sharedConstants].user.work) {
-        eInfo = [ConstantsHandler sharedConstants].user.work;
-    } else {
-        eInfo = @"Your education and work information.";
-    }
-    NSDictionary *personalInfo = [[NSDictionary alloc] initWithObjectsAndKeys:@"Personal: ", @"title", pInfo, @"subtitle", nil];
-    NSDictionary *employmentInfo = [[NSDictionary alloc] initWithObjectsAndKeys:@"Study/Work: ", @"title", eInfo, @"subtitle", nil];
-    NSDictionary *statement = [[NSDictionary alloc] initWithObjectsAndKeys:@"Statement: ", @"title", [ConstantsHandler sharedConstants].user.statement, @"subtitle", nil];
-    
-    tableViewInfo = [NSArray arrayWithObjects:personalInfo, employmentInfo, statement, nil];
-    tableViewHeaders = [NSArray arrayWithObjects:@"What do you want to share?", @"Skills", @"Interests", @"Social level", nil];
-    
     self.modesCollection.dataSource = self;
     self.modesCollection.delegate = self;
     
     self.editModeTableView.dataSource = self;
     self.editModeTableView.delegate = self;
-    
-    NSSortDescriptor *activeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"isActive" ascending:NO];
-    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    NSArray *descriptors = [NSArray arrayWithObjects:activeDescriptor, nameDescriptor, nil];
-    modes = [[[(User *)[[ConstantsHandler sharedConstants] user] hasModes] allObjects].mutableCopy sortedArrayUsingDescriptors:descriptors];
         
     [self setupMainLayout];
 }
@@ -133,7 +110,7 @@ NSArray *tableViewHeaders;
 
 - (void)setupMainLayout
 {
-    [[ConstantsHandler sharedConstants] setNavigationBarLayoutWithNavigtionController:self WithTitle:@"Edit modes"];
+    [[ConstantsHandler sharedConstants] setNavigationBarLayoutWithNavigtionController:self WithTitle:@"Mode options"];
     [self setupBarButtonItems];
     
     self.modeCollectionContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_bg"]];
@@ -149,6 +126,9 @@ NSArray *tableViewHeaders;
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, -200.0f, 320.0f, 200.0f)];
     view.backgroundColor = [ConstantsHandler sharedConstants].COLOR_WHITE;
     [self.editModeTableView addSubview:view];
+    
+    [self generateTableViewInfo];
+    [self generateCollectionViewInfo];
 }
 
 - (void)setupBarButtonItems
@@ -159,6 +139,33 @@ NSArray *tableViewHeaders;
     [backButton addTarget:self action:@selector(popController:) forControlEvents:UIControlEventTouchDown];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (void)generateTableViewInfo
+{
+    NSString *pInfo = [NSString stringWithFormat:@"%@ from %@", [ConstantsHandler sharedConstants].user.age, [ConstantsHandler sharedConstants].user.hometown];
+    NSString *eInfo = @"";
+    
+    if ([ConstantsHandler sharedConstants].user.education) {
+        eInfo = [ConstantsHandler sharedConstants].user.education;
+    } else if ([ConstantsHandler sharedConstants].user.work) {
+        eInfo = [ConstantsHandler sharedConstants].user.work;
+    } else {
+        eInfo = @"Your education and work information.";
+    }
+    NSDictionary *personalInfo = [[NSDictionary alloc] initWithObjectsAndKeys:@"Personal: ", @"title", pInfo, @"subtitle", nil];
+    NSDictionary *employmentInfo = [[NSDictionary alloc] initWithObjectsAndKeys:@"Study/Work: ", @"title", eInfo, @"subtitle", nil];
+    NSDictionary *statement = [[NSDictionary alloc] initWithObjectsAndKeys:@"Statement: ", @"title", [ConstantsHandler sharedConstants].user.statement, @"subtitle", nil];
+    
+    tableViewInfo = [NSArray arrayWithObjects:personalInfo, employmentInfo, statement, nil];
+    tableViewHeaders = [NSArray arrayWithObjects:@"What do you want to share?", @"Skills", @"Interests", @"Social level", @"Filters", nil];
+}
+
+- (void)generateCollectionViewInfo
+{
+    NSSortDescriptor *activeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"isActive" ascending:NO];
+    NSArray *descriptors = [NSArray arrayWithObjects:activeDescriptor, nil];
+    modes = [[ConstantsHandler sharedConstants].modes sortedArrayUsingDescriptors:descriptors];
 }
 
 - (void)resetInterface
@@ -184,7 +191,7 @@ NSArray *tableViewHeaders;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return [tableViewHeaders count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

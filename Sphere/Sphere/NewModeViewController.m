@@ -17,6 +17,7 @@
 
 BOOL collectionShown;
 BOOL keyboardIsShown;
+NSArray *modeImages;
 
 #pragma mark IBActions
 
@@ -96,7 +97,6 @@ BOOL keyboardIsShown;
 - (void)setupMainLayout
 {
     [[ConstantsHandler sharedConstants] setNavigationBarLayoutWithNavigtionController:self WithTitle:@"New mode"];
-    [self setupBarButtonItems];
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
     self.modeImageCollectionContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_bg"]];
@@ -105,6 +105,9 @@ BOOL keyboardIsShown;
     self.modeNameTextField.font = [UIFont systemFontOfSize:22.0f];
     
     self.changeModeIconButton.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
+    
+    [self setupBarButtonItems];
+    [self setupCollectionViewImages];
 }
 
 - (void)setupBarButtonItems
@@ -115,6 +118,18 @@ BOOL keyboardIsShown;
     [backButton addTarget:self action:@selector(popController:) forControlEvents:UIControlEventTouchDown];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (void)setupCollectionViewImages
+{
+    UIImage *studyHat = [UIImage imageNamed:@"mode_study.png"];
+    UIImage *workBag = [UIImage imageNamed:@"mode_work.png"];
+    UIImage *partyDrink = [UIImage imageNamed:@"mode_party.png"];
+    UIImage *coffeeCup = [UIImage imageNamed:@"mode_casual.png"];
+    
+    NSArray *sectionZero = [NSArray arrayWithObjects:studyHat, workBag, partyDrink, coffeeCup, nil];
+    
+    modeImages = [NSArray arrayWithObjects:sectionZero, nil];
 }
 
 - (void)resetInterface
@@ -162,31 +177,10 @@ BOOL keyboardIsShown;
     static NSString *identifier = @"modeImageCell";
     UICollectionViewCell *cell = (UICollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-                //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_study.png"]];
-                [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mode_study.png"]]];
-                break;
-            case 1:
-                //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_work.png"]];
-                [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mode_work.png"]]];
-                break;
-            case 2:
-                //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_party.png"]];
-                [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mode_party.png"]]];
-                break;
-            case 3:
-                //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"mode_casual.png"]];
-                [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mode_casual.png"]]];
-                break;
-            default:
-                //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
-                [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_cell_bg.png"]]];
-                break;
-        }
-    } else{
-        //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"collection_cell_bg.png"]];
+    NSArray *images = [modeImages objectAtIndex:indexPath.section];
+    if (indexPath.row < [images count]) {
+        [cell setBackgroundView:[[UIImageView alloc] initWithImage:[images objectAtIndex:indexPath.row]]];
+    } else {
         [cell setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_cell_bg.png"]]];
     }
     

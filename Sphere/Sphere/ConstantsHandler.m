@@ -24,6 +24,13 @@ static ConstantsHandler *sharedConstants = nil;
     activeMode.isActive = [NSNumber numberWithBool:YES];
 }
 
+- (NSArray *)modes
+{
+    NSArray *modeSortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    _modes = [[self.user.hasModes allObjects].mutableCopy sortedArrayUsingDescriptors:modeSortDescriptors];
+    return _modes;
+}
+
 + (ConstantsHandler *)sharedConstants
 {
     static dispatch_once_t once;
@@ -54,6 +61,9 @@ static ConstantsHandler *sharedConstants = nil;
         self.retina = NO;
         self.RETINA_FACTOR = 1;
     }
+    
+    //Sort descriptors
+    
     
     return self;
 }

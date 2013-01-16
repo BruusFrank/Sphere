@@ -46,12 +46,6 @@ NSArray *cellArray;
     self.settingsTableView.dataSource = self;
     self.settingsTableView.delegate = self;
     
-    NSArray *modesSection = [[NSArray alloc] initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:@"New mode", @"title", @"plus.png", @"image", nil],
-                                                             [[NSDictionary alloc] initWithObjectsAndKeys:@"Edit modes", @"title", @"cogwheel_settings.png", @"image", nil], nil];
-    NSArray *profileSection = [[NSArray alloc] initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:@"My profile", @"title", @"profile_button_icon.png", @"image", nil], nil];
-    
-    cellArray = [[NSArray alloc] initWithObjects:modesSection, profileSection, nil];
-    
     [self setupMainLayout];
 }
 
@@ -69,6 +63,7 @@ NSArray *cellArray;
     
     self.view.backgroundColor = [[ConstantsHandler sharedConstants] COLOR_LINEN_PATTERN];
     [self setupBarButtonItems];
+    cellArray = [self setupTableViewCellArray];
 }
 
 - (void)setupBarButtonItems
@@ -79,6 +74,15 @@ NSArray *cellArray;
     [backButton addTarget:self action:@selector(popController:) forControlEvents:UIControlEventTouchDown];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+}
+
+- (NSArray *)setupTableViewCellArray
+{
+    NSArray *modesSection = [[NSArray alloc] initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:@"New mode", @"title", @"plus.png", @"image", nil],
+                             [[NSDictionary alloc] initWithObjectsAndKeys:@"Edit modes", @"title", @"cogwheel_settings.png", @"image", nil], nil];
+    NSArray *profileSection = [[NSArray alloc] initWithObjects:[[NSDictionary alloc] initWithObjectsAndKeys:@"My profile", @"title", @"profile_button_icon.png", @"image", nil], nil];
+    
+    return [[NSArray alloc] initWithObjects:modesSection, profileSection, nil];
 }
 
 - (void)resetInterface

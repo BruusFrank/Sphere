@@ -47,5 +47,6 @@ typedef enum fontType{
 //User specific
 @property (nonatomic, strong) User *user;
 @property (nonatomic, strong) Mode *activeMode;
+@property (nonatomic, strong) NSArray *modes;
 
 @end

@@ -15,6 +15,7 @@
 #import "UIView+CustomTitleView.h"
 #import "Interest+Create.h"
 #import "Mode+Create.h"
+#import "DatabaseFake.h"
 
 @interface SphereListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, EGORefreshTableHeaderDelegate, UITextFieldDelegate>{
     
